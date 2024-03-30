@@ -42,10 +42,18 @@ class Type(Enum):
     Dark = 15
     Steel = 16
 
+    def type_effectiveness_against_types(atk_type, def_types):
+        effectiveness = effectiveness_matrix[atk_type.value][def_types[0].value]
 
-    def is_weak_to(types):
-        # (2x weakness, 4x weakness)
-        res = ([], [])
+        if len(def_types) == 1:
+            return effectiveness
+        else:
+            return effectiveness * effectiveness_matrix[atk_type.value][def_types[1].value]
+
+
+    def effectivity_against(types):
+        # (0x damage against it, 0.25x resistant, 0.5x, 1x, 2x weakness, 4x)
+        res = [] * 6
 
         vulnerable = vulnerable_matrix[types[0].value]
 
@@ -56,13 +64,20 @@ class Type(Enum):
             if len(types) > 1:
                 vulnerable[i] = vulnerable[i] * vulnerable_2[i]
             
-            if vulnerable[i] == 2:
+            if vulnerable[i] == 0:
                 res[0].append(Type(i))
-            elif vulnerable[i] == 4:
+            elif vulnerable[i] == 0.25:
                 res[1].append(Type(i))
+            elif vulnerable[i] == 0.5:
+                res[2].append(Type(i))
+            elif vulnerable[i] == 1:
+                res[3].append(Type(i))
+            elif vulnerable[i] == 2:
+                res[4].append(Type(i))
+            else:
+                res[5].append(Type(i))
         
         return res
-
 
     def get_type(s):
         s = s.lower()
