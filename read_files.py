@@ -3,6 +3,7 @@ import re
 
 from pokemon import Pokemon
 from move import Move
+from nature import Nature
 
 def read_moves_sheet(workbook):
     moves = {}
@@ -54,24 +55,21 @@ def read_pokemon_sheet(workbook, moves):
     return pokemons
 
 
-def read_box(pokemons, moves):
-    with open('current_box.txt', 'r') as f:
-        box_pokemons = []
-        
-        for line in f.readlines():
-            splitted = line.strip().split('|')
-            pokemon_name = splitted[0]
-            pokemon_level = int(splitted[1])
-            pokemon_moves = splitted[2].split(',')
+def read_my_pokemon(save, pokemons, moves):
+    my_pokemon = []
+    
+    for gen3pokemon in save.boxes + save.team:
+        pokemon = pokemons[gen3pokemon.species['name']]
+        pokemon.lvl = gen3pokemon.level
+        pokemon.nature = Nature.get_nature(gen3pokemon.nature)
+        for move in gen3pokemon.moves:
+            if move['name'].lower() not in moves:
+                raise Exception(f'Move name {move["name"]} has wrong syntax')
             
-            pokemon = pokemons[pokemon_name]
-            pokemon.lvl = pokemon_level
-            for pokemon_move in pokemon_moves:
-                pokemon.add_cur_move(moves[pokemon_move])
-
-            box_pokemons.append(pokemon)
-
-        return box_pokemons
+            pokemon.add_cur_move(moves[move['name'].lower()])
+        
+        my_pokemon.append(pokemon)
+    return my_pokemon
     
 def read_trainer_pokemon(lines, line_number, pokemons, moves):
     trainer_pokemon = []
@@ -93,16 +91,24 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
 
         pokemon = pokemons[pokemon_name]
 
+        # Get its level
         pattern = r"Lv\.(\d+)\s"
         match = re.search(pattern, pokemon_line)
         pokemon_level = match.group(1)
         pokemon.lvl = pokemon_level
 
+        # Get its moves
         pokemon_moves = pokemon_line.split(': ')[1].split(', ')
         pokemon_moves[3] = pokemon_moves[3].split(' [')[0].split(' +')[0]  # Last move has extra fluff info to the right
         pokemon_moves = [x for x in pokemon_moves if x != '-----']
         pokemon_moves = [moves[x.lower()] for x in pokemon_moves]
         pokemon.cur_moves = pokemon_moves
+
+        # Get its nature (if present)
+        for nature in Nature.get_nature_names():
+            if f'{nature}]' in pokemon_line:
+                pokemon.nature = Nature.get_nature(nature)
+                break
 
         trainer_pokemon.append(pokemon)
         line_number += 1

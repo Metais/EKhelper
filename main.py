@@ -5,6 +5,10 @@ from pokemonbattleGUI import pokemon_battle_gui
 from pokemondata.Gen3Save import Gen3Save
 
 
+SAVE_FILE = "D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav"
+save = Gen3Save(SAVE_FILE)
+
+
 def find_highest_damaging_move(source_pkmn, target_pkmn):
     strongest_move = None
     strongest_power = 0
@@ -47,9 +51,7 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
 
 moves = read_moves_sheet("data/gen3moves.xlsx")
 pokemons = read_pokemon_sheet("data/pokemon.xlsx", moves)
-box = read_box(pokemons, moves)
-
-save = Gen3Save("D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav")
+my_pokemons = read_my_pokemon(save, pokemons, moves)
 
 with open('EK Mastersheet.txt', 'r') as f:
     lines = f.readlines()
@@ -68,14 +70,14 @@ with open('EK Mastersheet.txt', 'r') as f:
             enemy_pokemon_analysis = {}
 
             # For each of my pokemon...
-            for box_pokemon in box:
+            for my_pokemon in my_pokemons:
                 # Strongest move against me
-                strongest_move_against_me, strongest_power_against_me = find_highest_damaging_move(enemy_pokemon, box_pokemon)
+                strongest_move_against_me, strongest_power_against_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
                 # Strongest move against him
-                strongest_move_against_him, strongest_power_against_him = find_highest_damaging_move(box_pokemon, enemy_pokemon)
+                strongest_move_against_him, strongest_power_against_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
                 
                 # Store above 4 values per box pokemon for each enemy pokemon
-                enemy_pokemon_analysis[box_pokemon.name] = (strongest_move_against_me, strongest_power_against_me, 
+                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_against_me, strongest_power_against_me, 
                                                             strongest_move_against_him, strongest_power_against_him)
                 
             enemy_team_info.append((enemy_pokemon.name, enemy_pokemon_analysis))

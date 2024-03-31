@@ -15,6 +15,7 @@ class Pokemon:
         self.base_spd = base_spd
 
         self.lvl = 0
+        self.nature = ""
         
         self.lvl_moves = []
         self.cur_moves = []
