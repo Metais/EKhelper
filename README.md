@@ -17,11 +17,11 @@ Also, EKhelper only considers damaging moves!
 
 How it works
 ---------------------------
-You will need the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) unedited, and enter the line number of the name of the trainer you are interested in, on the command-line interface. A window will appear with the results, where you can shift click right/left to go through the list of enemy pokemon. Highly recommend opening the master sheet with a text editor program that includes line numbers!
+You will need the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) unedited, and enter the line number of the name of the trainer you are interested in, on the command-line interface. A window will appear with the results, where you can click right/left to go through the list of enemy pokemon. Highly recommend opening the master sheet with a text editor program that includes line numbers!
 
 Setup
 ---------------------------
-For now, you will have to clone the repository to a local folder. Create a virtual python environment that includes PIL and openpyxl. I used Python 3.10. Then run main.py after configuring the .sav file location.
+For now, you will have to clone the repository to a local folder. Create a virtual python environment that includes PIL and openpyxl. I used Python 3.10. Then run main.py after configuring the .sav file location in-code.
 
 example using miniconda:
 
@@ -41,3 +41,5 @@ Data has been curated for Emerald Kaizo specifically (this includes move power, 
 Credits
 ---------------------------
 Interpreting save data code was taken from: https://github.com/ads04r/Gen3Save
+
+Core Emerald Kaizo data is from the content creator PChal and his community, taken from: https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM 
