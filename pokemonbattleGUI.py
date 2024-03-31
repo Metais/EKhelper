@@ -8,6 +8,8 @@ class PokemonBattleGUI:
         self.current_index = 0
         self.box_size = len(enemy_team_info[0][1].keys())
 
+        self.enemy_pokemon_label = tk.Label(root)
+
         self.my_pokemon_vs_him_labels = [tk.Label(root) for _ in range(self.box_size)]
         self.him_vs_my_pokemon_labels = [tk.Label(root) for _ in range(self.box_size)]
         self.enemy_pokemon_move_vs_me_labels = [tk.Label(root) for _ in range(self.box_size)]
@@ -35,7 +37,7 @@ class PokemonBattleGUI:
             self.my_pokemon_move_vs_him_labels[i].config(text=move_text)
         
         # Load my Pokemon images and move info (him vs me)
-        in_order = sorted(self.enemy_team_info[self.current_index][1].items(), key=lambda x: x[1][1], reverse=True)
+        in_order = sorted(self.enemy_team_info[self.current_index][1].items(), key=lambda x: x[1][1])
         for i, (pokemon_name, move_info) in enumerate(in_order):
             pokemon_image = Image.open(f"animations/{pokemon_name}.gif")
             pokemon_image = pokemon_image.resize((100, 100))

@@ -2,6 +2,7 @@ from read_files import *
 from type import *
 
 from pokemonbattleGUI import pokemon_battle_gui
+from pokemondata.Gen3Save import Gen3Save
 
 
 def find_highest_damaging_move(source_pkmn, target_pkmn):
@@ -47,6 +48,8 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
 moves = read_moves_sheet("data/gen3moves.xlsx")
 pokemons = read_pokemon_sheet("data/pokemon.xlsx", moves)
 box = read_box(pokemons, moves)
+
+save = Gen3Save("D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav")
 
 with open('EK Mastersheet.txt', 'r') as f:
     lines = f.readlines()

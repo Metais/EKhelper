@@ -1,9 +1,12 @@
 Nidorino|16|poison sting,peck,horn attack,double kick
-Luvdisc|16|secret power,charm,water pulse
-Treecko|16|quick attack,absorb,bullet seed,pursuit
-Ekans|16|wrap,pursuit,acid,bite
-Numel|16|ember,stomp,flame wheel
-Natu|16|psybeam,peck,night shade
+Luvdisc|13|secret power,charm,water pulse
+Treecko|13|quick attack,absorb,bullet seed,pursuit
+Ekans|13|wrap,pursuit,acid,bite
+Numel|13|ember,stomp,flame wheel
+Natu|13|psybeam,peck,night shade
 Oddish|16|mega drain,acid
-Poliwag|16|water gun,hypnosis
-Kabuto|16|rock slide
+Poliwag|14|water gun,hypnosis,bubblebeam
+Oddish|14|mega drain,acid,toxic
+Hoppip|14|confusion,secret power,mega drain,gust
+Kabuto|14|rock tomb,water pulse,mega drain
+Makuhita|14|vital throw,smellingsalt,sand-attack,force palm
