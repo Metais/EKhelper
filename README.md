@@ -2,6 +2,8 @@ EKhelper
 ---------------------------
 A Python-based app that should make your Emerald Kaizo experience a (little) bit easier.
 
+![Example Image](images/example.png)
+
 What it does
 ---------------------------
 Analyzes the target trainer pokemon versus the pokemon in your party & box.
@@ -9,7 +11,21 @@ Lists the best pokemon on your team against each target pokemon, both dealing da
 
 How it works
 ---------------------------
-You will need the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) unedited, and enter the line number of the name of the trainer you are interested in, on the command-line interface. A window will appear with the results. Highly recommend opening the master sheet with a text editor program that includes line numbers!
+You will need the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) unedited, and enter the line number of the name of the trainer you are interested in, on the command-line interface. A window will appear with the results, where you can shift click right/left to go through the list of enemy pokemon. Highly recommend opening the master sheet with a text editor program that includes line numbers!
+
+Setup
+---------------------------
+For now, you will have to clone the repository to a local folder. Create a virtual python environment that includes PIL and openpyxl. I used Python 3.10. Then run main.py after configuring the .sav file location.
+
+example using miniconda:
+    conda create --name EKhelper python=3.10
+    conda activate EKhelper
+    conda install anaconda::pillow
+    conda install openpyxl
+    cd [local_folder]...
+    python main.py
+
+If you plan to use it often, I recommend creating an .exe by installing pyinstaller into your virtual environment and using that library to create a one-click app.
 
 Data
 ---------------------------
