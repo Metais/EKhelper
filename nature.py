@@ -40,6 +40,8 @@ class Nature(Enum):
                 return Nature.Lonely
             case "adamant":
                 return Nature.Adamant
+            case "naughty":
+                return Nature.Naughty
             case "brave":
                 return Nature.Brave
             case "bold":

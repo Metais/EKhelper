@@ -55,6 +55,21 @@ def read_pokemon_sheet(workbook, moves):
     return pokemons
 
 
+def handle_move_name_exceptions(move):
+    # hard-code move name differences between save file and data files (...annoying)
+    match move:
+        case "bubble beam":
+            return "bubblebeam"
+        case "smelling salts":
+            return "smellingsalt"
+        case "sand attack":
+            return "sand-attack"
+        case "arm thrust":
+            return "force palm"
+        case _:
+            raise Exception(f'Move name {move} has wrong syntax')
+
+
 def read_my_pokemon(save, pokemons, moves):
     my_pokemon = []
     
@@ -63,10 +78,11 @@ def read_my_pokemon(save, pokemons, moves):
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
         for move in gen3pokemon.moves:
-            if move['name'].lower() not in moves:
-                raise Exception(f'Move name {move["name"]} has wrong syntax')
-            
-            pokemon.add_cur_move(moves[move['name'].lower()])
+            if move['name'].lower() in moves:
+                pokemon.add_cur_move(moves[move['name'].lower()])
+            else:
+                modified_move_name = handle_move_name_exceptions(move['name'].lower())
+                pokemon.add_cur_move(moves[modified_move_name])
         
         my_pokemon.append(pokemon)
     return my_pokemon

@@ -62,24 +62,34 @@ with open('EK Mastersheet.txt', 'r') as f:
     
         trainer_pokemon = read_trainer_pokemon(lines, line_number, pokemons, moves)
 
+        # Store my pokemon's variable moves
+        my_variable_moves = {}
+        for my_pokemon in my_pokemons:
+            my_variable_moves[my_pokemon.name] = [move for move in my_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)]
+
         # List with each index the corresponding enemy pokemon analysis
         enemy_team_info = []
+        his_variable_moves = []
 
         # For each enemy pokemon...
         for enemy_pokemon in trainer_pokemon:
+            # Each enemy pokemon has a dictionary containing my pokemon's names as keys
+            # except the key/value pair 'variable', which stores the pokemon's variables moves
             enemy_pokemon_analysis = {}
+
+            his_variable_moves.append([move for move in enemy_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)])
 
             # For each of my pokemon...
             for my_pokemon in my_pokemons:
                 # Strongest move against me
-                strongest_move_against_me, strongest_power_against_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
+                strongest_move_vs_me, strongest_power_vs_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
                 # Strongest move against him
-                strongest_move_against_him, strongest_power_against_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
+                strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
                 
                 # Store above 4 values per box pokemon for each enemy pokemon
-                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_against_me, strongest_power_against_me, 
-                                                            strongest_move_against_him, strongest_power_against_him)
+                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_vs_me, strongest_power_vs_me, 
+                                                            strongest_move_vs_him, strongest_power_vs_him)
                 
             enemy_team_info.append((enemy_pokemon.name, enemy_pokemon_analysis))
 
-        pokemon_battle_gui(enemy_team_info)
+        pokemon_battle_gui(enemy_team_info, my_pokemons, his_variable_moves, my_variable_moves)

@@ -10,6 +10,9 @@ class Move:
         self.acc = acc
         self.category = category
 
+    def detailed_string(self):
+        return f'{self.name}: {self.description}\nType: {self.type.name} | PP: {self.pp} | Power: {self.power} | Acc: {self.acc} | Category: {self.category}'
+
     def __str__(self):
         return self.name
 
