@@ -32,13 +32,25 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             spm_power = spm_power * 1.5
         # Multiply level-based (0.4*lvl + 2)
         spm_power = spm_power * (0.4 * float(source_pkmn.lvl) + 2)
-        # Take predicted (special) attack (for attacker) and (special) defense (for defender) into account
-        # Assumes pokemon same level
-        # Does not consider natures (TODO)
+        # Take (special) attack (for attacker) and (special) defense (for defender) into account
         if source_pokemon_move.category == "Physical":
-            spm_power *= source_pkmn.base_atk / target_pkmn.base_def
+            # Assume 31 (strongest) if unknown (aka, foe's)
+            atk_iv = source_pkmn.atk_iv if source_pkmn.atk_iv != -1 else 31
+            def_iv = target_pkmn.def_iv if target_pkmn.def_iv != -1 else 31
+
+            atk_stat = source_pkmn.get_real_atk_stat(atk_iv)
+            def_stat = target_pkmn.get_real_def_stat(def_iv)
+
+            spm_power *= atk_stat / def_stat
         elif source_pokemon_move.category == "Special":
-            spm_power *= source_pkmn.base_spa / target_pkmn.base_spd
+            # Assume 31 (strongest) if unknown (aka, foe's)
+            spa_iv = source_pkmn.spa_iv if source_pkmn.spa_iv != -1 else 31
+            spd_iv = target_pkmn.spd_iv if target_pkmn.spd_iv != -1 else 31
+
+            spa_stat = source_pkmn.get_real_spa_stat(spa_iv)
+            spd_stat = target_pkmn.get_real_spd_stat(spd_iv)
+
+            spm_power *= spa_stat / spd_stat
         else:
             raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
         # Divide by 50 for real damage value
