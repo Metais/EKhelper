@@ -4,9 +4,11 @@ A Python-based app that should make your Emerald Kaizo experience a (little) bit
 
 ![Example Image](images/example.png)
 
-In the above example, picking Kabuto is both an offensive and defensive no-brainer! The Zubat however takes a little more planning.
+In the above example, Kabuto, Poliwag and Luvsic go first and deal enough damage to one-shot the foe's Aron. Makuhita might still one-shot, but will probably go second, making it a considerably worse pick.
 
 ![Example Image2](images/example2.png)
+
+In the above example, despite dealing massive damage, Kabuto is a terrible pick. It will go second, and will likely take 44 damage on an HP-bar of 37.
 
 What it does
 ---------------------------
