@@ -1,0 +1,37 @@
+EK xp managment:
+
+Roxanne lvl cap: 16
+
+start: 10-12
+forest grunt 12-13
+red: 13-15
+roxanne gym: 14-16
+
+Brawly lvl cap: 20
+
+tunnel grunt: 18
+
+Wattson lvl cap: 29
+
+beach: 23-24
+slateport grunts: 25-26
+rival 2: 27-29
+
+Flannery lvl cap: 42
+
+post-wattson: 37
+magma gauntlet: 39-41
+
+Norman lvl cap: 48
+
+gym: 47
+
+Winona lvl cap: 55
+
+post-norman: 51
+weather institute: 53-55
+
+Tate&Liza lvl cap: 70
+
+post-winona: 63-64
+magma hideout: 67-68

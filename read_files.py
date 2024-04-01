@@ -112,8 +112,15 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
             pokemon_name += char
         
         # Make an exception for nidoran(m)/nidoran(f)
-        if pokemon_name == "Nidoran":
+        if pokemon_name.lower() == "nidoran":
             pokemon_name = pokemon_line.split(' ')[0]
+
+        # Sometimes written in all-caps
+        pokemon_name = pokemon_name.capitalize()
+
+        # Mr. Mime is the only pokemon with a space, which it reads wrong
+        if pokemon_name == "Mr.":
+            pokemon_name = "Mr. Mime"
 
         pokemon = copy.copy(pokemons[pokemon_name])
 
