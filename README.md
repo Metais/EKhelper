@@ -19,7 +19,12 @@ Also, EKhelper only considers moves with a fixed base power! Moves like Magnitud
 
 How it works
 ---------------------------
-You will need the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) unedited, and enter the line number of the name of the trainer you are interested in, on the command-line interface. A window will appear with the results, where you can click right/left to go through the list of enemy pokemon. Highly recommend opening the master sheet with a text editor program that includes line numbers!
+- Make sure that the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) is unedited, in this folder
+- When prompted in the app, enter the line number of the name of the trainer you are interested in, as it is found on the master sheet.
+  - E.g. Leader Roxanne is line 218 (Use Notepad++ or similar to easily fine line number)
+- A window will appear with the results, where you can click next/previous to go through the list of enemy pokemon. 
+- Mouse over own pokemon to see its stats
+- Mouse over enemy pokemon to see its predicted stats
 
 Setup
 ---------------------------
