@@ -5,11 +5,10 @@ from pokemonbattleGUI import pokemon_battle_gui
 from pokemondata.Gen3Save import Gen3Save
 
 
-SAVE_FILE = "D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav"
-save = Gen3Save(SAVE_FILE)
-
-#TODO: make a config.txt with save location and toggle dont_read_box_14
-
+with open('config.txt', 'r') as f:
+    save_loc = f.readline().strip().split('=')[1]
+    save = Gen3Save(save_loc)
+    
 
 def find_highest_damaging_move(source_pkmn, target_pkmn):
     strongest_move = None
