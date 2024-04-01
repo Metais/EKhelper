@@ -8,7 +8,6 @@ from pokemondata.Gen3Save import Gen3Save
 SAVE_FILE = "D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav"
 save = Gen3Save(SAVE_FILE)
 
-#TODO: Have Gen3Save not read pokemon stored in box 14 
 #TODO: make a config.txt with save location and toggle dont_read_box_14
 
 

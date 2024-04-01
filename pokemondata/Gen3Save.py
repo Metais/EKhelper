@@ -103,7 +103,8 @@ class Gen3Save:
 		for i in range(5, 14):
 			dex = dex + sections[i]
 		dex = dex[4:33604]
-		for i in range(0, 420):
+		# Exclude the last 60 pokemon in box (box 13 and 14) (count till 360 instead of 420)
+		for i in range(0, 390):
 			pkm = Gen3Pokemon(dex[(i * 80):((i + 1) * 80)])
 			if not(hasattr(pkm, 'species')):
 				continue
