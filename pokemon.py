@@ -37,6 +37,10 @@ class Pokemon:
         self.vulnerable_to = None
         self.very_vulnerable_to = None
 
+    def __copy__(self):
+        return Pokemon(self.index, self.name, [x.name for x in self.types], 
+                       self.base_hp, self.base_atk, self.base_def, self.base_spa, self.base_spd, self.base_spe)
+
     def get_real_hp_stat(self, hp_iv):
         return floor((2 * self.base_hp + hp_iv) * self.lvl / 100) + self.lvl + 10
     
@@ -69,7 +73,13 @@ class Pokemon:
         low_spd, high_spd = self.get_real_spd_stat(0), self.get_real_spd_stat(31)
         low_spe, high_spe = self.get_real_spe_stat(0), self.get_real_spe_stat(31)
 
-        return f"Lv. {self.lvl} {self.name}\nEstimated base stats:\nHp: {low_hp}-{high_hp}\nAttack: {low_atk}-{high_atk}\nDefense: {low_def}-{high_def}\n" + \
+        basics = f"Lv. {self.lvl} {self.name} ({self.types[0].name}"
+        if len(self.types) > 1:
+            basics += f"+{self.types[1].name})"
+        else:
+            basics += ")"
+
+        return f"{basics}\nEstimated base stats:\nHp: {low_hp}-{high_hp}\nAttack: {low_atk}-{high_atk}\nDefense: {low_def}-{high_def}\n" + \
             f"Special Attack: {low_spa}-{high_spa}\nSpecial Defense: {low_spd}-{high_spd}\nSpeed: {low_spe}-{high_spe}"
     
     # For if IV is known
@@ -81,7 +91,13 @@ class Pokemon:
         spd = self.get_real_spd_stat(self.spd_iv)
         spe = self.get_real_spe_stat(self.spe_iv)
 
-        return f"Current base stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
+        basics = f"Lv. {self.lvl} {self.name} ({self.types[0].name}"
+        if len(self.types) > 1:
+            basics += f"+{self.types[1].name})"
+        else:
+            basics += ")"
+
+        return f"{basics}\nCurrent base stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
 
     def add_level_move(self, level, move):
         self.lvl_moves.append((level, move))

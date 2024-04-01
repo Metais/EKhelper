@@ -1,5 +1,6 @@
 import openpyxl
 import re
+import copy
 
 from pokemon import Pokemon
 from move import Move
@@ -74,7 +75,7 @@ def read_my_pokemon(save, pokemons, moves):
     my_pokemon = []
     
     for gen3pokemon in save.team + save.boxes:
-        pokemon = pokemons[gen3pokemon.species['name']]
+        pokemon = copy.copy(pokemons[gen3pokemon.species['name']])
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
 
@@ -114,7 +115,7 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
         if pokemon_name == "Nidoran":
             pokemon_name = pokemon_line.split(' ')[0]
 
-        pokemon = pokemons[pokemon_name]
+        pokemon = copy.copy(pokemons[pokemon_name])
 
         # Get its level
         pattern = r"Lv\.(\d+)[\s:]"
