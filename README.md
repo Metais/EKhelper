@@ -17,6 +17,8 @@ Lists the best pokemon on your team against each target pokemon, both dealing da
 
 Also, EKhelper only considers moves with a fixed base power! Moves like Magnitude or Sonic boom with varying or hp-fixed damage are listed in a seperate field on the right if the target pokemon contains said move. They are not included in the analysis.
 
+_Use EKhelper as an auxiliary tool -- not a be-all and end-all program!_
+
 How it works
 ---------------------------
 - Make sure that the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) is unedited, in this folder
