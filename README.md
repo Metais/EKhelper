@@ -13,9 +13,9 @@ In the above example, despite dealing massive damage, Kabuto is a terrible pick.
 What it does
 ---------------------------
 Analyzes the target trainer pokemon versus the pokemon in your party & box.
-Lists the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not the true damage, as it considers the pokemon's base stats, type effectivities, STAB and level while ignoring IV's, natures, weather-effects and the naturally occuring 85%-100% randomness value, as well as some very rare move-specific damage boosters. Take it as a relative score! 
+Lists the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not always the true damage, as it considers the pokemon's stats, type effectivities, STAB and level while ignoring uncommmon or hyper-move-specific damage modifiers (such as suffering from burn, weather-effects, earthquake-vs-dig, etc.). Take it as a relative score! 
 
-Also, EKhelper only considers damaging moves!
+Also, EKhelper only considers moves with a fixed base power! Moves like Magnitude or Sonic boom with varying or hp-fixed damage are listed in a seperate field on the right if the target pokemon contains said move. They are not included in the analysis.
 
 How it works
 ---------------------------
