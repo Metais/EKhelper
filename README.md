@@ -4,7 +4,7 @@ A Python-based app that should make your Emerald Kaizo experience a (little) bit
 
 ![Example Image](images/example.png)
 
-In the above example, Kabuto, Poliwag and Luvsic go first and deal enough damage to one-shot the foe's Aron. Makuhita might still one-shot, but will probably go second, making it a considerably worse pick.
+In the above example, Kabuto, Poliwag and Luvdisc go first and deal enough damage to one-shot the foe's Aron. Makuhita might still one-shot, but will probably go second, making it a considerably worse pick.
 
 ![Example Image2](images/example2.png)
 
