@@ -22,9 +22,11 @@ _Use EKhelper as an auxiliary tool -- not a be-all and end-all program!_
 How it works
 ---------------------------
 - Make sure that the EK Mastersheet.txt (taken from https://drive.google.com/drive/folders/1yfYLvI5m1QMApy55VBSrJT2C0P_HGrDM) is unedited, in this folder
+- Configure your game's .sav file location in the config.txt file
 - When prompted in the app, enter the line number of the name of the trainer you are interested in, as it is found on the master sheet.
-  - E.g. Leader Roxanne is line 218 (Use Notepad++ or similar to easily fine line number)
-- A window will appear with the results, where you can click next/previous to go through the list of enemy pokemon. 
+  - E.g. Leader Roxanne is line 218 (Use Notepad++ or similar to easily find line number)
+- A window will appear with the results, where you can click next/previous to go through the list of enemy pokemon.
+- Your pokemon are ordered from left to right, best to worst, both offensively (top row) and defensively (bottom row) vs. target pokemon
 - Mouse over own pokemon to see its stats
 - Mouse over enemy pokemon to see its predicted stats
 
