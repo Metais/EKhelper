@@ -31,6 +31,17 @@ class Nature(Enum):
         return ["Hardy", "Lonely", "Adamant", "Naughty", "Brave", "Bold", "Docile", "Impish", "Lax", "Relaxed", "Modest", "Mild", "Bashful", 
                 "Rash", "Quiet", "Calm", "Gentle", "Careful", "Quirky", "Sassy", "Timid", "Hasty", "Jolly", "Naive", "Serious"]
     
+    def get_nature_modifier(nature, stat_type):
+        # if nature is neutral or non-existent
+        if nature == "" or nature.value[0] == nature.value[1]:
+            return 1
+        elif nature.value[0] == stat_type:
+            return 1.1
+        elif nature.value[1] == stat_type:
+            return 0.9
+        else:
+            return 1
+    
     def get_nature(s):
         s = s.lower()
         match s:

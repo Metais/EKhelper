@@ -1,24 +1,33 @@
 from PIL import Image
-
 from type import Type
+from math import floor
+from nature import Nature
 
 class Pokemon:
-    def __init__(self, index, name, types, base_hp, base_atk, base_def, base_sa, base_sd, base_spd):
+    def __init__(self, index, name, types, base_hp, base_atk, base_def, base_spa, base_spd, base_spe):
         self.index = index
         self.name = name
         self.types = [Type.get_type(x) for x in types]
         self.base_hp = base_hp
         self.base_atk = base_atk
         self.base_def = base_def
-        self.base_sa = base_sa
-        self.base_sd = base_sd
+        self.base_spa = base_spa
         self.base_spd = base_spd
+        self.base_spe = base_spe
 
         self.lvl = 0
         self.nature = ""
         
         self.lvl_moves = []
         self.cur_moves = []
+
+        # IVs (only known for own pokemon)
+        self.hp_iv = -1
+        self.atk_iv = -1
+        self.def_iv = -1
+        self.spa_iv = -1
+        self.spd_iv = -1
+        self.spe_iv = -1
 
         # Types vs me
         self.immune_to = None
@@ -27,6 +36,52 @@ class Pokemon:
         self.normal_to = None
         self.vulnerable_to = None
         self.very_vulnerable_to = None
+
+    def get_real_hp_stat(self, hp_iv):
+        return floor((2 * self.base_hp + hp_iv) * self.lvl / 100) + self.lvl + 10
+    
+    def get_real_atk_stat(self, atk_iv):
+        nature_modifier = Nature.get_nature_modifier(self.nature, "atk")
+        return floor((floor((2 * self.base_atk + atk_iv) * self.lvl / 100) + 5) * nature_modifier)
+    
+    def get_real_def_stat(self, def_iv):
+        nature_modifier = Nature.get_nature_modifier(self.nature, "def")
+        return floor((floor((2 * self.base_def + def_iv) * self.lvl / 100) + 5) * nature_modifier)
+    
+    def get_real_spa_stat(self, spa_iv):
+        nature_modifier = Nature.get_nature_modifier(self.nature, "spa")
+        return floor((floor((2 * self.base_spa + spa_iv) * self.lvl / 100) + 5) * nature_modifier)
+    
+    def get_real_spd_stat(self, spd_iv):
+        nature_modifier = Nature.get_nature_modifier(self.nature, "spd")
+        return floor((floor((2 * self.base_spd + spd_iv) * self.lvl / 100) + 5) * nature_modifier)
+    
+    def get_real_spe_stat(self, spe_iv):
+        nature_modifier = Nature.get_nature_modifier(self.nature, "spe")
+        return floor((floor((2 * self.base_spe + spe_iv) * self.lvl / 100) + 5) * nature_modifier)
+
+    # For if IV is unknown
+    def print_estimated_stats(self):
+        low_hp, high_hp = self.get_real_hp_stat(0), self.get_real_hp_stat(31)
+        low_atk, high_atk = self.get_real_atk_stat(0), self.get_real_atk_stat(31)
+        low_def, high_def = self.get_real_def_stat(0), self.get_real_def_stat(31)
+        low_spa, high_spa = self.get_real_spa_stat(0), self.get_real_spa_stat(31)
+        low_spd, high_spd = self.get_real_spd_stat(0), self.get_real_spd_stat(31)
+        low_spe, high_spe = self.get_real_spe_stat(0), self.get_real_spe_stat(31)
+
+        return f"Lv. {self.lvl} {self.name}\nEstimated base stats:\nHp: {low_hp}-{high_hp}\nAttack: {low_atk}-{high_atk}\nDefense: {low_def}-{high_def}\n" + \
+            f"Special Attack: {low_spa}-{high_spa}\nSpecial Defense: {low_spd}-{high_spd}\nSpeed: {low_spe}-{high_spe}"
+    
+    # For if IV is known
+    def print_current_stats(self):
+        hp = self.get_real_hp_stat(self.hp_iv)
+        atk = self.get_real_atk_stat(self.atk_iv)
+        df = self.get_real_def_stat(self.def_iv)
+        spa = self.get_real_spa_stat(self.spa_iv)
+        spd = self.get_real_spd_stat(self.spd_iv)
+        spe = self.get_real_spe_stat(self.spe_iv)
+
+        return f"Current base stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
 
     def add_level_move(self, level, move):
         self.lvl_moves.append((level, move))

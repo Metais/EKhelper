@@ -8,6 +8,9 @@ from pokemondata.Gen3Save import Gen3Save
 SAVE_FILE = "D:\Pokemon\emerald kaizo\Pokemon - Emerald Version (U).sav"
 save = Gen3Save(SAVE_FILE)
 
+#TODO: Have Gen3Save not read pokemon stored in box 14 
+#TODO: make a config.txt with save location and toggle dont_read_box_14
+
 
 def find_highest_damaging_move(source_pkmn, target_pkmn):
     strongest_move = None
@@ -35,7 +38,7 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
         if source_pokemon_move.category == "Physical":
             spm_power *= source_pkmn.base_atk / target_pkmn.base_def
         elif source_pokemon_move.category == "Special":
-            spm_power *= source_pkmn.base_sa / target_pkmn.base_sd
+            spm_power *= source_pkmn.base_spa / target_pkmn.base_spd
         else:
             raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
         # Divide by 50 for real damage value
@@ -69,6 +72,7 @@ with open('EK Mastersheet.txt', 'r') as f:
 
         # List with each index the corresponding enemy pokemon analysis
         enemy_team_info = []
+        his_moves = []
         his_variable_moves = []
 
         # For each enemy pokemon...
@@ -77,6 +81,7 @@ with open('EK Mastersheet.txt', 'r') as f:
             # except the key/value pair 'variable', which stores the pokemon's variables moves
             enemy_pokemon_analysis = {}
 
+            his_moves.append([move for move in enemy_pokemon.cur_moves])
             his_variable_moves.append([move for move in enemy_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)])
 
             # For each of my pokemon...
@@ -85,11 +90,14 @@ with open('EK Mastersheet.txt', 'r') as f:
                 strongest_move_vs_me, strongest_power_vs_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
                 # Strongest move against him
                 strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
+                # Who goes first (0 = me, 1 = him) (assume foe's speed stat is max IV)
+                goes_first = 0 if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(31) else 1
                 
-                # Store above 4 values per box pokemon for each enemy pokemon
+                # Store above 5 values per box pokemon for each enemy pokemon
                 enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_vs_me, strongest_power_vs_me, 
-                                                            strongest_move_vs_him, strongest_power_vs_him)
+                                                            strongest_move_vs_him, strongest_power_vs_him,
+                                                            goes_first)
                 
-            enemy_team_info.append((enemy_pokemon.name, enemy_pokemon_analysis))
+            enemy_team_info.append((enemy_pokemon, enemy_pokemon_analysis))
 
-        pokemon_battle_gui(enemy_team_info, my_pokemons, his_variable_moves, my_variable_moves)
+        pokemon_battle_gui(enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)

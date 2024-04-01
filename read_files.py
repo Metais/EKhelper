@@ -12,7 +12,7 @@ def read_moves_sheet(workbook):
     for row in moves_sheet.iter_rows(min_row=2, values_only=True):
         name, description, type, pp, power, acc, category = row[0], row[1], row[2], row[3], row[4], row[5], row[6]
         if acc != 'N/A':
-            acc = str(int(acc) * 100) + '%'
+            acc = str(acc * 100) + '%'
         moves[name.lower()] = Move(name, description, type, pp, power, acc, category)
 
     return moves
@@ -26,11 +26,11 @@ def read_pokemon_sheet(workbook, moves):
     for row in pokemon_sheet.iter_rows(min_row=3, values_only=True):
         index = row[0]
         name = row[1]
-        base_hp, base_atk, base_def, base_sa, base_sd, base_spd = row[2], row[3], row[4], row[5], row[6], row[7]
+        base_hp, base_atk, base_def, base_spa, base_spd, base_spe = row[2], row[3], row[4], row[5], row[6], row[7]
         types = [x for x in row[8:] if x is not None]
 
         # Create a Pokemon object and store it in the dictionary
-        pokemons[name] = Pokemon(index, name, types, base_hp, base_atk, base_def, base_sa, base_sd, base_spd)
+        pokemons[name] = Pokemon(index, name, types, base_hp, base_atk, base_def, base_spa, base_spd, base_spe)
 
     # Add level moves to the pokemon
     with open('EK learnsets.txt', 'r') as f:
@@ -73,10 +73,19 @@ def handle_move_name_exceptions(move):
 def read_my_pokemon(save, pokemons, moves):
     my_pokemon = []
     
-    for gen3pokemon in save.boxes + save.team:
+    for gen3pokemon in save.team + save.boxes:
         pokemon = pokemons[gen3pokemon.species['name']]
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
+
+        # IVs
+        pokemon.hp_iv = gen3pokemon.ivs['hp']
+        pokemon.atk_iv = gen3pokemon.ivs['attack']
+        pokemon.def_iv = gen3pokemon.ivs['defence']
+        pokemon.spa_iv = gen3pokemon.ivs['spatk']
+        pokemon.spd_iv = gen3pokemon.ivs['spdef']
+        pokemon.spe_iv = gen3pokemon.ivs['speed']
+
         for move in gen3pokemon.moves:
             if move['name'].lower() in moves:
                 pokemon.add_cur_move(moves[move['name'].lower()])
@@ -108,10 +117,10 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
         pokemon = pokemons[pokemon_name]
 
         # Get its level
-        pattern = r"Lv\.(\d+)\s"
+        pattern = r"Lv\.(\d+)[\s:]"
         match = re.search(pattern, pokemon_line)
         pokemon_level = match.group(1)
-        pokemon.lvl = pokemon_level
+        pokemon.lvl = int(pokemon_level)
 
         # Get its moves
         pokemon_moves = pokemon_line.split(': ')[1].split(', ')

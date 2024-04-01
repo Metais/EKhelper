@@ -1,4 +1,4 @@
-import json, struct, sys, os
+import struct
 from operator import xor
 
 class Gen3Pokemon:
@@ -126,19 +126,21 @@ class Gen3Pokemon:
 			moves.append(item)
 		self.moves = moves
 		self.nature = self.__naturename(self.personality % 25)
+		section_m_4_8 = sections['M'][4:8]
 		self.ivs = self.__getivs(int(struct.unpack('<I', sections['M'][4:8])[0]))
 		self.evs = self.__getevs(sections['E'])
 
 	def __getivs(self, value):
-
 		iv = {}
 		bitstring = str(str(bin(value)[2:])[::-1] + '00000000000000000000000000000000')[0:32]
-		iv['hp'] = int(bitstring[0:5], 2)
-		iv['attack'] = int(bitstring[5:10], 2)
-		iv['defence'] = int(bitstring[10:15], 2)
-		iv['speed'] = int(bitstring[15:20], 2)
-		iv['spatk'] = int(bitstring[20:25], 2)
-		iv['spdef'] = int(bitstring[25:30], 2)
+
+		# Edit: Bytes are read in reverse (Japanese?)
+		iv['hp'] = int(bitstring[0:5][::-1], 2)
+		iv['attack'] = int(bitstring[5:10][::-1], 2)
+		iv['defence'] = int(bitstring[10:15][::-1], 2)
+		iv['speed'] = int(bitstring[15:20][::-1], 2)
+		iv['spatk'] = int(bitstring[20:25][::-1], 2)
+		iv['spdef'] = int(bitstring[25:30][::-1], 2)
 		return iv
 
 	def __getevs(self, section):

@@ -1,4 +1,4 @@
-import json, struct, sys, os
+import struct, sys, os
 from operator import xor
 from pokemondata.Gen3Pokemon import Gen3Pokemon
 
