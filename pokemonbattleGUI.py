@@ -47,6 +47,12 @@ class PokemonBattleGUI:
         # Enemy pokemon image
         self.enemy_pokemon_label = tk.Label(root)
 
+        # Enemy pokemon info label
+        self.enemy_pokemon_info_label = tk.Label(root)
+
+        # Enemy pokemon held item label
+        self.enemy_pokemon_held_item_label = tk.Label(root)
+
         # Enemy pokemon move labels
         self.enemy_pokemon_move_labels = [tk.Label(root) for _ in range(4)]
 
@@ -65,16 +71,22 @@ class PokemonBattleGUI:
         self.my_pokemon_info_top = [tk.Label(root) for _ in range(self.box_size)]
         self.my_pokemon_info_bot = [tk.Label(root) for _ in range(self.box_size)]
 
-        self.load_pokemon_images()
+        self.load_content()
         self.display_current_pokemon_info()
         self.create_navigation_buttons()
 
-    def load_pokemon_images(self):
+    def load_content(self):
         # Load enemy Pokemon image
         enemy_pokemon_image = Image.open(f"animations/{self.enemy_team_info[self.current_index][0].name}.gif")
         enemy_pokemon_image = enemy_pokemon_image.resize((200, 200))
-        self.enemy_pokemon_image = ImageTk.PhotoImage(enemy_pokemon_image)
+        self.enemy_pokemon_label.image = ImageTk.PhotoImage(enemy_pokemon_image)
+        self.enemy_pokemon_label.config(image=self.enemy_pokemon_label.image)
         create_tooltip(self.enemy_pokemon_label, self.enemy_team_info[self.current_index][0].print_estimated_stats(), 200, 200)
+
+        # Load enemy pokemon info
+        self.enemy_pokemon_info_label.config(text=self.enemy_team_info[self.current_index][0].print_estimated_stats())
+        # Load enemy pokemon held item
+        #self.enemy_pokemon_held_item_label
 
         # Load enemy pokemon moves and tooltips
         for i in range(4):
@@ -100,6 +112,7 @@ class PokemonBattleGUI:
             pokemon_image = Image.open(f"animations/{pokemon_name}.gif")
             pokemon_image = pokemon_image.resize((100, 100))
             self.my_pokemon_vs_him_image_labels[i].image = ImageTk.PhotoImage(pokemon_image)
+            self.my_pokemon_vs_him_image_labels[i].config(image=self.my_pokemon_vs_him_image_labels[i].image)
             create_tooltip(self.my_pokemon_vs_him_image_labels[i], pokemon_i.print_current_stats(), 100, 100)
 
             # Move info
@@ -111,6 +124,7 @@ class PokemonBattleGUI:
             first_second_image = Image.open("images/1st.png") if move_info[4] == 0 else Image.open("images/2nd.png")
             first_second_image = first_second_image.resize((20, 20))
             self.my_pokemon_vs_him_first_second_labels[i].image = ImageTk.PhotoImage(first_second_image)
+            self.my_pokemon_vs_him_first_second_labels[i].config(image=self.my_pokemon_vs_him_first_second_labels[i].image)
 
         
         # Load my Pokemon images and move info (him vs me)
@@ -124,6 +138,7 @@ class PokemonBattleGUI:
             pokemon_image = Image.open(f"animations/{pokemon_name}.gif")
             pokemon_image = pokemon_image.resize((100, 100))
             self.him_vs_my_pokemon_image_labels[i].image = ImageTk.PhotoImage(pokemon_image)
+            self.him_vs_my_pokemon_image_labels[i].config(image=self.him_vs_my_pokemon_image_labels[i].image)
             create_tooltip(self.him_vs_my_pokemon_image_labels[i], pokemon_i.print_current_stats(), 100, 100)
 
             # Move info
@@ -135,13 +150,17 @@ class PokemonBattleGUI:
             first_second_image = Image.open("images/1st.png") if move_info[4] == 0 else Image.open("images/2nd.png")
             first_second_image = first_second_image.resize((20, 20))
             self.him_vs_my_pokemon_first_second_labels[i].image = ImageTk.PhotoImage(first_second_image)
+            self.him_vs_my_pokemon_first_second_labels[i].config(image=self.him_vs_my_pokemon_first_second_labels[i].image)
            
     def display_current_pokemon_info(self):
-        # Display enemy Pokemon image
-        self.enemy_pokemon_label.config(image=self.enemy_pokemon_image, width=self.enemy_pokemon_image.width(), height=self.enemy_pokemon_image.height())
         label_column = floor(self.box_size / 2) - 1
-        label_column = label_column if label_column >= 1 else 1
+        label_column = label_column if label_column >= 3 else 3
+
+        # Display enemy pokemon image
         self.enemy_pokemon_label.grid(row=4, column=label_column, columnspan=2, rowspan=2)
+
+        # Display enemy pokemon info
+        self.enemy_pokemon_info_label.grid(row=4, column=label_column-3, columnspan=2, rowspan=2, sticky="ew")
 
         # Display enemy pokemon moves labels
         left_move_column = label_column - 1
@@ -159,24 +178,16 @@ class PokemonBattleGUI:
 
         # Display my Pokemon images and move info (top)
         for i in range(self.box_size):
-            self.my_pokemon_vs_him_image_labels[i].config(image=self.my_pokemon_vs_him_image_labels[i].image)
-            self.my_pokemon_vs_him_image_labels[i].grid(row=1, column=i)
-            
-            self.my_pokemon_move_vs_him_labels[i].grid(row=2, column=i)
             self.my_pokemon_info_top[i].grid(row=0, column=i)
-
-            self.my_pokemon_vs_him_first_second_labels[i].config(image=self.my_pokemon_vs_him_first_second_labels[i].image)
+            self.my_pokemon_vs_him_image_labels[i].grid(row=1, column=i)
+            self.my_pokemon_move_vs_him_labels[i].grid(row=2, column=i)
             self.my_pokemon_vs_him_first_second_labels[i].grid(row=3, column=i)
             
         # Display my Pokemon images and move info (bottom)
         for i in range(self.box_size):
-            self.him_vs_my_pokemon_image_labels[i].config(image=self.him_vs_my_pokemon_image_labels[i].image)
-            self.him_vs_my_pokemon_image_labels[i].grid(row=7, column=i)
-
-            self.enemy_pokemon_move_vs_me_labels[i].grid(row=8, column=i)
             self.my_pokemon_info_bot[i].grid(row=6, column=i)
-
-            self.him_vs_my_pokemon_first_second_labels[i].config(image=self.him_vs_my_pokemon_first_second_labels[i].image)
+            self.him_vs_my_pokemon_image_labels[i].grid(row=7, column=i)
+            self.enemy_pokemon_move_vs_me_labels[i].grid(row=8, column=i)
             self.him_vs_my_pokemon_first_second_labels[i].grid(row=9, column=i)
 
     def create_navigation_buttons(self):
@@ -188,14 +199,12 @@ class PokemonBattleGUI:
     def show_next_pokemon(self):
         if self.current_index < len(self.enemy_team_info) - 1:
             self.current_index += 1
-            self.load_pokemon_images()
-            self.display_current_pokemon_info()
+            self.load_content()
 
     def show_previous_pokemon(self):
         if self.current_index > 0:
             self.current_index -= 1
-            self.load_pokemon_images()
-            self.display_current_pokemon_info()
+            self.load_content()
 
 def pokemon_battle_gui(enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
     root = tk.Tk()
