@@ -101,7 +101,7 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
     trainer_pokemon = []
 
     # Trainer info exists until whiteline
-    while lines[line_number] != '\n':
+    while lines[line_number] != '\n' and not lines[line_number].isspace():
         pokemon_line = lines[line_number].strip()
 
         # Get pokemon name
