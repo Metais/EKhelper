@@ -51,7 +51,8 @@ class PokemonBattleGUI:
         self.enemy_pokemon_info_label = tk.Label(root)
 
         # Enemy pokemon held item label
-        self.enemy_pokemon_held_item_label = tk.Label(root)
+        self.enemy_pokemon_held_item_text_label = tk.Label(root)
+        self.enemy_pokemon_held_item_image_label = tk.Label(root)
 
         # Enemy pokemon move labels
         self.enemy_pokemon_move_labels = [tk.Label(root) for _ in range(4)]
@@ -76,17 +77,26 @@ class PokemonBattleGUI:
         self.create_navigation_buttons()
 
     def load_content(self):
+        cur_enemy_pokemon = self.enemy_team_info[self.current_index][0]
+
         # Load enemy Pokemon image
-        enemy_pokemon_image = Image.open(f"animations/{self.enemy_team_info[self.current_index][0].name}.gif")
+        enemy_pokemon_image = Image.open(f"animations/{cur_enemy_pokemon.name}.gif")
         enemy_pokemon_image = enemy_pokemon_image.resize((200, 200))
         self.enemy_pokemon_label.image = ImageTk.PhotoImage(enemy_pokemon_image)
         self.enemy_pokemon_label.config(image=self.enemy_pokemon_label.image)
-        create_tooltip(self.enemy_pokemon_label, self.enemy_team_info[self.current_index][0].print_estimated_stats(), 200, 200)
+        create_tooltip(self.enemy_pokemon_label, cur_enemy_pokemon.print_estimated_stats(), 200, 200)
 
         # Load enemy pokemon info
-        self.enemy_pokemon_info_label.config(text=self.enemy_team_info[self.current_index][0].print_estimated_stats())
+        self.enemy_pokemon_info_label.config(text=cur_enemy_pokemon.print_estimated_stats())
         # Load enemy pokemon held item
-        #self.enemy_pokemon_held_item_label
+        if cur_enemy_pokemon.held_item is not None:
+            held_item_image = Image.open(cur_enemy_pokemon.held_item.image_path)
+            self.enemy_pokemon_held_item_image_label.image = ImageTk.PhotoImage(held_item_image.resize((40, 40)))
+            self.enemy_pokemon_held_item_image_label.config(image=self.enemy_pokemon_held_item_image_label.image)
+            self.enemy_pokemon_held_item_text_label.config(text=str(cur_enemy_pokemon.held_item), wraplength=100)
+        else:
+            self.enemy_pokemon_held_item_image_label.config(image="")
+            self.enemy_pokemon_held_item_text_label.config(text="")
 
         # Load enemy pokemon moves and tooltips
         for i in range(4):
@@ -169,6 +179,10 @@ class PokemonBattleGUI:
         self.enemy_pokemon_move_labels[1].grid(row=5, column=left_move_column)
         self.enemy_pokemon_move_labels[2].grid(row=4, column=right_move_column)
         self.enemy_pokemon_move_labels[3].grid(row=5, column=right_move_column)
+
+        # Display enemy pokemon held item
+        self.enemy_pokemon_held_item_image_label.grid(row=4, column=label_column + 3, sticky='s')
+        self.enemy_pokemon_held_item_text_label.grid(row=5, column=label_column + 3, stick='n')
 
         # Display enemy pokemon variable moves label
         self.enemy_pokemon_variable_move_labels[0].grid(row=0, rowspan=2, column=self.box_size, columnspan=1)

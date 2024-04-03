@@ -1,10 +1,12 @@
 import openpyxl
 import re
 import copy
+import csv
 
 from pokemon import Pokemon
 from move import Move
 from nature import Nature
+from item import Item
 
 def read_moves_sheet(workbook):
     moves = {}
@@ -56,6 +58,20 @@ def read_pokemon_sheet(workbook, moves):
     return pokemons
 
 
+def read_items(csv_file):
+    items = {}
+    
+    with open(csv_file, 'r') as f:
+        csvreader = csv.reader(f, delimiter=';')
+        for i, row in enumerate(csvreader):
+            if i == 0:
+                continue
+
+            items[row[0].lower()] = Item(row[0], row[1])
+
+    return items
+
+
 def handle_move_name_exceptions(move):
     # hard-code move name differences between save file and data files (...annoying)
     match move:
@@ -97,7 +113,7 @@ def read_my_pokemon(save, pokemons, moves):
         my_pokemon.append(pokemon)
     return my_pokemon
     
-def read_trainer_pokemon(lines, line_number, pokemons, moves):
+def read_trainer_pokemon(lines, line_number, pokemons, moves, items):
     trainer_pokemon = []
 
     # Trainer info exists until whiteline
@@ -129,6 +145,12 @@ def read_trainer_pokemon(lines, line_number, pokemons, moves):
         match = re.search(pattern, pokemon_line)
         pokemon_level = match.group(1)
         pokemon.lvl = int(pokemon_level)
+
+        # Get its held item (if present)
+        if "@" in pokemon_line:
+            pattern = r'@([^:]+):'
+            match = re.search(pattern, pokemon_line)
+            pokemon.held_item = items[match.group(1).lower()]
 
         # Get its moves
         pokemon_moves = pokemon_line.split(': ')[1].split(', ')

@@ -20,6 +20,7 @@ class Pokemon:
         
         self.lvl_moves = []
         self.cur_moves = []
+        self.held_item = None
 
         # IVs (only known for own pokemon)
         self.hp_iv = -1

@@ -1,4 +1,4 @@
-ï»¿Name;Effect
+Name;Effect
 Amulet Coin;Double Money is Earnt from Battles
 Black Belt;Any Fighting Type Move's Power is increased by 10%
 BlackGlasses;Any Dark Type Move's Power is increased by 10%
@@ -6,13 +6,13 @@ Blue Scarf;When Attached, Raises Beauty Stat in Contests
 Brightpowder;Lowers Opponent's Accuracy
 Charcoal;Any Fire Type Move's Power is increased by 10%
 Choice Band;Multiplies 1st Move Power by 1.5 if Physical
-Cleanse Tag;Wild PokÃ©mon Encounter Rate Lowers
+Cleanse Tag;Wild Pokémon Encounter Rate Lowers
 DeepSeaScale;Clamperl's Special Defense increases by 100%. Evolves Clamperl to Gorebyss
 DeepSeaTooth;Clamperl's Special Attack increases by 100%. Evolves Clamperl to Huntail
 Dragon Fang;Any Dragon Type Move's Power is increased by 10%
 Dragon Scale;A Scale held by Dragon Types. Evolves Seadra into Kingdra when traded
 Everstone;Stops Evolution
-EXP. Share;This PokÃ©mon gets EXP from battle even if it isnt used
+EXP. Share;This Pokémon gets EXP from battle even if it isnt used
 Focus Band;May prevent fainting
 Green Scarf;When Attached, Raises Smart Stat in Contests
 Hard Stone;Any Rock Type Move's Power is increased by 10%
@@ -20,7 +20,7 @@ King's Rock;May cause Opponent to Flinch. Used to evolve Poliwhirl and Slowpoke
 Lax Incense;Enemy's Accuracy is lowered by 5%. Attach to Female Wobbuffet and breed to get Wynaut
 Leftovers;HP Increases by 1/16th each turn
 Light Ball;Pikachu's Special Attack increases by 100%
-Lucky Egg;PokÃ©mon this Item is attached to gets more EXP in battle
+Lucky Egg;Pokémon this Item is attached to gets more EXP in battle
 Lucky Punch;If attached to Chansey, Critical Hit Ratio Rises
 Macho Brace;Lowers Speed but increases Effort Values
 Magnet;Any Electric Type Move's Power is increased by 10%
@@ -32,7 +32,7 @@ Mystic Water;Any Water Type Move's Power is increased by 10%
 NeverMeltIce;Any Ice Type Move's Power is increased by 10%
 Pink Scarf;When Attached, Raises Cute Stat in Contests
 Poison Barb;Any Poison Type Move's Power is increased by 10%
-Quick Claw;The PokÃ©mon holding this may attack first
+Quick Claw;The Pokémon holding this may attack first
 Red Scarf;When Attached, Raises Cool Stat in Contests
 Scope Lens;Increases Chances of a Critical Hit
 Sea Incense;Any Water Type Move's Power is increased by 5%. Attach to Female Marill and breed to get Azurill
@@ -40,7 +40,7 @@ Sharp Beak;Any Flying Type Move's Power is increased by 10%
 Shell Bell;Raises HP by 1/8th of the damage inflicted onto the Opponent
 Silk Scarf;Any Normal Type Move's Power is increased by 10%
 Silverpowder;Any Bug Type Move's Power is increased by 10%
-Smoke Ball;You will always run from Wild PokÃ©mon
+Smoke Ball;You will always run from Wild Pokémon
 Soft Sand;Any Ground Type Move's Power is increased by 10%
 Soothe Bell;Happiness Level Raises Easier
 Soul Dew;Raises Latios' Special Defense by 50%. Raises Latias' Special Attack by 50%.
@@ -71,14 +71,57 @@ Lemonade;Recovers 80 HP
 MAX Elixer;Recovers all PP for all Moves
 MAX Ether;Recovers all PP for a Move
 MAX Potion;Recovers All HP
-MAX Revive;Restores a Fainted PokÃ©mon to it's Max HP
+MAX Revive;Restores a Fainted Pokémon to it's Max HP
 Moo Moo Milk;Recovers 100 HP
 Paralyz Heal;Recovers from Paralysis
 Potion;Recovers 20 HP
 Red Flute;Recovers from Attraction
-Revival Herb;Recovers a Fainted PokÃ©mon. Bitter
-Revive;Restores a Fainted PokÃ©mon to 1/2 of it's Max HP
-Sacred Ash;Revives all Fainted PokÃ©mon
+Revival Herb;Recovers a Fainted Pokémon. Bitter
+Revive;Restores a Fainted Pokémon to 1/2 of it's Max HP
+Sacred Ash;Revives all Fainted Pokémon
 Soda Pop;Recovers 60 HP
 Super Potion;Recovers 50 HP
 Yellow Flute;Recovers from Confusion
+Cheri Berry;Heals Paralysis
+Chesto Berry;Heals Sleeping
+Pecha Berry;Heals Poison
+Rawst Berry;Heals Burn
+Aspear Berry;Heals Frozen Status
+Leppa Berry;Recovers 10PP to an attack
+Oran Berry;Recovers 10HP
+Persim Berry;Heals Confusion
+Lum Berry;Heals Any Status Condition
+Sitrus Berry;Recovers 30HP
+Figy Berry;Recovers 1/8 HP and confuses any Pokémon that doesnt like Spicy Flavour
+Wiki Berry;Recovers 1/8 HP and confuses any Pokémon that doesnt like Dry Flavour
+Mago Berry;Recovers 1/8 HP and confuses any Pokémon that doesnt like Sweet Flavour
+Aguav Berry;Recovers 1/8 HP and confuses any Pokémon that doesnt like Bitter Flavour
+Iapapa Berry;Recovers 1/8 HP and confuses any Pokémon that doesnt like Sour Flavour
+Razz Berry;Plant in the Earth to grow Berries for Pokéblocks
+Bluk Berry;Plant in the Earth to grow Berries for Pokéblocks
+Nanab Berry;Plant in the Earth to grow Berries for Pokéblocks
+Wepear Berry;Plant in the Earth to grow Berries for Pokéblocks
+Pinap Berry;Plant in the Earth to grow Berries for Pokéblocks
+Pomeg Berry;Lowers Effort Points for HP by 10 Points
+Kelpsy Berry;Lowers Effort Points for Attack by 10 Points
+Qualot Berry;Lowers Effort Points for Defense by 10 Points
+Hondew Berry;Lowers Effort Points for Special Attack by 10 Points
+Grepa Berry;Lowers Effort Points for Special Defense by 10 Points
+Tamato Berry;Lowers Effort Points for Speed by 10 Points
+Cornn Berry;Plant in the Earth to grow Berries for Pokéblocks
+Magost Berry;Plant in the Earth to grow Berries for Pokéblocks
+Rabuta Berry;Plant in the Earth to grow Berries for Pokéblocks
+Nomel Berry;Plant in the Earth to grow Berries for Pokéblocks
+Spelon Berry;Plant in the Earth to grow Berries for Pokéblocks
+Pamtre Berry;Plant in the Earth to grow Berries for Pokéblocks
+Watmel Berry;Plant in the Earth to grow Berries for Pokéblocks
+Durin Berry;Plant in the Earth to grow Berries for Pokéblocks
+Belue Berry;Plant in the Earth to grow Berries for Pokéblocks
+Liechi Berry;Raises Attack when HP is below 1/3
+Ganlon Berry;Raises Defense when HP is below 1/3
+Salac Berry;Raises Speed when HP is below 1/3
+Petaya Berry;Raises Special Attack when HP is below 1/3
+Apicot Berry;Raises Special Defense when HP is below 1/3
+Lansat Berry;Raises Critical Hit Ratio when HP is below 1/3
+Starf Berry;Raises Any Stat when HP is below 1/3
+Enigma Berry;Morphs into E-Reader Berries

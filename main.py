@@ -64,6 +64,7 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
 
 moves = read_moves_sheet("data/gen3moves.xlsx")
 pokemons = read_pokemon_sheet("data/pokemon.xlsx", moves)
+items = read_items("data/items.csv")
 my_pokemons = read_my_pokemon(save, pokemons, moves)
 
 with open('EK Mastersheet.txt', 'r') as f:
@@ -73,7 +74,7 @@ with open('EK Mastersheet.txt', 'r') as f:
 
         print(f"Helping you fight '{lines[line_number - 1].strip()}'!")
     
-        trainer_pokemon = read_trainer_pokemon(lines, line_number, pokemons, moves)
+        trainer_pokemon = read_trainer_pokemon(lines, line_number, pokemons, moves, items)
 
         # Store my pokemon's variable moves
         my_variable_moves = {}
