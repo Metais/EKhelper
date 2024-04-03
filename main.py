@@ -7,6 +7,7 @@ from pokemondata.Gen3Save import Gen3Save
 
 # TODO: Add enemy pokemon abilities
 # TODO: Add badge boosts
+# TODO: Add weather effects
 
 
 with open('config.txt', 'r') as f:
@@ -39,6 +40,8 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             def_stat = target_pkmn.get_real_def_stat(def_iv)
 
             spm_power *= atk_stat / def_stat
+            if source_pokemon_move.name == "Selfdestruct":
+                spm_power *= 2  # Selfdestruct halves foe's defense stat
         elif source_pokemon_move.category == "Special":
             # Assume 31 (strongest) if unknown (aka, foe's)
             spa_iv = source_pkmn.spa_iv if source_pkmn.spa_iv != -1 else 31
