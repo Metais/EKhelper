@@ -85,6 +85,8 @@ def handle_move_name_exceptions(move):
             return "force palm"
         case "thunder shock":
             return "thundershock"
+        case "sonic boom":
+            return "sonicboom"
         case _:
             raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 
