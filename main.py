@@ -8,7 +8,7 @@ from pokemondata.Gen3Save import Gen3Save
 with open('config.txt', 'r') as f:
     save_loc = f.readline().strip().split('=')[1]
     save = Gen3Save(save_loc)
-    
+
 
 def find_highest_damaging_move(source_pkmn, target_pkmn):
     strongest_move = None
@@ -51,6 +51,9 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             spm_power *= spa_stat / spd_stat
         else:
             raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
+        # Find held-item specific power changes
+        if source_pkmn.held_item is not None:
+            spm_power *= source_pkmn.held_item.get_held_item_multiplier(source_pkmn, source_pokemon_move)
         # Divide by 50 for real damage value
         spm_power = spm_power / 50
 
@@ -72,7 +75,9 @@ with open('EK Mastersheet.txt', 'r') as f:
     while True:
         line_number = int(input("Enter line number at which trainer starts: "))
 
-        print(f"Helping you fight '{lines[line_number - 1].strip()}'!")
+        trainer_name = lines[line_number - 1].strip()
+
+        print(f"Helping you fight '{trainer_name}'!")
     
         trainer_pokemon = read_trainer_pokemon(lines, line_number, pokemons, moves, items)
 
@@ -111,4 +116,4 @@ with open('EK Mastersheet.txt', 'r') as f:
                 
             enemy_team_info.append((enemy_pokemon, enemy_pokemon_analysis))
 
-        pokemon_battle_gui(enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)
+        pokemon_battle_gui(f"Line {line_number}: {trainer_name}", enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)

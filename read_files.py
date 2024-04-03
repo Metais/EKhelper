@@ -83,8 +83,10 @@ def handle_move_name_exceptions(move):
             return "sand-attack"
         case "arm thrust":
             return "force palm"
+        case "thunder shock":
+            return "thundershock"
         case _:
-            raise Exception(f'Move name {move} has wrong syntax')
+            raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 
 
 def read_my_pokemon(save, pokemons, moves):

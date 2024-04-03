@@ -220,7 +220,8 @@ class PokemonBattleGUI:
             self.current_index -= 1
             self.load_content()
 
-def pokemon_battle_gui(enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
+def pokemon_battle_gui(window_title, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
     root = tk.Tk()
+    root.title(window_title)
     app = PokemonBattleGUI(root, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)
     root.mainloop()
