@@ -5,6 +5,10 @@ from pokemonbattleGUI import pokemon_battle_gui
 from pokemondata.Gen3Save import Gen3Save
 
 
+# TODO: Add enemy pokemon abilities
+# TODO: Add badge boosts
+
+
 with open('config.txt', 'r') as f:
     save_loc = f.readline().strip().split('=')[1]
     save = Gen3Save(save_loc)
@@ -23,11 +27,6 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             continue
 
         # Following calcs taken from https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_III (not exhaustive!)
-        # Multiply move power by its effectiveness against target pokemon type
-        spm_power = int(spm_power) * Type.type_effectiveness_against_types(source_pokemon_move.type, target_pkmn.types)
-        # Multiply move power by STAB (if present)
-        if source_pokemon_move.type in source_pkmn.types:
-            spm_power = spm_power * 1.5
         # Multiply level-based (0.4*lvl + 2)
         spm_power = spm_power * (0.4 * float(source_pkmn.lvl) + 2)
         # Take (special) attack (for attacker) and (special) defense (for defender) into account
@@ -51,11 +50,21 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             spm_power *= spa_stat / spd_stat
         else:
             raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
+        # Divide by 50 for real damage value
+        spm_power = spm_power / 50
+        # Add 2
+        spm_power += 2
+
+        # --- End of large parenthesis (https://wikimedia.org/api/rest_v1/media/math/render/svg/6238dd5679302e5845374613828e184d95c65827) ---
+        
+        # Multiply move power by STAB (if present)
+        if source_pokemon_move.type in source_pkmn.types:
+            spm_power = spm_power * 1.5
+        # Multiply move power by its effectiveness against target pokemon type
+        spm_power = int(spm_power) * Type.type_effectiveness_against_types(source_pokemon_move.type, target_pkmn.types)
         # Find held-item specific power changes
         if source_pkmn.held_item is not None:
             spm_power *= source_pkmn.held_item.get_held_item_multiplier(source_pkmn, source_pokemon_move)
-        # Divide by 50 for real damage value
-        spm_power = spm_power / 50
 
         # Compare with other moves and replace if strongest
         if strongest_move is None or spm_power > strongest_power:
