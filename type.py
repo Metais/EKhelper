@@ -3,7 +3,7 @@ from enum import Enum
 effectiveness_matrix = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5, 0, 1, 1, 0.5],
     [1, 0.5, 0.5, 1, 2, 2, 1, 1, 1, 1, 1, 2, 0.5, 1, 0.5, 1, 2],
-    [1, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5, 1, 2],
+    [1, 2, 0.5, 1, 0.5, 1, 1, 1, 2, 1, 1, 1, 2, 1, 0.5, 1, 1],
     [1, 1, 2, 0.5, 0.5, 1, 1, 1, 0, 2, 1, 1, 1, 1, 0.5, 1, 1],
     [1, 0.5, 2, 1, 0.5, 1, 1, 0.5, 2, 0.5, 1, 0.5, 2, 1, 0.5, 1, 0.5],
     [1, 0.5, 0.5, 1, 2, 0.5, 1, 1, 2, 2, 1, 1, 1, 1, 2, 1, 0.5],
@@ -22,6 +22,12 @@ effectiveness_matrix = [
 
 # Transpose of effectiveness matrix (without having to import the heavyweight numpy)
 vulnerable_matrix = [[row[i] for row in effectiveness_matrix] for i in range(len(effectiveness_matrix[0]))]
+
+def get_physical_types():
+    return [Type.Normal, Type.Fighting, Type.Poison, Type.Ground, Type.Flying, Type.Bug, Type.Rock, Type.Ghost, Type.Steel]
+    
+def get_special_types():
+    return [Type.Fire, Type.Water, Type.Electric, Type.Grass, Type.Ice, Type.Psychic, Type.Dragon, Type.Dark]
 
 class Type(Enum):
     Normal = 0

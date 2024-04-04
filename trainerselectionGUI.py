@@ -70,9 +70,9 @@ class TrainerSelectionGUI:
         selected = self.lb.curselection()
         if selected:
             self.selected_index = selected[0]
-            value = self.lb.get(self.selected_index)
+            self.selected_trainer = ' '.join(self.lb.get(self.selected_index).split(' ')[1:])
             self.entry.delete(0, tk.END)
-            self.entry.insert(tk.END, value)
+            self.entry.insert(tk.END, self.selected_trainer)
 
     def switch_to_battle(self):
         # Lazy import
@@ -80,8 +80,7 @@ class TrainerSelectionGUI:
         # Destroy the current window and switch to the battle window
         self.root.destroy()
         root = tk.Tk()
-        enemy_trainer = self.trainers[self.selected_index]
-        app = PokemonBattleGUI(root, enemy_trainer, self.game_info, self.my_pokemons)
+        app = PokemonBattleGUI(root, self.selected_trainer, self.game_info, self.my_pokemons)
         root.mainloop()
 
     def reload_save(self):

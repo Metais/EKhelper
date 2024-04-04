@@ -140,12 +140,12 @@ def read_my_pokemon(game_info):
 
 
 def read_trainer_pokemon_from_json(trainer_name, game_info):
-    with open('data/trainers.json') as f:
+    with open('data/trainers.json', 'r', encoding='utf-8') as f:
         trainer_pokemon_names = json.load(f)[trainer_name]
 
     trainer_pokemons = []
 
-    with open('data/trainer_pokemon.json') as f:
+    with open('data/trainer_pokemon.json', 'r', encoding='utf-8') as f:
         pokemon_to_trainer = json.load(f)
         for trainer_pokemon_name in trainer_pokemon_names:
             trainers_with_pokemon = pokemon_to_trainer[trainer_pokemon_name]

@@ -38,6 +38,7 @@ def create_tooltip(widget, text, offsetx=25, offsety=25):
 class PokemonBattleGUI:
     def __init__(self, root, enemy_trainer, game_info, my_pokemons):
         self.root = root
+        self.root.title(enemy_trainer)
         self.enemy_trainer = enemy_trainer
         self.game_info = game_info
         self.my_pokemons = my_pokemons
@@ -57,6 +58,9 @@ class PokemonBattleGUI:
         # Enemy pokemon held item label
         self.enemy_pokemon_held_item_text_label = tk.Label(root)
         self.enemy_pokemon_held_item_image_label = tk.Label(root)
+
+        # Enemey pokemon ability label
+        self.enemy_pokemon_ability_label = tk.Label(root)
 
         # Enemy pokemon move labels
         self.enemy_pokemon_move_labels = [tk.Label(root) for _ in range(4)]
@@ -136,6 +140,9 @@ class PokemonBattleGUI:
         else:
             self.enemy_pokemon_held_item_image_label.config(image="")
             self.enemy_pokemon_held_item_text_label.config(text="")
+
+        # Load enemy ability info
+        self.enemy_pokemon_ability_label.config(text=str(cur_enemy_pokemon.ability), wraplength=200)
 
         # Load enemy pokemon moves and tooltips
         for i in range(4):
@@ -222,6 +229,9 @@ class PokemonBattleGUI:
         # Display enemy pokemon held item
         self.enemy_pokemon_held_item_image_label.grid(row=4, column=label_column + 3, sticky='s')
         self.enemy_pokemon_held_item_text_label.grid(row=5, column=label_column + 3, stick='n')
+
+        # Display enemy pokemon ability
+        self.enemy_pokemon_ability_label.grid(row=4, column=label_column + 4, rowspan=2, columnspan=2)
 
         # Display enemy pokemon variable moves label
         self.enemy_pokemon_variable_move_labels[0].grid(row=0, rowspan=2, column=self.box_size, columnspan=1)

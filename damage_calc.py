@@ -1,4 +1,4 @@
-from type import Type
+from type import Type, get_physical_types
 
 # Example return: (Bite(), 26)
 def find_highest_damaging_move(source_pkmn, target_pkmn):
@@ -24,8 +24,8 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             # Following calcs taken from https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_III (not exhaustive!)
             # Multiply level-based (0.4*lvl + 2)
             spm_power = spm_power * (0.4 * float(source_pkmn.lvl) + 2)
-            # Take (special) attack (for attacker) and (special) defense (for defender) into account
-            if source_pokemon_move.category == "Physical":
+            # Gen 3 split between physical and special based on type
+            if source_pokemon_move.type in get_physical_types():
                 # Assume 31 (strongest) if unknown (aka, foe's)
                 atk_iv = source_pkmn.atk_iv if source_pkmn.atk_iv != -1 else 31
                 def_iv = target_pkmn.def_iv if target_pkmn.def_iv != -1 else 31
@@ -36,7 +36,7 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
                 spm_power *= atk_stat / def_stat
                 if source_pokemon_move.name == "Selfdestruct":
                     spm_power *= 2  # Selfdestruct halves foe's defense stat
-            elif source_pokemon_move.category == "Special":
+            else:
                 # Assume 31 (strongest) if unknown (aka, foe's)
                 spa_iv = source_pkmn.spa_iv if source_pkmn.spa_iv != -1 else 31
                 spd_iv = target_pkmn.spd_iv if target_pkmn.spd_iv != -1 else 31
@@ -45,8 +45,6 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
                 spd_stat = target_pkmn.get_real_spd_stat(spd_iv)
 
                 spm_power *= spa_stat / spd_stat
-            else:
-                raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
             # Divide by 50 for real damage value
             spm_power = spm_power / 50
             # Add 2
@@ -58,7 +56,7 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             if source_pokemon_move.type in source_pkmn.types:
                 spm_power = spm_power * 1.5
             # Multiply move power by its effectiveness against target pokemon type
-            spm_power = int(spm_power) * move_effectiveness
+            spm_power = spm_power * move_effectiveness
             # Find held-item specific power changes
             if source_pkmn.held_item is not None:
                 spm_power *= source_pkmn.held_item.get_held_item_multiplier(source_pkmn, source_pokemon_move)

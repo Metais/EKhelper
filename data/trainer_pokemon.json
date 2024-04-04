@@ -734,7 +734,7 @@
     "Baltoy": {
         "Hiker Marc": {
             "ability": "Levitate",
-            "item": "Twisted Spoon",
+            "item": "TwistedSpoon",
             "ivs": {
                 "at": 24,
                 "df": 24,
@@ -4068,7 +4068,7 @@
         },
         "Pokémon Ranger Jenna": {
             "ability": "Early Bird",
-            "item": "Twisted Spoon",
+            "item": "TwistedSpoon",
             "level": 52,
             "moves": ["Body Slam", "Earthquake", "Psychic", "Crunch"],
             "nature": "Modest"
@@ -4273,7 +4273,7 @@
     "Golduck": {
         "Bird Keeper Colin": {
             "ability": "Swift Swim",
-            "item": "Twisted Spoon",
+            "item": "TwistedSpoon",
             "level": 50,
             "moves": ["Waterfall", "Psychic", "Brick Break", "Ice Beam"],
             "nature": "Bold"
@@ -11346,7 +11346,7 @@
         },
         "Youngster Dillon": {
             "ability": "Own Tempo",
-            "item": "Twisted Spoon",
+            "item": "TwistedSpoon",
             "level": 34,
             "moves": ["Teeter Dance", "Secret Power", "Psychic", "Brick Break"],
             "nature": "Lax"
@@ -11370,7 +11370,7 @@
         },
         "Pokéfan Miguel": {
             "ability": "Thick Fat",
-            "item": "Twisted Spoon",
+            "item": "TwistedSpoon",
             "level": 17,
             "moves": ["Attract", "Psybeam", "Return", "Shadow Ball"],
             "nature": "Gentle"
