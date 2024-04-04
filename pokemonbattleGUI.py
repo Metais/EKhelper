@@ -34,15 +34,19 @@ def create_tooltip(widget, text, offsetx=25, offsety=25):
 
 
 class PokemonBattleGUI:
-    def __init__(self, root, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
+    def get_battle_info(self, enemy_trainer, my_pokemons, game_info):
+        pass
+
+    def __init__(self, root, enemy_trainer, game_info, my_pokemons):
         self.root = root
-        self.enemy_team_info = enemy_team_info
+        self.enemy_trainer = enemy_trainer
         self.my_pokemons = my_pokemons
-        self.his_moves = his_moves
-        self.his_variable_moves = his_variable_moves
-        self.my_variable_moves = my_variable_moves
+
+        # Establish self.enemy_team_info, self.his_moves, self.his_variable_moves and self.my_variable_moves
+        self.get_battle_info(self.enemy_trainer, self.my_pokemons, game_info)
+
         self.current_index = 0
-        self.box_size = len(enemy_team_info[0][1].keys())
+        self.box_size = len(self.enemy_team_info[0][1].keys())
 
         # Enemy pokemon image
         self.enemy_pokemon_label = tk.Label(root)

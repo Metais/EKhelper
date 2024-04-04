@@ -2,15 +2,17 @@ import openpyxl
 import re
 import copy
 import csv
+import json
 
 from pokemon import Pokemon
 from move import Move
 from nature import Nature
 from item import Item
+from pokemondata.Gen3Save import Gen3Save
 
-def read_moves_sheet(workbook):
+def read_moves_sheet():
     moves = {}
-    moves_sheet = openpyxl.load_workbook(workbook).active
+    moves_sheet = openpyxl.load_workbook("data/gen3moves.xlsx").active
     
     for row in moves_sheet.iter_rows(min_row=2, values_only=True):
         name, description, type, pp, power, acc, category = row[0], row[1], row[2], row[3], row[4], row[5], row[6]
@@ -21,22 +23,22 @@ def read_moves_sheet(workbook):
     return moves
 
 
-def read_pokemon_sheet(workbook, moves):
+def read_pokemon_sheet(moves):
     pokemons = {}
-    pokemon_sheet = openpyxl.load_workbook(workbook).active
+    pokemon_sheet = openpyxl.load_workbook("data/pokemon.xlsx").active
     
     # Establish the collection of pokemon
     for row in pokemon_sheet.iter_rows(min_row=3, values_only=True):
         index = row[0]
         name = row[1]
-        base_hp, base_atk, base_def, base_spa, base_spd, base_spe = row[2], row[3], row[4], row[5], row[6], row[7]
+        base_stats = [row[2], row[3], row[4], row[5], row[6], row[7]]
         types = [x for x in row[8:] if x is not None]
 
         # Create a Pokemon object and store it in the dictionary
-        pokemons[name] = Pokemon(index, name, types, base_hp, base_atk, base_def, base_spa, base_spd, base_spe)
+        pokemons[name] = Pokemon(index, name, types, base_stats)
 
     # Add level moves to the pokemon
-    with open('EK learnsets.txt', 'r') as f:
+    with open('data/EK learnsets.txt', 'r') as f:
         next = True
         cur_pokemon = 'Bulbasaur'
 
@@ -58,10 +60,10 @@ def read_pokemon_sheet(workbook, moves):
     return pokemons
 
 
-def read_items(csv_file):
+def read_items():
     items = {}
     
-    with open(csv_file, 'r') as f:
+    with open("data/items.csv", 'r') as f:
         csvreader = csv.reader(f, delimiter=';')
         for i, row in enumerate(csvreader):
             if i == 0:
@@ -70,6 +72,11 @@ def read_items(csv_file):
             items[row[0].lower()] = Item(row[0], row[1])
 
     return items
+
+
+def read_abilities():
+    with open('data/abilities.json', 'r') as f:
+        return json.load(f)
 
 
 def handle_move_name_exceptions(move):
@@ -91,11 +98,16 @@ def handle_move_name_exceptions(move):
             raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 
 
-def read_my_pokemon(save, pokemons, moves):
+def read_my_pokemon(game_info):
+    # Read save file
+    with open('config.txt', 'r') as f:
+        save_loc = f.readline().strip().split('=')[1]
+        save = Gen3Save(save_loc)
+
     my_pokemon = []
     
     for gen3pokemon in save.team + save.boxes:
-        pokemon = copy.copy(pokemons[gen3pokemon.species['name']])
+        pokemon = copy.copy(game_info.pokemons[gen3pokemon.species['name']])
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
 
@@ -108,11 +120,11 @@ def read_my_pokemon(save, pokemons, moves):
         pokemon.spe_iv = gen3pokemon.ivs['speed']
 
         for move in gen3pokemon.moves:
-            if move['name'].lower() in moves:
-                pokemon.add_cur_move(moves[move['name'].lower()])
+            if move['name'].lower() in game_info.moves:
+                pokemon.add_cur_move(game_info.moves[move['name'].lower()])
             else:
                 modified_move_name = handle_move_name_exceptions(move['name'].lower())
-                pokemon.add_cur_move(moves[modified_move_name])
+                pokemon.add_cur_move(game_info.moves[modified_move_name])
         
         my_pokemon.append(pokemon)
     return my_pokemon

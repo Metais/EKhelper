@@ -4,23 +4,24 @@ from math import floor
 from nature import Nature
 
 class Pokemon:
-    def __init__(self, index, name, types, base_hp, base_atk, base_def, base_spa, base_spd, base_spe):
+    def __init__(self, index, name, types, base_stats):
         self.index = index
         self.name = name
         self.types = [Type.get_type(x) for x in types]
-        self.base_hp = base_hp
-        self.base_atk = base_atk
-        self.base_def = base_def
-        self.base_spa = base_spa
-        self.base_spd = base_spd
-        self.base_spe = base_spe
+        self.base_hp = base_stats[0]
+        self.base_atk = base_stats[1]
+        self.base_def = base_stats[2]
+        self.base_spa = base_stats[3]
+        self.base_spd = base_stats[4]
+        self.base_spe = base_stats[5]
 
+        # Assign later for specific instances
         self.lvl = 0
         self.nature = ""
-        
         self.lvl_moves = []
         self.cur_moves = []
         self.held_item = None
+        self.ability = None
 
         # IVs (only known for own pokemon)
         self.hp_iv = -1
@@ -40,7 +41,7 @@ class Pokemon:
 
     def __copy__(self):
         return Pokemon(self.index, self.name, [x.name for x in self.types], 
-                       self.base_hp, self.base_atk, self.base_def, self.base_spa, self.base_spd, self.base_spe)
+                       [self.base_hp, self.base_atk, self.base_def, self.base_spa, self.base_spd, self.base_spe])
 
     def get_real_hp_stat(self, hp_iv):
         return floor((2 * self.base_hp + hp_iv) * self.lvl / 100) + self.lvl + 10

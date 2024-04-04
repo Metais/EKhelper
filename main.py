@@ -1,18 +1,19 @@
 from read_files import *
 from type import *
+from tkinter import ttk
 
+import tkinter as tk
+import json
+
+from game_info import GameInfo
 from pokemonbattleGUI import pokemon_battle_gui
+from trainerselectionGUI import TrainerSelectionGUI
 from pokemondata.Gen3Save import Gen3Save
 
 
 # TODO: Add enemy pokemon abilities
 # TODO: Add badge boosts
 # TODO: Add weather effects
-
-
-with open('config.txt', 'r') as f:
-    save_loc = f.readline().strip().split('=')[1]
-    save = Gen3Save(save_loc)
 
 
 def find_highest_damaging_move(source_pkmn, target_pkmn):
@@ -85,10 +86,14 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
     return strongest_move, int(strongest_power)
 
 
-moves = read_moves_sheet("data/gen3moves.xlsx")
-pokemons = read_pokemon_sheet("data/pokemon.xlsx", moves)
-items = read_items("data/items.csv")
-my_pokemons = read_my_pokemon(save, pokemons, moves)
+game_info = GameInfo()
+my_pokemons = read_my_pokemon(game_info)
+
+root = tk.Tk()
+app = TrainerSelectionGUI(root, game_info, my_pokemons)
+root.mainloop()
+
+exit()
 
 with open('EK Mastersheet.txt', 'r') as f:
     lines = f.readlines()
