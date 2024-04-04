@@ -1,8 +1,9 @@
 from tkinter import ttk
-from pokemonbattleGUI import PokemonBattleGUI
 
 import tkinter as tk
 import json
+
+from read_files import read_my_pokemon
 
 class TrainerSelectionGUI:
     def __init__(self, root, game_info, my_pokemons):
@@ -42,6 +43,10 @@ class TrainerSelectionGUI:
         self.battle_button = ttk.Button(root, text="Go to Battle", command=self.switch_to_battle)
         self.battle_button.pack(side=tk.TOP, pady=0)
 
+        # Create a button to reload the save
+        self.reload_save_button = ttk.Button(root, text="Reload Save", command=self.reload_save)
+        self.reload_save_button.pack(side=tk.TOP, pady=10)
+
     def on_key_release(self, event):
         # Get the current text in the Entry widget
         value = event.widget.get()
@@ -52,9 +57,14 @@ class TrainerSelectionGUI:
 
         # Add matching values to the listbox
         for i, trainer in enumerate(self.trainers, start=1):
-            if value in trainer.lower():
+            # Filter on number
+            if value.isdigit() and i == int(value):
                 self.lb.insert(tk.END, f'{i}: {trainer.encode("latin1").decode("utf-8")}')
 
+            # Filter on text
+            if value in trainer.lower():
+                self.lb.insert(tk.END, f'{i}: {trainer.encode("latin1").decode("utf-8")}')
+        
     def on_select(self, event):
         # Get the selected item from the listbox
         selected = self.lb.curselection()
@@ -65,9 +75,14 @@ class TrainerSelectionGUI:
             self.entry.insert(tk.END, value)
 
     def switch_to_battle(self):
+        # Lazy import
+        from pokemonbattleGUI import PokemonBattleGUI
         # Destroy the current window and switch to the battle window
         self.root.destroy()
         root = tk.Tk()
         enemy_trainer = self.trainers[self.selected_index]
         app = PokemonBattleGUI(root, enemy_trainer, self.game_info, self.my_pokemons)
         root.mainloop()
+
+    def reload_save(self):
+        self.my_pokemons = read_my_pokemon(self.game_info)

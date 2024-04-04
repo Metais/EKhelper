@@ -8,6 +8,7 @@ from pokemon import Pokemon
 from move import Move
 from nature import Nature
 from item import Item
+from ability import Ability
 from pokemondata.Gen3Save import Gen3Save
 
 def read_moves_sheet():
@@ -75,8 +76,15 @@ def read_items():
 
 
 def read_abilities():
+    abilities = {}
+
     with open('data/abilities.json', 'r') as f:
-        return json.load(f)
+        ability_data = json.load(f)
+
+        for key, value in ability_data.items():
+            abilities[key.lower()] = Ability(key, value)
+
+    return abilities
 
 
 def handle_move_name_exceptions(move):
@@ -127,8 +135,53 @@ def read_my_pokemon(game_info):
                 pokemon.add_cur_move(game_info.moves[modified_move_name])
         
         my_pokemon.append(pokemon)
+        
     return my_pokemon
-    
+
+
+def read_trainer_pokemon_from_json(trainer_name, game_info):
+    with open('data/trainers.json') as f:
+        trainer_pokemon_names = json.load(f)[trainer_name]
+
+    trainer_pokemons = []
+
+    with open('data/trainer_pokemon.json') as f:
+        pokemon_to_trainer = json.load(f)
+        for trainer_pokemon_name in trainer_pokemon_names:
+            trainers_with_pokemon = pokemon_to_trainer[trainer_pokemon_name]
+
+            # Append (#) to trainer pokemon name if they have more than 1 of the same pokemon
+            if len([x for x in trainer_pokemon_names if x == trainer_pokemon_name]) > 1:
+                # Check how many already recorded
+                already_in = len([x for x in trainer_pokemons if x.name == trainer_pokemon_name])
+                pokemon_json = trainers_with_pokemon[f'{trainer_name} ({already_in + 1})']
+            else:
+                pokemon_json = trainers_with_pokemon[trainer_name]
+            
+            pokemon = copy.copy(game_info.pokemons[trainer_pokemon_name])
+            pokemon.lvl = pokemon_json['level']
+            pokemon.ability = game_info.abilities[pokemon_json['ability'].lower()]
+            pokemon.nature = Nature.get_nature(pokemon_json['nature'])
+            pokemon.cur_moves = [game_info.moves[x.lower()] for x in pokemon_json['moves']]
+
+            if 'item' in pokemon_json:
+                pokemon.held_item = game_info.items[pokemon_json['item'].lower()]
+
+            # If IV's not present, they are all 31
+            if 'ivs' in pokemon_json:
+                ivs = pokemon_json['ivs']
+                pokemon.hp_iv, pokemon.atk_iv, pokemon.def_iv = ivs['hp'], ivs['at'], ivs['df']
+                pokemon.spa_iv, pokemon.spd_iv, pokemon.spe_iv = ivs['sa'], ivs['sd'], ivs['sp']
+            else:
+                pokemon.hp_iv, pokemon.atk_iv, pokemon.def_iv = 31, 31, 31
+                pokemon.spa_iv, pokemon.spd_iv, pokemon.spe_iv = 31, 31, 31
+
+            trainer_pokemons.append(pokemon)
+
+        return trainer_pokemons
+
+
+# Deprecated -- now reads trainer pokemon from json
 def read_trainer_pokemon(lines, line_number, pokemons, moves, items):
     trainer_pokemon = []
 

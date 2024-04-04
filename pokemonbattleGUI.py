@@ -1,6 +1,8 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from math import floor
+from read_files import read_trainer_pokemon_from_json
+from damage_calc import find_highest_damaging_move
 
 class ToolTip:
     def __init__(self, widget, text, offsetx, offsety):
@@ -34,16 +36,14 @@ def create_tooltip(widget, text, offsetx=25, offsety=25):
 
 
 class PokemonBattleGUI:
-    def get_battle_info(self, enemy_trainer, my_pokemons, game_info):
-        pass
-
     def __init__(self, root, enemy_trainer, game_info, my_pokemons):
         self.root = root
         self.enemy_trainer = enemy_trainer
+        self.game_info = game_info
         self.my_pokemons = my_pokemons
 
-        # Establish self.enemy_team_info, self.his_moves, self.his_variable_moves and self.my_variable_moves
-        self.get_battle_info(self.enemy_trainer, self.my_pokemons, game_info)
+        # Establish self.enemy_team_info, self.his_moves and self.his_variable_moves
+        self.get_battle_info()
 
         self.current_index = 0
         self.box_size = len(self.enemy_team_info[0][1].keys())
@@ -80,6 +80,41 @@ class PokemonBattleGUI:
         self.display_current_pokemon_info()
         self.create_navigation_buttons()
 
+    def get_battle_info(self):
+        trainer_pokemon = read_trainer_pokemon_from_json(self.enemy_trainer, self.game_info)
+        his_moves = []
+        his_variable_moves = []
+        enemy_team_info = []
+
+        # For each enemy pokemon...
+        for enemy_pokemon in trainer_pokemon:
+            # Each enemy pokemon has a dictionary containing my pokemon's names as keys
+            # except the key/value pair 'variable', which stores the pokemon's variables moves
+            enemy_pokemon_analysis = {}
+
+            his_moves.append([move for move in enemy_pokemon.cur_moves])
+            his_variable_moves.append([move for move in enemy_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)])
+
+            # For each of my pokemon...
+            for my_pokemon in self.my_pokemons:
+                # Strongest move against me
+                strongest_move_vs_me, strongest_power_vs_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
+                # Strongest move against him
+                strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
+                # Who goes first (0 = me, 1 = him) (assume foe's speed stat is max IV)
+                goes_first = 0 if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(31) else 1
+                
+                # Store above 5 values per box pokemon for each enemy pokemon
+                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_vs_me, strongest_power_vs_me, 
+                                                            strongest_move_vs_him, strongest_power_vs_him,
+                                                            goes_first)
+                
+            enemy_team_info.append((enemy_pokemon, enemy_pokemon_analysis))
+
+        self.enemy_team_info = enemy_team_info
+        self.his_moves = his_moves
+        self.his_variable_moves = his_variable_moves
+
     def load_content(self):
         cur_enemy_pokemon = self.enemy_team_info[self.current_index][0]
 
@@ -88,10 +123,10 @@ class PokemonBattleGUI:
         enemy_pokemon_image = enemy_pokemon_image.resize((200, 200))
         self.enemy_pokemon_label.image = ImageTk.PhotoImage(enemy_pokemon_image)
         self.enemy_pokemon_label.config(image=self.enemy_pokemon_label.image)
-        create_tooltip(self.enemy_pokemon_label, cur_enemy_pokemon.print_estimated_stats(), 200, 200)
+        create_tooltip(self.enemy_pokemon_label, cur_enemy_pokemon.print_current_stats(), 200, 200)
 
         # Load enemy pokemon info
-        self.enemy_pokemon_info_label.config(text=cur_enemy_pokemon.print_estimated_stats())
+        self.enemy_pokemon_info_label.config(text=cur_enemy_pokemon.print_current_stats())
         # Load enemy pokemon held item
         if cur_enemy_pokemon.held_item is not None:
             held_item_image = Image.open(cur_enemy_pokemon.held_item.image_path)
@@ -213,6 +248,8 @@ class PokemonBattleGUI:
         prev_button.grid(row=10, column=0)
         next_button = tk.Button(self.root, text="Next", command=self.show_next_pokemon)
         next_button.grid(row=10, column=self.box_size - 1)
+        trainer_selection_button = tk.Button(self.root, text="Back to trainer select", command=self.back_to_trainer_select)
+        trainer_selection_button.grid(row=10, column=int(self.box_size / 2) - 1, columnspan=2)
 
     def show_next_pokemon(self):
         if self.current_index < len(self.enemy_team_info) - 1:
@@ -223,6 +260,15 @@ class PokemonBattleGUI:
         if self.current_index > 0:
             self.current_index -= 1
             self.load_content()
+
+    def back_to_trainer_select(self):
+        # Lazy import
+        from trainerselectionGUI import TrainerSelectionGUI
+        # Destroy the current window and switch to the battle window
+        self.root.destroy()
+        root = tk.Tk()
+        app = TrainerSelectionGUI(root, self.game_info, self.my_pokemons)
+        root.mainloop()
 
 def pokemon_battle_gui(window_title, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
     root = tk.Tk()

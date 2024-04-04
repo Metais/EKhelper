@@ -1,90 +1,12 @@
-from read_files import *
-from type import *
-from tkinter import ttk
-
 import tkinter as tk
-import json
 
 from game_info import GameInfo
-from pokemonbattleGUI import pokemon_battle_gui
 from trainerselectionGUI import TrainerSelectionGUI
-from pokemondata.Gen3Save import Gen3Save
-
+from read_files import read_my_pokemon
 
 # TODO: Add enemy pokemon abilities
 # TODO: Add badge boosts
 # TODO: Add weather effects
-
-
-def find_highest_damaging_move(source_pkmn, target_pkmn):
-    strongest_move = None
-    strongest_power = 0
-
-    # Find the highest damaging move...
-    for source_pokemon_move in [move for move in source_pkmn.cur_moves if move.power != "N/A"]:
-        spm_power = source_pokemon_move.power
-        move_effectiveness = Type.type_effectiveness_against_types(source_pokemon_move.type, target_pkmn.types)
-
-        # Check if BP is an standard value or not
-        if not isinstance(spm_power, int):
-            # For variable/unique power moves, do unique behavior
-            if source_pokemon_move.name == "Sonicboom":
-                spm_power = 20 if move_effectiveness != 0 else 0
-            elif source_pokemon_move.name == "Dragon Rage":
-                spm_power = 40
-            # For others (such as status moves) skip
-            else:
-                continue
-        else:
-            # Following calcs taken from https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_III (not exhaustive!)
-            # Multiply level-based (0.4*lvl + 2)
-            spm_power = spm_power * (0.4 * float(source_pkmn.lvl) + 2)
-            # Take (special) attack (for attacker) and (special) defense (for defender) into account
-            if source_pokemon_move.category == "Physical":
-                # Assume 31 (strongest) if unknown (aka, foe's)
-                atk_iv = source_pkmn.atk_iv if source_pkmn.atk_iv != -1 else 31
-                def_iv = target_pkmn.def_iv if target_pkmn.def_iv != -1 else 31
-
-                atk_stat = source_pkmn.get_real_atk_stat(atk_iv)
-                def_stat = target_pkmn.get_real_def_stat(def_iv)
-
-                spm_power *= atk_stat / def_stat
-                if source_pokemon_move.name == "Selfdestruct":
-                    spm_power *= 2  # Selfdestruct halves foe's defense stat
-            elif source_pokemon_move.category == "Special":
-                # Assume 31 (strongest) if unknown (aka, foe's)
-                spa_iv = source_pkmn.spa_iv if source_pkmn.spa_iv != -1 else 31
-                spd_iv = target_pkmn.spd_iv if target_pkmn.spd_iv != -1 else 31
-
-                spa_stat = source_pkmn.get_real_spa_stat(spa_iv)
-                spd_stat = target_pkmn.get_real_spd_stat(spd_iv)
-
-                spm_power *= spa_stat / spd_stat
-            else:
-                raise Exception(f"Damaging move {source_pokemon_move} is not Phys/Spec but {source_pokemon_move.category}")
-            # Divide by 50 for real damage value
-            spm_power = spm_power / 50
-            # Add 2
-            spm_power += 2
-
-            # --- End of large parenthesis (https://wikimedia.org/api/rest_v1/media/math/render/svg/6238dd5679302e5845374613828e184d95c65827) ---
-            
-            # Multiply move power by STAB (if present)
-            if source_pokemon_move.type in source_pkmn.types:
-                spm_power = spm_power * 1.5
-            # Multiply move power by its effectiveness against target pokemon type
-            spm_power = int(spm_power) * move_effectiveness
-            # Find held-item specific power changes
-            if source_pkmn.held_item is not None:
-                spm_power *= source_pkmn.held_item.get_held_item_multiplier(source_pkmn, source_pokemon_move)
-
-        # Compare with other moves and replace if strongest
-        if strongest_move is None or spm_power > strongest_power:
-            strongest_move = source_pokemon_move
-            strongest_power = spm_power
-
-    return strongest_move, int(strongest_power)
-
 
 game_info = GameInfo()
 my_pokemons = read_my_pokemon(game_info)
@@ -92,53 +14,3 @@ my_pokemons = read_my_pokemon(game_info)
 root = tk.Tk()
 app = TrainerSelectionGUI(root, game_info, my_pokemons)
 root.mainloop()
-
-exit()
-
-with open('EK Mastersheet.txt', 'r') as f:
-    lines = f.readlines()
-    while True:
-        line_number = int(input("Enter line number at which trainer starts: "))
-
-        trainer_name = lines[line_number - 1].strip()
-
-        print(f"Helping you fight '{trainer_name}'!")
-    
-        trainer_pokemon = read_trainer_pokemon(lines, line_number, pokemons, moves, items)
-
-        # Store my pokemon's variable moves
-        my_variable_moves = {}
-        for my_pokemon in my_pokemons:
-            my_variable_moves[my_pokemon.name] = [move for move in my_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)]
-
-        # List with each index the corresponding enemy pokemon analysis
-        enemy_team_info = []
-        his_moves = []
-        his_variable_moves = []
-
-        # For each enemy pokemon...
-        for enemy_pokemon in trainer_pokemon:
-            # Each enemy pokemon has a dictionary containing my pokemon's names as keys
-            # except the key/value pair 'variable', which stores the pokemon's variables moves
-            enemy_pokemon_analysis = {}
-
-            his_moves.append([move for move in enemy_pokemon.cur_moves])
-            his_variable_moves.append([move for move in enemy_pokemon.cur_moves if move.power != "N/A" and not isinstance(move.power, int)])
-
-            # For each of my pokemon...
-            for my_pokemon in my_pokemons:
-                # Strongest move against me
-                strongest_move_vs_me, strongest_power_vs_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
-                # Strongest move against him
-                strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
-                # Who goes first (0 = me, 1 = him) (assume foe's speed stat is max IV)
-                goes_first = 0 if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(31) else 1
-                
-                # Store above 5 values per box pokemon for each enemy pokemon
-                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_vs_me, strongest_power_vs_me, 
-                                                            strongest_move_vs_him, strongest_power_vs_him,
-                                                            goes_first)
-                
-            enemy_team_info.append((enemy_pokemon, enemy_pokemon_analysis))
-
-        pokemon_battle_gui(f"Line {line_number}: {trainer_name}", enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)

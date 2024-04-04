@@ -17,7 +17,7 @@ class Pokemon:
 
         # Assign later for specific instances
         self.lvl = 0
-        self.nature = ""
+        self.nature = None
         self.lvl_moves = []
         self.cur_moves = []
         self.held_item = None

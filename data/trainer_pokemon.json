@@ -664,7 +664,7 @@
             "ability": "Huge Power",
             "item": "Cheri Berry",
             "level": 26,
-            "moves": ["Bubble Beam", "Secret Power", "Ice Punch", "Seismic Toss"],
+            "moves": ["Bubblebeam", "Secret Power", "Ice Punch", "Seismic Toss"],
             "nature": "Adamant"
         },
         "Youngster Dillon": {
@@ -744,7 +744,7 @@
                 "sp": 24
             },
             "level": 12,
-            "moves": ["Psybeam", "Rock Tomb", "Signal Beam", "Self-Destruct"],
+            "moves": ["Psybeam", "Rock Tomb", "Signal Beam", "Selfdestruct"],
             "nature": "Jolly"
         },
         "Sr and Jr Anna & Meg": {
@@ -969,7 +969,7 @@
         "Black Belt Hitoshi": {
             "ability": "Torrent",
             "level": 68,
-            "moves": ["Bubble Beam", "Body Slam", "Ice Punch", "Hydro Pump"],
+            "moves": ["Bubblebeam", "Body Slam", "Ice Punch", "Hydro Pump"],
             "nature": "Brave"
         },
         "Expert Shannon": {
@@ -2272,7 +2272,7 @@
     },
     "Cubone": {
         "Pokémon Breeder Isaac": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 23,
             "moves": ["Bone Rush", "Double-Edge", "Aerial Ace", "Rock Tomb"],
@@ -3086,7 +3086,7 @@
                 "sp": 18
             },
             "level": 8,
-            "moves": ["Thunder Shock", "Bite", "Quick Attack", "Thunder Wave"],
+            "moves": ["Thundershock", "Bite", "Quick Attack", "Thunder Wave"],
             "nature": "Jolly"
         },
         "Sailor Huey": {
@@ -3101,7 +3101,7 @@
             "ability": "Static",
             "item": "Liechi Berry",
             "level": 27,
-            "moves": ["Thunder Wave", "Sonicboom", "Wild Charge", "Self-Destruct"],
+            "moves": ["Thunder Wave", "Sonicboom", "Wild Charge", "Selfdestruct"],
             "nature": "Serious"
         },
         "Expert Clifford": {
@@ -3383,7 +3383,7 @@
     "Exploud": {
         "Guitarist Dalton": {
             "ability": "Vital Spirit",
-            "item": "Never-Melt Ice",
+            "item": "NeverMeltIce",
             "level": 43,
             "moves": ["Hyper Voice", "Earthquake", "Ice Beam", "Flamethrower"],
             "nature": "Bold"
@@ -3901,7 +3901,7 @@
             "ability": "Levitate",
             "item": "Scope Lens",
             "level": 14,
-            "moves": ["Shadow Ball", "Sludge Bomb", "Self-Destruct", "Hypnosis"],
+            "moves": ["Shadow Ball", "Sludge Bomb", "Selfdestruct", "Hypnosis"],
             "nature": "Gentle"
         }
     },
@@ -4054,7 +4054,7 @@
                 "sp": 0
             },
             "level": 15,
-            "moves": ["Self-Destruct"],
+            "moves": ["Selfdestruct"],
             "nature": "Modest"
         }
     },
@@ -4471,7 +4471,7 @@
             "ability": "Rock Head",
             "item": "Lum Berry",
             "level": 25,
-            "moves": ["Rock Slide", "Earthquake", "Self-Destruct", "Secret Power"],
+            "moves": ["Rock Slide", "Earthquake", "Selfdestruct", "Secret Power"],
             "nature": "Naive"
         },
         "Hiker Trent": {
@@ -4487,7 +4487,7 @@
             "ability": "Poison Point",
             "item": "Scope Lens",
             "level": 17,
-            "moves": ["Self-Destruct", "Brick Break", "Shadow Sneak", "Sludge Bomb"],
+            "moves": ["Selfdestruct", "Brick Break", "Shadow Sneak", "Sludge Bomb"],
             "nature": "Jolly"
         }
     },
@@ -5857,7 +5857,7 @@
             "ability": "Levitate",
             "item": "Chesto Berry",
             "level": 27,
-            "moves": ["Thunderbolt", "Sludge Bomb", "Flamethrower", "Self-Destruct"],
+            "moves": ["Thunderbolt", "Sludge Bomb", "Flamethrower", "Selfdestruct"],
             "nature": "Lonely"
         },
         "Ninja Boy Lung": {
@@ -6758,7 +6758,7 @@
             "ability": "Magnet Pull",
             "item": "King's Rock",
             "level": 8,
-            "moves": ["Thunder Wave", "Thunder Shock", "Tri Attack", "Flash Cannon"],
+            "moves": ["Thunder Wave", "Thundershock", "Tri Attack", "Flash Cannon"],
             "nature": "Serious"
         },
         "Triathlete Alyssa": {
@@ -6823,7 +6823,7 @@
             "ability": "Magnet Pull",
             "item": "Scope Lens",
             "level": 26,
-            "moves": ["Thunderbolt", "Self-Destruct", "Flash Cannon", "Thunder Wave"],
+            "moves": ["Thunderbolt", "Selfdestruct", "Flash Cannon", "Thunder Wave"],
             "nature": "Adamant"
         },
         "Triathlete Brianna": {
@@ -7024,7 +7024,7 @@
             "ability": "Swift Swim",
             "item": "Cheri Berry",
             "level": 20,
-            "moves": ["Agility", "Bubble Beam", "Air Slash", "Aurora Beam"],
+            "moves": ["Agility", "Bubblebeam", "Air Slash", "Aurora Beam"],
             "nature": "Timid"
         }
     },
@@ -7033,7 +7033,7 @@
             "ability": "Static",
             "item": "Oran Berry",
             "level": 10,
-            "moves": ["Thunder Wave", "Thunder Shock", "Secret Power"],
+            "moves": ["Thunder Wave", "Thundershock", "Secret Power"],
             "nature": "Impish"
         }
     },
@@ -7041,75 +7041,75 @@
         "Lass Janice": {
             "ability": "Huge Power",
             "level": 9,
-            "moves": ["Bubble Beam", "Secret Power", "Tickle"],
+            "moves": ["Bubblebeam", "Secret Power", "Tickle"],
             "nature": "Adamant"
         },
         "Tuber Lola": {
             "ability": "Huge Power",
             "level": 16,
-            "moves": ["Rollout", "Defense Curl", "Bubble Beam"],
+            "moves": ["Rollout", "Defense Curl", "Bubblebeam"],
             "nature": "Modest"
         }
     },
     "Marowak": {
         "Cooltrainer Albert": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 81,
             "moves": ["Swords Dance", "Earthquake", "Double-Edge", "Ancientpower"],
             "nature": "Impish"
         },
         "Cooltrainer Braxton": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": " Thick Club",
             "level": 75,
             "moves": ["Protect", "Earthquake", "Ancientpower", "Hidden Power Bug"],
             "nature": "Careful"
         },
         "Cooltrainer Jody": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 42,
             "moves": ["Earthquake", "Double-Edge", "Ancientpower", "Hidden Power Flying"],
             "nature": "Hasty"
         },
         "Expert Shelby": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 37,
             "moves": ["Double-Edge", "Earthquake", "Ancientpower", "Aerial Ace"],
             "nature": "Lax"
         },
         "Gentleman Franklin": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 100,
             "moves": ["Earthquake", "Ancientpower", "Hidden Power Bug", "Return"],
             "nature": "Gentle"
         },
         "Ruin Maniac Andres": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 66,
             "moves": ["Body Slam", "Rock Slide", "Earthquake", "Double-Edge"],
             "nature": "Naive"
         },
         "Sr and Jr Kim & Iris": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 66,
             "moves": ["Belly Drum", "Ancientpower", "Earthquake", "Body Slam"],
             "nature": "Jolly"
         },
         "Team Magma Grunt #10 @ Magma Hideout": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Thick Club",
             "level": 60,
             "moves": ["Hidden Power Flying", "Double-Edge", "Earthquake", "Ancientpower"],
             "nature": "Lax"
         },
         "Team Magma Grunt #2 @ Route 114": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 36,
             "moves": ["Earthquake", "Double-Edge", "Ancientpower", "Aerial Ace"],
@@ -7743,21 +7743,21 @@
             "ability": "Minus",
             "item": "Berry Juice",
             "level": 14,
-            "moves": ["Thunder Wave", "Thunder Shock", "Quick Attack", "Seismic Toss"],
+            "moves": ["Thunder Wave", "Thundershock", "Quick Attack", "Seismic Toss"],
             "nature": "Modest"
         },
         "Pokémon Trainer May #1.5 [Grovyle]": {
             "ability": "Minus",
             "item": "Berry Juice",
             "level": 14,
-            "moves": ["Thunder Wave", "Thunder Shock", "Quick Attack", "Seismic Toss"],
+            "moves": ["Thunder Wave", "Thundershock", "Quick Attack", "Seismic Toss"],
             "nature": "Naughty"
         },
         "Pokémon Trainer May #1.5 [Marshtomp]": {
             "ability": "Minus",
             "item": "Magnet",
             "level": 14,
-            "moves": ["Thunder Wave", "Thunder Shock", "Quick Attack", "Seismic Toss"],
+            "moves": ["Thunder Wave", "Thundershock", "Quick Attack", "Seismic Toss"],
             "nature": "Naughty"
         },
         "Pokémon Trainer May #2 [Combusken]": {
@@ -8499,7 +8499,7 @@
             "ability": "Battle Armor",
             "item": "Sitrus Berry",
             "level": 15,
-            "moves": ["Self-Destruct", "Attract", "Seismic Toss", "Thunder Wave"],
+            "moves": ["Selfdestruct", "Attract", "Seismic Toss", "Thunder Wave"],
             "nature": "Naughty"
         },
         "Picnicker Diana": {
@@ -8686,7 +8686,7 @@
             "ability": "Rock Head",
             "item": "Liechi Berry",
             "level": 15,
-            "moves": ["Swagger", "Dig", "Rock Tomb", "Self-Destruct"],
+            "moves": ["Swagger", "Dig", "Rock Tomb", "Selfdestruct"],
             "nature": "Gentle"
         },
         "Hiker Trent": {
@@ -8817,7 +8817,7 @@
                 "sp": 6
             },
             "level": 8,
-            "moves": ["Thunder Wave", "Thunder Shock", "Sweet Kiss", "Thief"],
+            "moves": ["Thunder Wave", "Thundershock", "Sweet Kiss", "Thief"],
             "nature": "Docile"
         }
     },
@@ -8913,42 +8913,42 @@
     },
     "Pikachu": {
         "Battle Girl Tara": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Light Ball",
             "level": 52,
             "moves": ["Thunder", "Surf"],
             "nature": "Hardy"
         },
         "Lady Vivian": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Light Ball",
             "level": 27,
             "moves": ["Thunderbolt", "Seismic Toss", "Surf", "Quick Attack"],
             "nature": "Jolly"
         },
         "Pokéfan Kaleb": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Sitrus Berry",
             "level": 17,
             "moves": ["Thunder Punch", "Quick Attack", "Thunder Wave", "Seismic Toss"],
             "nature": "Adamant"
         },
         "Pokémon Trainer Red #1": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Sitrus Berry",
             "level": 9,
             "moves": ["Shock Wave", "Quick Attack", "Surf", "Thunder Wave"],
             "nature": "Rash"
         },
         "Pokémon Trainer Red #2": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Light Ball",
             "level": 37,
             "moves": ["Volt Tackle", "Surf", "Hidden Power Ice", "Sing"],
             "nature": "Sassy"
         },
         "Sis And Bro Lila & Roy": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Light Ball",
             "level": 65,
             "moves": ["Thunderbolt", "Signal Beam", "Surf", "Volt Tackle"],
@@ -8976,7 +8976,7 @@
             "ability": "Rough Skin",
             "item": "Sitrus Berry",
             "level": 23,
-            "moves": ["Signal Beam", "Self-Destruct", "Giga Drain", "Spikes"],
+            "moves": ["Signal Beam", "Selfdestruct", "Giga Drain", "Spikes"],
             "nature": "Quiet"
         }
     },
@@ -9036,21 +9036,21 @@
             "ability": "Plus",
             "item": "Magnet",
             "level": 14,
-            "moves": ["Thunder Wave", "Thunder Shock", "Seismic Toss", "Quick Attack"],
+            "moves": ["Thunder Wave", "Thundershock", "Seismic Toss", "Quick Attack"],
             "nature": "Jolly"
         },
         "Pokémon Trainer Brendan #1.5 [Grovyle]": {
             "ability": "Plus",
             "item": "Magnet",
             "level": 14,
-            "moves": ["Thunder Wave", "Thunder Shock", "Seismic Toss", "Quick Attack"],
+            "moves": ["Thunder Wave", "Thundershock", "Seismic Toss", "Quick Attack"],
             "nature": "Jolly"
         },
         "Pokémon Trainer Brendan #1.5 [Marshtomp]": {
             "ability": "Plus",
             "item": "Berry Juice",
             "level": 15,
-            "moves": ["Thunder Shock", "Quick Attack", "Thunder Wave", "Seismic Toss"],
+            "moves": ["Thundershock", "Quick Attack", "Thunder Wave", "Seismic Toss"],
             "nature": "Jolly"
         },
         "Pokémon Trainer Brendan #2 [Combusken]": {
@@ -9134,7 +9134,7 @@
     "Poliwhirl": {
         "Camper Tyron": {
             "ability": "Swift Swim",
-            "item": "Never-Melt Ice",
+            "item": "NeverMeltIce",
             "level": 27,
             "moves": ["Hypnosis", "Blizzard", "Protect", "Hydro Pump"],
             "nature": "Rash"
@@ -9402,7 +9402,7 @@
                 "sp": 24
             },
             "level": 15,
-            "moves": ["Bubble Beam", "Confusion", "Aerial Ace"],
+            "moves": ["Bubblebeam", "Confusion", "Aerial Ace"],
             "nature": "Impish"
         }
     },
@@ -9607,49 +9607,49 @@
     },
     "Raichu": {
         "Aqua Admin Shelly #2": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 72,
             "moves": ["Thunder", "Surf", "Extreme Speed", "Sing"],
             "nature": "Careful"
         },
         "Cooltrainer Braxton": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Quick Claw",
             "level": 75,
             "moves": ["Protect", "Thunder", "Signal Beam", "Brick Break"],
             "nature": "Bashful"
         },
         "Cooltrainer Katelynn": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 88,
             "moves": ["Extreme Speed", "Surf", "Hidden Power Grass", "Thunderbolt"],
             "nature": "Hardy"
         },
         "Cooltrainer Olivia": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 74,
             "moves": ["Thunder", "Signal Beam", "Surf", "Brick Break"],
             "nature": "Naughty"
         },
         "Leader Wattson": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 28,
             "moves": ["Thunder Wave", "Thunderbolt", "Surf", "Body Slam"],
             "nature": "Sassy"
         },
         "Pokéfan Parker": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Leftovers",
             "level": 42,
             "moves": ["Teeter Dance", "Thunderbolt", "Surf", "Signal Beam"],
             "nature": "Brave"
         },
         "Pokéfan Vanessa": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Red Scarf",
             "level": 53,
             "moves": ["Thunder Wave", "Volt Tackle", "Double Team", "Quick Attack"],
@@ -9698,28 +9698,28 @@
             "nature": "Impish"
         },
         "Pokémon Trainer Wally #2": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 85,
             "moves": ["Volt Tackle", "Extreme Speed", "Surf", "Hidden Power Ice"],
             "nature": "Naughty"
         },
         "Pokémon Ranger Ashley": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 50,
             "moves": ["Thunderbolt", "Surf", "Hidden Power Flying", "Brick Break"],
             "nature": "Mild"
         },
         "Swimmerm Pete": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Silver Powder",
             "level": 43,
             "moves": ["Seismic Toss", "Signal Beam", "Quick Attack", "Thunderbolt"],
             "nature": "Relaxed"
         },
         "Team Aqua Grunt #5 @ Aqua Hideout": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Bright Powder",
             "level": 64,
             "moves": ["Rain Dance", "Thunder", "Surf", "Signal Beam"],
@@ -9728,7 +9728,7 @@
     },
     "Raikou": {
         "Aqua Leader Archie": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 75,
             "moves": ["Thunder", "Hidden Power Grass", "Weather Ball", "Calm Mind"],
@@ -9936,21 +9936,21 @@
     },
     "Rhydon": {
         "Cooltrainer Braxton": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Quick Claw",
             "level": 77,
             "moves": ["Protect", "Earthquake", "Ancientpower", "Megahorn"],
             "nature": "Quirky"
         },
         "Pokémaniac Steve": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Focus Band",
             "level": 36,
             "moves": ["Drill Run", "Double-Edge", "Rock Slide", "Body Slam"],
             "nature": "Quiet"
         },
         "Ruin Maniac Andres": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Quick Claw",
             "level": 66,
             "moves": ["Rock Slide", "Double-Edge", "Earthquake", "Megahorn"],
@@ -9959,20 +9959,20 @@
     },
     "Rhyhorn": {
         "School Kid Tammy": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Lum Berry",
             "level": 15,
             "moves": ["Megahorn", "Magnitude", "Rock Tomb", "Ice Beam"],
             "nature": "Relaxed"
         },
         "Triathlete Jasmine": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "level": 25,
             "moves": ["Rock Tomb", "Drill Run", "Double-Edge"],
             "nature": "Relaxed"
         },
         "Triathlete Maria": {
-            "ability": "Lightningrod",
+            "ability": "Lightning Rod",
             "item": "Salac Berry",
             "level": 24,
             "moves": ["Rock Slide", "Earthquake", "Megahorn", "Endure"],
@@ -10135,7 +10135,7 @@
         "Picnicker Celia": {
             "ability": "Sand Veil",
             "level": 40,
-            "moves": ["Sand Attack", "Dig", "Slash", "Body Slam"],
+            "moves": ["Sand-Attack", "Dig", "Slash", "Body Slam"],
             "nature": "Docile"
         },
         "Team Magma Grunt #5 @ Route 114": {
@@ -10303,7 +10303,7 @@
                 "sp": 12
             },
             "level": 24,
-            "moves": ["Bubble Beam", "Aurora Beam", "Secret Power"],
+            "moves": ["Bubblebeam", "Aurora Beam", "Secret Power"],
             "nature": "Hasty"
         }
     },
@@ -10324,7 +10324,7 @@
         },
         "Parasol Lady Angelica": {
             "ability": "Swift Swim",
-            "item": "Never-Melt Ice",
+            "item": "NeverMeltIce",
             "level": 51,
             "moves": ["Surf", "Ice Beam", "Return", "Attract"],
             "nature": "Bold"
@@ -10376,7 +10376,7 @@
         },
         "Triathlete Maria": {
             "ability": "Thick Fat",
-            "item": "Never-Melt Ice",
+            "item": "NeverMeltIce",
             "level": 24,
             "moves": ["Ice Shard", "Waterfall", "Body Slam", "Aurora Beam"],
             "nature": "Quiet"
@@ -10507,14 +10507,14 @@
         "Fisherman Carter": {
             "ability": "Shell Armor",
             "level": 15,
-            "moves": ["Ice Shard", "Bubble Beam", "Mud Shot"],
+            "moves": ["Ice Shard", "Bubblebeam", "Mud Shot"],
             "nature": "Impish"
         },
         "Team Aqua Grunt #1 @ Slateport City": {
             "ability": "Shell Armor",
             "item": "Scope Lens",
             "level": 17,
-            "moves": ["Icy Wind", "Self-Destruct", "Water Pulse", "Mud Shot"],
+            "moves": ["Icy Wind", "Selfdestruct", "Water Pulse", "Mud Shot"],
             "nature": "Sassy"
         }
     },
@@ -10944,7 +10944,7 @@
                 "sp": 24
             },
             "level": 15,
-            "moves": ["Slack Off", "Bubble Beam", "Confusion"],
+            "moves": ["Slack Off", "Bubblebeam", "Confusion"],
             "nature": "Gentle"
         },
         "Fisherman Dale": {
@@ -11125,7 +11125,7 @@
             "ability": "Guts",
             "item": "Choice Band",
             "level": 66,
-            "moves": ["Self-Destruct"],
+            "moves": ["Selfdestruct"],
             "nature": "Naive"
         },
         "Expert Frederick": {
@@ -11139,7 +11139,7 @@
             "ability": "Guts",
             "item": "Leftovers",
             "level": 84,
-            "moves": ["Self-Destruct", "Body Slam", "Earthquake", "Shadow Ball"],
+            "moves": ["Selfdestruct", "Body Slam", "Earthquake", "Shadow Ball"],
             "nature": "Hasty"
         },
         "Leader Norman": {
@@ -11181,7 +11181,7 @@
             "ability": "Guts",
             "item": "Choice Band",
             "level": 60,
-            "moves": ["Self-Destruct"],
+            "moves": ["Selfdestruct"],
             "nature": "Naughty"
         }
     },
@@ -11574,7 +11574,7 @@
             "ability": "Natural Cure",
             "item": "Silk Scarf",
             "level": 20,
-            "moves": ["Bubble Beam", "Recover", "Tri Attack", "Signal Beam"],
+            "moves": ["Bubblebeam", "Recover", "Tri Attack", "Signal Beam"],
             "nature": "Careful"
         }
     },
@@ -12087,7 +12087,7 @@
         "Fisherman Chris": {
             "ability": "Clear Body",
             "level": 40,
-            "moves": ["Acid", "Bubble Beam", "Sludge Bomb", "Toxic"],
+            "moves": ["Acid", "Bubblebeam", "Sludge Bomb", "Toxic"],
             "nature": "Jolly"
         },
         "Fisherman Henry": {
@@ -13012,7 +13012,7 @@
             "ability": "Static",
             "item": "King's Rock",
             "level": 13,
-            "moves": ["Thunder Wave", "Sonicboom", "Shock Wave", "Self-Destruct"],
+            "moves": ["Thunder Wave", "Sonicboom", "Shock Wave", "Selfdestruct"],
             "nature": "Jolly"
         },
         "Triathlete Jacob": {
@@ -13026,7 +13026,7 @@
                 "sp": 24
             },
             "level": 25,
-            "moves": ["Thunderbolt", "Self-Destruct", "Sonicboom"],
+            "moves": ["Thunderbolt", "Selfdestruct", "Sonicboom"],
             "nature": "Jolly"
         }
     },
@@ -13057,7 +13057,7 @@
             "ability": "Pressure",
             "item": "Quick Claw",
             "level": 43,
-            "moves": ["Water Spout", "Ice Beam", "Earthquake", "Self-Destruct"],
+            "moves": ["Water Spout", "Ice Beam", "Earthquake", "Selfdestruct"],
             "nature": "Brave"
         },
         "Pokéfan Isabel": {
@@ -13071,7 +13071,7 @@
             "ability": "Pressure",
             "item": "Lax Incense",
             "level": 18,
-            "moves": ["Self-Destruct", "Body Slam", "Rain Dance", "Water Pulse"],
+            "moves": ["Selfdestruct", "Body Slam", "Rain Dance", "Water Pulse"],
             "nature": "Serious"
         }
     },
@@ -13080,7 +13080,7 @@
             "ability": "Pressure",
             "item": "Quick Claw",
             "level": 57,
-            "moves": ["Self-Destruct", "Water Spout", "Earthquake", "Ice Beam"],
+            "moves": ["Selfdestruct", "Water Spout", "Earthquake", "Ice Beam"],
             "nature": "Adamant"
         },
         "Aqua Admin Matt #2": {
@@ -13101,7 +13101,7 @@
             "ability": "Pressure",
             "item": "Lum Berry",
             "level": 100,
-            "moves": ["Hyper Voice", "Water Spout", "Self-Destruct", "Amnesia"],
+            "moves": ["Hyper Voice", "Water Spout", "Selfdestruct", "Amnesia"],
             "nature": "Lax"
         },
         "Expert Quincy": {
@@ -13128,21 +13128,21 @@
             "ability": "Pressure",
             "item": "Lum Berry",
             "level": 70,
-            "moves": ["Amnesia", "Self-Destruct", "Hyper Voice", "Water Spout"],
+            "moves": ["Amnesia", "Selfdestruct", "Hyper Voice", "Water Spout"],
             "nature": "Hardy"
         },
         "Team Aqua Grunt #4 @ Aqua Hideout": {
             "ability": "Pressure",
             "item": "Choice Band",
             "level": 59,
-            "moves": ["Self-Destruct"],
+            "moves": ["Selfdestruct"],
             "nature": "Gentle"
         }
     },
     "Walrein": {
         "Cooltrainer Katelynn": {
             "ability": "Rain Dish",
-            "item": "Never-Melt Ice",
+            "item": "NeverMeltIce",
             "level": 88,
             "moves": ["Ice Shard", "Ice Beam", "Earthquake", "Surf"],
             "nature": "Naive"
@@ -13773,7 +13773,7 @@
                 "sp": 0
             },
             "level": 6,
-            "moves": ["Swift", "Sand Attack"],
+            "moves": ["Swift", "Sand-Attack"],
             "nature": "Timid"
         }
     },
