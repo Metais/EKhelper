@@ -4,6 +4,7 @@ from read_files import *
 class GameInfo:
     def __init__(self):
         self.moves = read_moves_sheet()
-        self.pokemons = read_pokemon_sheet(self.moves)
-        self.items = read_items()
         self.abilities = read_abilities()
+        self.pokemons = read_pokemon_file(self.moves, self.abilities)
+        self.items = read_items()
+        

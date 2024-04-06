@@ -6,12 +6,13 @@ import json
 from read_files import read_my_pokemon
 
 class TrainerSelectionGUI:
-    def __init__(self, root, game_info, my_pokemons):
+    def __init__(self, root, game_info, my_pokemons, selected_trainer=None):
         self.root = root
         self.game_info = game_info
         self.my_pokemons = my_pokemons
 
         self.root.title("Trainer Selection")
+        self.root.iconbitmap("images/pokeball.ico")
 
         # Create the entry widget
         self.entry = ttk.Entry(root, width=60)
@@ -19,7 +20,7 @@ class TrainerSelectionGUI:
         self.entry.bind('<KeyRelease>', self.on_key_release)
 
         # Create the listbox widget
-        self.lb = tk.Listbox(root, width=50)
+        self.lb = tk.Listbox(root, width=50, height=30)
         self.lb.pack(expand=True, side=tk.LEFT)
 
         # Add scrollbar to the Listbox
@@ -38,6 +39,12 @@ class TrainerSelectionGUI:
         # Add options to the Listbox
         for i, trainer in enumerate(self.trainers, start=1):
             self.lb.insert(tk.END, f'{i}: {trainer.encode("latin1").decode("utf-8")}')
+        
+        # Highlight last-selected trainer if it exists
+        if selected_trainer:
+            self.selected_trainer = selected_trainer
+            self.lb.selection_set(self.trainers.index(selected_trainer))
+            self.entry.insert(tk.END, selected_trainer)
 
         # Create a button to switch to the battle window
         self.battle_button = ttk.Button(root, text="Go to Battle", command=self.switch_to_battle)

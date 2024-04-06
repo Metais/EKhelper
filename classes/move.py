@@ -1,4 +1,4 @@
-from type import Type
+from classes.type import Type
 
 class Move:
     def __init__(self, name, description, type, pp, power, acc, category):

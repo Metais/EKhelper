@@ -1,13 +1,13 @@
 from PIL import Image
-from type import Type
+from classes.type import Type
 from math import floor
-from nature import Nature
+from classes.nature import Nature
 
 class Pokemon:
-    def __init__(self, index, name, types, base_stats):
-        self.index = index
+    def __init__(self, name, types, abilities, base_stats):
         self.name = name
         self.types = [Type.get_type(x) for x in types]
+        self.abilities = abilities
         self.base_hp = base_stats[0]
         self.base_atk = base_stats[1]
         self.base_def = base_stats[2]
@@ -40,7 +40,7 @@ class Pokemon:
         self.very_vulnerable_to = None
 
     def __copy__(self):
-        return Pokemon(self.index, self.name, [x.name for x in self.types], 
+        return Pokemon(self.name, [x.name for x in self.types], self.abilities,
                        [self.base_hp, self.base_atk, self.base_def, self.base_spa, self.base_spd, self.base_spe])
 
     def get_real_hp_stat(self, hp_iv):
@@ -85,7 +85,7 @@ class Pokemon:
             f"Special Attack: {low_spa}-{high_spa}\nSpecial Defense: {low_spd}-{high_spd}\nSpeed: {low_spe}-{high_spe}"
     
     # For if IV is known
-    def print_current_stats(self):
+    def print_current_stats(self, with_ability=False):
         hp = self.get_real_hp_stat(self.hp_iv)
         atk = self.get_real_atk_stat(self.atk_iv)
         df = self.get_real_def_stat(self.def_iv)
@@ -98,6 +98,9 @@ class Pokemon:
             basics += f"+{self.types[1].name})"
         else:
             basics += ")"
+
+        if with_ability:
+            basics += f"\nAbility: {self.ability.name} - {self.ability.description}"
 
         return f"{basics}\nCurrent base stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
 

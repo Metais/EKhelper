@@ -3,7 +3,7 @@
         "Psychic Edward": {
             "ability": "Synchronize",
             "level": 18,
-            "moves": ["Psychic", "Ice Punch", "Thunder Punch", "Fire Punch"],
+            "moves": ["Psychic", "Ice Punch", "Thunderpunch", "Fire Punch"],
             "nature": "Timid"
         }
     },
@@ -145,7 +145,7 @@
             "ability": "Synchronize",
             "item": "Lum Berry",
             "level": 100,
-            "moves": ["Psychic", "Hidden Power Water", "Fire Punch", "Thunder Punch"],
+            "moves": ["Psychic", "Hidden Power Water", "Fire Punch", "Thunderpunch"],
             "nature": "Serious"
         },
         "Expert Paxton": {
@@ -173,28 +173,28 @@
             "ability": "Synchronize",
             "item": "Lum Berry",
             "level": 38,
-            "moves": ["Psychic", "Fire Punch", "Thunder Punch", "Ice Punch"],
+            "moves": ["Psychic", "Fire Punch", "Thunderpunch", "Ice Punch"],
             "nature": "Mild"
         },
         "Old Couple Miu & Yuki": {
             "ability": "Synchronize",
             "item": "Quick Claw",
             "level": 75,
-            "moves": ["Skill Swap", "Psychic", "Thunder Punch", "Ice Punch"],
+            "moves": ["Skill Swap", "Psychic", "Thunderpunch", "Ice Punch"],
             "nature": "Careful"
         },
         "Team Magma Grunt #8 @ Magma Hideout": {
             "ability": "Synchronize",
             "item": "Scope Lens",
             "level": 57,
-            "moves": ["Psychic", "Fire Punch", "Ice Punch", "Thunder Punch"],
+            "moves": ["Psychic", "Fire Punch", "Ice Punch", "Thunderpunch"],
             "nature": "Adamant"
         },
         "Winstrate Vito": {
             "ability": "Synchronize",
             "item": "Lum Berry",
             "level": 95,
-            "moves": ["Psychic", "Fire Punch", "Thunder Punch", "Hidden Power Grass"],
+            "moves": ["Psychic", "Fire Punch", "Thunderpunch", "Hidden Power Grass"],
             "nature": "Adamant"
         }
     },
@@ -385,7 +385,7 @@
         "Swimmerm Santiago": {
             "ability": "Static",
             "level": 66,
-            "moves": ["Shock Wave", "Thunder Punch", "Thunderbolt", "Body Slam"],
+            "moves": ["Shock Wave", "Thunderpunch", "Thunderbolt", "Body Slam"],
             "nature": "Naughty"
         },
         "Team Aqua Grunt #4 @ Seafloor Cavern": {
@@ -712,7 +712,7 @@
                 "sp": 24
             },
             "level": 17,
-            "moves": ["Dragon Breath", "Rock Tomb", "Double-Edge", "Brick Break"],
+            "moves": ["Dragonbreath", "Rock Tomb", "Double-Edge", "Brick Break"],
             "nature": "Docile"
         },
         "Team Magma Grunt @ Petalburg Woods": {
@@ -1055,42 +1055,42 @@
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 42,
-            "moves": ["Blaze Kick", "Sky Uppercut", "Thunder Punch", "Solar Beam"],
+            "moves": ["Blaze Kick", "Sky Uppercut", "Thunderpunch", "Solar Beam"],
             "nature": "Relaxed"
         },
         "Pokémon Trainer Brendan #4 [Blaziken]": {
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 60,
-            "moves": ["Overheat", "Superpower", "Thunder Punch", "Quick Attack"],
+            "moves": ["Overheat", "Superpower", "Thunderpunch", "Quick Attack"],
             "nature": "Gentle"
         },
         "Pokémon Trainer May #4 [Blaziken]": {
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 60,
-            "moves": ["Overheat", "Superpower", "Thunder Punch", "Rock Slide"],
+            "moves": ["Overheat", "Superpower", "Thunderpunch", "Rock Slide"],
             "nature": "Hasty"
         },
         "Pokémon Ranger Flint": {
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 52,
-            "moves": ["Sky Uppercut", "Flamethrower", "Quick Attack", "Thunder Punch"],
+            "moves": ["Sky Uppercut", "Flamethrower", "Quick Attack", "Thunderpunch"],
             "nature": "Quiet"
         },
         "Team Magma Grunt #10 @ Magma Hideout": {
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 61,
-            "moves": ["Blaze Kick", "Solar Beam", "Brick Break", "Thunder Punch"],
+            "moves": ["Blaze Kick", "Solar Beam", "Brick Break", "Thunderpunch"],
             "nature": "Hardy"
         },
         "Team Magma Grunt #3 @ Mossdeep Space Center": {
             "ability": "Blaze",
             "item": "Bright Powder",
             "level": 67,
-            "moves": ["Blaze Kick", "Brick Break", "Earthquake", "Thunder Punch"],
+            "moves": ["Blaze Kick", "Brick Break", "Earthquake", "Thunderpunch"],
             "nature": "Bold"
         }
     },
@@ -1283,7 +1283,7 @@
             "ability": "Sand Veil",
             "item": "Bright Powder",
             "level": 40,
-            "moves": ["Needle Arm", "Brick Break", "Faint Attack", "Thunder Punch"],
+            "moves": ["Needle Arm", "Brick Break", "Faint Attack", "Thunderpunch"],
             "nature": "Careful"
         },
         "Team Magma Grunt #1 @ Route 112": {
@@ -1499,7 +1499,7 @@
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 53,
-            "moves": ["Earthquake", "Fire Blast", "Thunder Punch", "Dragon Claw"],
+            "moves": ["Earthquake", "Fire Blast", "Thunderpunch", "Dragon Claw"],
             "nature": "Modest"
         },
         "Leader Flannery": {
@@ -1520,14 +1520,14 @@
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 71,
-            "moves": ["Overheat", "Thunder Punch", "Dragon Claw", "Hidden Power Ice"],
+            "moves": ["Overheat", "Thunderpunch", "Dragon Claw", "Hidden Power Ice"],
             "nature": "Relaxed"
         },
         "Pokémon Pokémon Trainer Brendan #4 [Sceptile]": {
             "ability": "Blaze",
             "item": "Salac Berry",
             "level": 59,
-            "moves": ["Overheat", "Dragon Claw", "Hidden Power Grass", "Thunder Punch"],
+            "moves": ["Overheat", "Dragon Claw", "Hidden Power Grass", "Thunderpunch"],
             "nature": "Timid"
         },
         "Pokémon Trainer May #4 [Sceptile]": {
@@ -2048,7 +2048,7 @@
             "ability": "Blaze",
             "item": "Starf Berry",
             "level": 35,
-            "moves": ["Flamethrower", "Brick Break", "Thunder Punch", "Quick Attack"],
+            "moves": ["Flamethrower", "Brick Break", "Thunderpunch", "Quick Attack"],
             "nature": "Hardy"
         },
         "Pokémon Trainer Brendan #1.5 [Combusken]": {
@@ -2612,27 +2612,27 @@
             "ability": "Shed Skin",
             "item": "Dragon Fang",
             "level": 52,
-            "moves": ["Dragon Breath", "Hydro Pump", "Thunder", "Double-Edge"],
+            "moves": ["Dragonbreath", "Hydro Pump", "Thunder", "Double-Edge"],
             "nature": "Calm"
         },
         "Dragon Tamer Lawrence": {
             "ability": "Shed Skin",
             "item": "Dragon Fang",
             "level": 32,
-            "moves": ["Thunder Wave", "Secret Power", "Dragon Breath", "Dragon Rage"],
+            "moves": ["Thunder Wave", "Secret Power", "Dragonbreath", "Dragon Rage"],
             "nature": "Careful"
         },
         "Fisherman Ben": {
             "ability": "Shed Skin",
             "item": "Magnet",
             "level": 26,
-            "moves": ["Thunder Wave", "Dragon Breath", "Water Pulse", "Shock Wave"],
+            "moves": ["Thunder Wave", "Dragonbreath", "Water Pulse", "Shock Wave"],
             "nature": "Impish"
         },
         "Fisherman Jonah": {
             "ability": "Shed Skin",
             "level": 66,
-            "moves": ["Dragon Breath", "Whirlwind", "Hydro Pump", "Double-Edge"],
+            "moves": ["Dragonbreath", "Whirlwind", "Hydro Pump", "Double-Edge"],
             "nature": "Impish"
         },
         "Team Aqua Grunt #1 @ Weather Institute": {
@@ -2770,7 +2770,7 @@
                 "sp": 24
             },
             "level": 17,
-            "moves": ["Dragon Breath", "Flamethrower", "Thunderbolt", "Secret Power"],
+            "moves": ["Dragonbreath", "Flamethrower", "Thunderbolt", "Secret Power"],
             "nature": "Quirky"
         },
         "Team Aqua Grunt #2 @ Slateport City": {
@@ -2792,7 +2792,7 @@
                 "sp": 24
             },
             "level": 14,
-            "moves": ["Thunder Wave", "Dragon Breath", "Water Pulse", "Headbutt"],
+            "moves": ["Thunder Wave", "Dragonbreath", "Water Pulse", "Headbutt"],
             "nature": "Impish"
         }
     },
@@ -3181,7 +3181,7 @@
                 "sp": 15
             },
             "level": 15,
-            "moves": ["Thunder Punch", "Brick Break", "Ice Punch", "Fire Punch"],
+            "moves": ["Thunderpunch", "Brick Break", "Ice Punch", "Fire Punch"],
             "nature": "Mild"
         },
         "Guitarist Joseph": {
@@ -3195,7 +3195,7 @@
                 "sp": 24
             },
             "level": 20,
-            "moves": ["Thunder Punch", "Quick Attack", "Seismic Toss"],
+            "moves": ["Thunderpunch", "Quick Attack", "Seismic Toss"],
             "nature": "Quiet"
         },
         "Guitarist Kirk": {
@@ -3438,7 +3438,7 @@
             "nature": "Brave"
         }
     },
-    "Farfetch’d": {
+    "Farfetch'd": {
         "Pokémon Trainer Brendan #1.5 [Combusken]": {
             "ability": "Keen Eye",
             "item": "Stick",
@@ -3646,7 +3646,7 @@
             "ability": "Static",
             "item": "Lum Berry",
             "level": 21,
-            "moves": ["Agility", "Thunder Punch", "Fire Punch", "Seismic Toss"],
+            "moves": ["Agility", "Thunderpunch", "Fire Punch", "Seismic Toss"],
             "nature": "Lonely"
         }
     },
@@ -4503,7 +4503,7 @@
             "ability": "Overgrow",
             "item": "Dragon Fang",
             "level": 33,
-            "moves": ["Giga Drain", "Crunch", "Dragon Breath", "Quick Attack"],
+            "moves": ["Giga Drain", "Crunch", "Dragonbreath", "Quick Attack"],
             "nature": "Timid"
         },
         "Pokémon Trainer Brendan #1.5 [Grovyle]": {
@@ -4561,7 +4561,7 @@
             "ability": "Thick Fat",
             "item": "Leftovers",
             "level": 81,
-            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunder Punch"],
+            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunderpunch"],
             "nature": "Quiet"
         },
         "Expert Quincy": {
@@ -4595,14 +4595,14 @@
             "ability": "Thick Fat",
             "item": "Leftovers",
             "level": 66,
-            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunder Punch"],
+            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunderpunch"],
             "nature": "Timid"
         },
         "Psychic Cameron": {
             "ability": "Thick Fat",
             "item": "Quick Claw",
             "level": 74,
-            "moves": ["Reflect", "Psychic", "Fire Punch", "Thunder Punch"],
+            "moves": ["Reflect", "Psychic", "Fire Punch", "Thunderpunch"],
             "nature": "Calm"
         },
         "Psychic Marlene": {
@@ -4615,7 +4615,7 @@
             "ability": "Thick Fat",
             "item": "Spell Tag",
             "level": 50,
-            "moves": ["Psychic", "Shadow Ball", "Thunder Punch", "Confuse Ray"],
+            "moves": ["Psychic", "Shadow Ball", "Thunderpunch", "Confuse Ray"],
             "nature": "Careful"
         },
         "Swimmerm Clarence": {
@@ -5084,7 +5084,7 @@
         "Fisherman Elliot": {
             "ability": "Swift Swim",
             "level": 15,
-            "moves": ["Aurora Beam", "Dragon Breath", "Water Pulse"],
+            "moves": ["Aurora Beam", "Dragonbreath", "Water Pulse"],
             "nature": "Careful"
         }
     },
@@ -5196,7 +5196,7 @@
             "ability": "Insomnia",
             "item": "Leftovers",
             "level": 66,
-            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunder Punch"],
+            "moves": ["Calm Mind", "Psychic", "Fire Punch", "Thunderpunch"],
             "nature": "Adamant"
         },
         "Psychic Cameron": {
@@ -5230,7 +5230,7 @@
             "ability": "Insomnia",
             "item": "Leftovers",
             "level": 51,
-            "moves": ["Psychic", "Fire Punch", "Hypnosis", "Thunder Punch"],
+            "moves": ["Psychic", "Fire Punch", "Hypnosis", "Thunderpunch"],
             "nature": "Sassy"
         }
     },
@@ -5577,7 +5577,7 @@
             "ability": "Synchronize",
             "item": "Magnet",
             "level": 26,
-            "moves": ["Thunder Wave", "Psybeam", "Thunder Punch", "Seismic Toss"],
+            "moves": ["Thunder Wave", "Psybeam", "Thunderpunch", "Seismic Toss"],
             "nature": "Naive"
         },
         "Team Magma Grunt #1 @ Route 112": {
@@ -5591,7 +5591,7 @@
             "ability": "Synchronize",
             "item": "Lum Berry",
             "level": 26,
-            "moves": ["Psychic", "Fire Punch", "Thunder Punch", "Ice Punch"],
+            "moves": ["Psychic", "Fire Punch", "Thunderpunch", "Ice Punch"],
             "nature": "Timid"
         }
     },
@@ -5739,7 +5739,7 @@
             "ability": "Swift Swim",
             "item": "Leftovers",
             "level": 50,
-            "moves": ["Ice Beam", "Dragon Breath", "Body Slam", "Hydro Pump"],
+            "moves": ["Ice Beam", "Dragonbreath", "Body Slam", "Hydro Pump"],
             "nature": "Serious"
         },
         "Elite Four Drake": {
@@ -5753,14 +5753,14 @@
             "ability": "Swift Swim",
             "item": "Quick Claw",
             "level": 46,
-            "moves": ["Dragon Breath", "Ice Beam", "Signal Beam", "Hydro Pump"],
+            "moves": ["Dragonbreath", "Ice Beam", "Signal Beam", "Hydro Pump"],
             "nature": "Naughty"
         },
         "Hex Maniac Kindra": {
             "ability": "Swift Swim",
             "item": "Quick Claw",
             "level": 74,
-            "moves": ["Dragon Breath", "Yawn", "Octazooka", "Ice Beam"],
+            "moves": ["Dragonbreath", "Yawn", "Octazooka", "Ice Beam"],
             "nature": "Lax"
         },
         "Leader #1 Wallace": {
@@ -6104,7 +6104,7 @@
             "ability": "Early Bird",
             "item": "Silver Powder",
             "level": 37,
-            "moves": ["Signal Beam", "Ice Punch", "Thunder Punch", "Giga Drain"],
+            "moves": ["Signal Beam", "Ice Punch", "Thunderpunch", "Giga Drain"],
             "nature": "Quirky"
         },
         "Bug Maniac Ali": {
@@ -6232,7 +6232,7 @@
                 "sp": 24
             },
             "level": 16,
-            "moves": ["Water Pulse", "Ice Punch", "Fire Punch", "Thunder Punch"],
+            "moves": ["Water Pulse", "Ice Punch", "Fire Punch", "Thunderpunch"],
             "nature": "Sassy"
         },
         "Guitarist Joseph": {
@@ -6342,7 +6342,7 @@
             "ability": "Swift Swim",
             "item": "Magnet",
             "level": 25,
-            "moves": ["Water Pulse", "Thunder Punch", "Razor Leaf", "Teeter Dance"],
+            "moves": ["Water Pulse", "Thunderpunch", "Razor Leaf", "Teeter Dance"],
             "nature": "Relaxed"
         },
         "Leader #1 Wallace": {
@@ -6356,7 +6356,7 @@
             "ability": "Swift Swim",
             "item": "Lum Berry",
             "level": 76,
-            "moves": ["Hydro Pump", "Giga Drain", "Thunder Punch", "Ice Beam"],
+            "moves": ["Hydro Pump", "Giga Drain", "Thunderpunch", "Ice Beam"],
             "nature": "Docile"
         },
         "Pokémon Ranger Ashley": {
@@ -6384,7 +6384,7 @@
             "ability": "Swift Swim",
             "item": "Scope Lens",
             "level": 63,
-            "moves": ["Fire Punch", "Thunder Punch", "Ice Beam", "Surf"],
+            "moves": ["Fire Punch", "Thunderpunch", "Ice Beam", "Surf"],
             "nature": "Rash"
         },
         "Team Aqua Grunt #4 @ Weather Institute": {
@@ -6398,7 +6398,7 @@
             "ability": "Swift Swim",
             "item": "Scope Lens",
             "level": 51,
-            "moves": ["Ice Beam", "Fire Punch", "Thunder Punch", "Giga Drain"],
+            "moves": ["Ice Beam", "Fire Punch", "Thunderpunch", "Giga Drain"],
             "nature": "Naughty"
         },
         "Team Aqua Grunt #5 @ Aqua Hideout": {
@@ -6419,7 +6419,7 @@
             "ability": "Swift Swim",
             "item": "Quick Claw",
             "level": 60,
-            "moves": ["Solar Beam", "Ice Beam", "Fire Punch", "Thunder Punch"],
+            "moves": ["Solar Beam", "Ice Beam", "Fire Punch", "Thunderpunch"],
             "nature": "Calm"
         }
     },
@@ -6668,7 +6668,7 @@
                 "sp": 18
             },
             "level": 15,
-            "moves": ["Fire Punch", "Brick Break", "Thunder Punch", "Psychic"],
+            "moves": ["Fire Punch", "Brick Break", "Thunderpunch", "Psychic"],
             "nature": "Modest"
         }
     },
@@ -6701,14 +6701,14 @@
             "ability": "Flame Body",
             "item": "Lum Berry",
             "level": 50,
-            "moves": ["Fire Blast", "Mach Punch", "Thunder Punch", "Hidden Power Grass"],
+            "moves": ["Fire Blast", "Mach Punch", "Thunderpunch", "Hidden Power Grass"],
             "nature": "Lax"
         },
         "Kindler Jeff": {
             "ability": "Flame Body",
             "item": "Charcoal",
             "level": 36,
-            "moves": ["Fire Blast", "Thunder Punch", "Cross Chop", "Psychic"],
+            "moves": ["Fire Blast", "Thunderpunch", "Cross Chop", "Psychic"],
             "nature": "Lonely"
         },
         "Swimmerm Rodney": {
@@ -6721,7 +6721,7 @@
             "ability": "Flame Body",
             "item": "Lum Berry",
             "level": 36,
-            "moves": ["Fire Blast", "Thunder Punch", "Cross Chop", "Psychic"],
+            "moves": ["Fire Blast", "Thunderpunch", "Cross Chop", "Psychic"],
             "nature": "Naughty"
         },
         "Team Magma Grunt #4 @ Route 112": {
@@ -6735,21 +6735,21 @@
             "ability": "Flame Body",
             "item": "Bright Powder",
             "level": 67,
-            "moves": ["Heat Wave", "Cross Chop", "Thunder Punch", "Confuse Ray"],
+            "moves": ["Heat Wave", "Cross Chop", "Thunderpunch", "Confuse Ray"],
             "nature": "Serious"
         },
         "Team Magma Grunt #7 @ Magma Hideout": {
             "ability": "Flame Body",
             "item": "Scope Lens",
             "level": 61,
-            "moves": ["Solar Beam", "Fire Blast", "Cross Chop", "Thunder Punch"],
+            "moves": ["Solar Beam", "Fire Blast", "Cross Chop", "Thunderpunch"],
             "nature": "Naive"
         },
         "Triathlete Geraldine": {
             "ability": "Flame Body",
             "item": "Lum Berry",
             "level": 39,
-            "moves": ["Heat Wave", "Cross Chop", "Thunder Punch", "Solar Beam"],
+            "moves": ["Heat Wave", "Cross Chop", "Thunderpunch", "Solar Beam"],
             "nature": "Lax"
         }
     },
@@ -7337,7 +7337,7 @@
             "ability": "Pure Power",
             "item": "Lum Berry",
             "level": 16,
-            "moves": ["Revenge", "Ice Punch", "Thunder Punch", "Psychic"],
+            "moves": ["Revenge", "Ice Punch", "Thunderpunch", "Psychic"],
             "nature": "Bold"
         },
         "Battle Girl Laura": {
@@ -7533,7 +7533,7 @@
             "ability": "Clear Body",
             "item": "Quick Claw",
             "level": 74,
-            "moves": ["Earthquake", "Meteor Mash", "Ice Punch", "Thunder Punch"],
+            "moves": ["Earthquake", "Meteor Mash", "Ice Punch", "Thunderpunch"],
             "nature": "Docile"
         },
         "Winstrate Vito": {
@@ -8152,7 +8152,7 @@
             "nature": "Lonely"
         }
     },
-    "Nidoran-F": {
+    "Nidoran(f)": {
         "Lass Janice": {
             "ability": "Poison Point",
             "ivs": {
@@ -8168,7 +8168,7 @@
             "nature": "Rash"
         }
     },
-    "Nidoran-M": {
+    "Nidoran(m)": {
         "School Kid Jerry": {
             "ability": "Poison Point",
             "ivs": {
@@ -8930,7 +8930,7 @@
             "ability": "Lightning Rod",
             "item": "Sitrus Berry",
             "level": 17,
-            "moves": ["Thunder Punch", "Quick Attack", "Thunder Wave", "Seismic Toss"],
+            "moves": ["Thunderpunch", "Quick Attack", "Thunder Wave", "Seismic Toss"],
             "nature": "Adamant"
         },
         "Pokémon Trainer Red #1": {
@@ -10172,14 +10172,14 @@
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 50,
-            "moves": ["Dragon Claw", "Leaf Blade", "Thunder Punch", "Grass Whistle"],
+            "moves": ["Dragon Claw", "Leaf Blade", "Thunderpunch", "Grass Whistle"],
             "nature": "Lax"
         },
         "Expert Felix": {
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 87,
-            "moves": ["Giga Drain", "Thunder Punch", "Hidden Power Fire", "Dragon Claw"],
+            "moves": ["Giga Drain", "Thunderpunch", "Hidden Power Fire", "Dragon Claw"],
             "nature": "Hasty"
         },
         "Pokémaniac Gilbert": {
@@ -10193,7 +10193,7 @@
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 50,
-            "moves": ["Leaf Blade", "Hidden Power Water", "Thunder Punch", "Dragon Claw"],
+            "moves": ["Leaf Blade", "Hidden Power Water", "Thunderpunch", "Dragon Claw"],
             "nature": "Sassy"
         },
         "Pokémon Trainer Brendan #4 [Sceptile]": {
@@ -10207,21 +10207,21 @@
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 50,
-            "moves": ["Leaf Blade", "Hidden Power Water", "Thunder Punch", "Dragon Claw"],
+            "moves": ["Leaf Blade", "Hidden Power Water", "Thunderpunch", "Dragon Claw"],
             "nature": "Serious"
         },
         "Pokémon Trainer May #4 [Sceptile]": {
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 60,
-            "moves": ["Giga Drain", "Earthquake", "Thunder Punch", "Dragon Claw"],
+            "moves": ["Giga Drain", "Earthquake", "Thunderpunch", "Dragon Claw"],
             "nature": "Sassy"
         },
         "Triathlete Brianna": {
             "ability": "Overgrow",
             "item": "Lum Berry",
             "level": 71,
-            "moves": ["Leaf Blade", "Dragon Claw", "Thunder Punch", "Earthquake"],
+            "moves": ["Leaf Blade", "Dragon Claw", "Thunderpunch", "Earthquake"],
             "nature": "Naughty"
         },
         "Triathlete Mary": {
@@ -10289,7 +10289,7 @@
             "ability": "Poison Point",
             "item": "Lum Berry",
             "level": 43,
-            "moves": ["Hydro Pump", "Ice Beam", "Dragon Breath", "Octazooka"],
+            "moves": ["Hydro Pump", "Ice Beam", "Dragonbreath", "Octazooka"],
             "nature": "Quiet"
         },
         "Triathlete Abigail": {
@@ -10492,7 +10492,7 @@
             "ability": "Rock Head",
             "item": "Shell Bell",
             "level": 27,
-            "moves": ["Dragon Breath", "Flamethrower", "Dragon Rage", "Body Slam"],
+            "moves": ["Dragonbreath", "Flamethrower", "Dragon Rage", "Body Slam"],
             "nature": "Hasty"
         },
         "Team Magma Grunt #5 @ Route 114": {
@@ -11627,7 +11627,7 @@
             "ability": "Rock Head",
             "item": "Sitrus Berry",
             "level": 12,
-            "moves": ["Calm Mind", "Thunder Punch", "Ice Punch", "Rock Tomb"],
+            "moves": ["Calm Mind", "Thunderpunch", "Ice Punch", "Rock Tomb"],
             "nature": "Sassy"
         },
         "Swimmerm Kevin": {
@@ -12370,14 +12370,14 @@
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 59,
-            "moves": ["Overheat", "Earthquake", "Hidden Power Grass", "Thunder Punch"],
+            "moves": ["Overheat", "Earthquake", "Hidden Power Grass", "Thunderpunch"],
             "nature": "Naive"
         },
         "Pokémon Trainer May #4 [Swampert]": {
             "ability": "Blaze",
             "item": "Lum Berry",
             "level": 59,
-            "moves": ["Overheat", "Earthquake", "Hidden Power Grass", "Thunder Punch"],
+            "moves": ["Overheat", "Earthquake", "Hidden Power Grass", "Thunderpunch"],
             "nature": "Timid"
         },
         "Team Magma Grunt #2 @ Mossdeep Space Center": {
@@ -12391,7 +12391,7 @@
             "ability": "Blaze",
             "item": "King's Rock",
             "level": 60,
-            "moves": ["Heat Wave", "Thunder Punch", "Solar Beam", "Earthquake"],
+            "moves": ["Heat Wave", "Thunderpunch", "Solar Beam", "Earthquake"],
             "nature": "Rash"
         }
     },
@@ -12805,7 +12805,7 @@
             "ability": "Levitate",
             "item": "Dragon Fang",
             "level": 32,
-            "moves": ["Quick Attack", "Mud Shot", "Dragon Breath", "Giga Drain"],
+            "moves": ["Quick Attack", "Mud Shot", "Dragonbreath", "Giga Drain"],
             "nature": "Serious"
         },
         "Team Magma Grunt #4 @ Route 114": {
@@ -12819,7 +12819,7 @@
             "ability": "Levitate",
             "item": "King's Rock",
             "level": 29,
-            "moves": ["Mud Shot", "Dragon Breath", "Giga Drain", "Signal Beam"],
+            "moves": ["Mud Shot", "Dragonbreath", "Giga Drain", "Signal Beam"],
             "nature": "Bold"
         }
     },

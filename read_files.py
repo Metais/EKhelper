@@ -4,11 +4,11 @@ import copy
 import csv
 import json
 
-from pokemon import Pokemon
-from move import Move
-from nature import Nature
-from item import Item
-from ability import Ability
+from classes.pokemon import Pokemon
+from classes.move import Move
+from classes.nature import Nature
+from classes.item import Item
+from classes.ability import Ability
 from pokemondata.Gen3Save import Gen3Save
 
 def read_moves_sheet():
@@ -24,19 +24,22 @@ def read_moves_sheet():
     return moves
 
 
-def read_pokemon_sheet(moves):
+def read_pokemon_file(moves, abilities):
     pokemons = {}
-    pokemon_sheet = openpyxl.load_workbook("data/pokemon.xlsx").active
-    
-    # Establish the collection of pokemon
-    for row in pokemon_sheet.iter_rows(min_row=3, values_only=True):
-        index = row[0]
-        name = row[1]
-        base_stats = [row[2], row[3], row[4], row[5], row[6], row[7]]
-        types = [x for x in row[8:] if x is not None]
 
-        # Create a Pokemon object and store it in the dictionary
-        pokemons[name] = Pokemon(index, name, types, base_stats)
+    with open('data/pokemons.json', 'r', encoding='utf-8') as f:
+        pokemon_data = json.load(f)
+
+        for pokemon_name, pokemon in pokemon_data.items():
+            poke_abilities = []
+            for ability in pokemon["Abilities"]:
+                if ability.lower() in abilities:
+                    poke_abilities.append(abilities[ability.lower()])
+                else:
+                    poke_abilities.append(Ability(ability, "Undefined"))
+
+            # Create a Pokemon object and store it in the dictionary
+            pokemons[pokemon_name] = Pokemon(pokemon_name, pokemon["Types"], poke_abilities, pokemon["Base Stats"])
 
     # Add level moves to the pokemon
     with open('data/EK learnsets.txt', 'r') as f:
@@ -102,6 +105,12 @@ def handle_move_name_exceptions(move):
             return "thundershock"
         case "sonic boom":
             return "sonicboom"
+        case "metal sound":
+            return "flash cannon"
+        case "spark":
+            return "wild charge"
+        case "ancient power":
+            return "ancientpower"
         case _:
             raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 
@@ -118,6 +127,10 @@ def read_my_pokemon(game_info):
         pokemon = copy.copy(game_info.pokemons[gen3pokemon.species['name']])
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
+        pokemon.ability = pokemon.abilities[0]
+
+        if len(pokemon.abilities) == 2 and gen3pokemon.ability[-1] == 1:
+            pokemon.ability = pokemon.abilities[1]
 
         # IVs
         pokemon.hp_iv = gen3pokemon.ivs['hp']

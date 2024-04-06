@@ -1,5 +1,5 @@
 import unicodedata
-from type import Type
+from classes.type import Type
 
 class Item:
     def __init__(self, name, description):

@@ -1,10 +1,10 @@
 import tkinter as tk
 
-from game_info import GameInfo
+from classes.game_info import GameInfo
 from trainerselectionGUI import TrainerSelectionGUI
 from read_files import read_my_pokemon
 
-# TODO: Add enemy pokemon abilities
+# TODO: Highlight last-fought trainer when going back to trainer select window
 # TODO: Add badge boosts
 # TODO: Add weather effects
 
