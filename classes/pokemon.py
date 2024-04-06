@@ -149,7 +149,7 @@ class Pokemon:
         return self.very_vulnerable_to
 
     def get_gif(self):
-        gif_image = Image.open(f"animations/{self.name}.gif")
+        gif_image = Image.open(f"images/pokemons/{self.name}.gif")
         return gif_image
     
     def __str__(self):

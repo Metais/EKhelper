@@ -130,7 +130,7 @@ class PokemonBattleGUI:
         cur_enemy_pokemon = self.enemy_team_info[self.current_index][0]
 
         # Load enemy Pokemon image
-        enemy_pokemon_image = Image.open(f"animations/{cur_enemy_pokemon.name}.gif")
+        enemy_pokemon_image = cur_enemy_pokemon.get_gif()
         enemy_pokemon_image = enemy_pokemon_image.resize((200, 200))
         self.enemy_pokemon_label.image = ImageTk.PhotoImage(enemy_pokemon_image)
         self.enemy_pokemon_label.config(image=self.enemy_pokemon_label.image)
@@ -172,7 +172,7 @@ class PokemonBattleGUI:
             self.my_pokemon_info_top[i].config(text=f"Lv. {pokemon_i.lvl} {pokemon_i.name}")
 
             # Pokemon image
-            pokemon_image = Image.open(f"animations/{pokemon_name}.gif")
+            pokemon_image = pokemon_i.get_gif()
             pokemon_image = pokemon_image.resize((100, 100))
             self.my_pokemon_vs_him_image_labels[i].image = ImageTk.PhotoImage(pokemon_image)
             self.my_pokemon_vs_him_image_labels[i].config(image=self.my_pokemon_vs_him_image_labels[i].image)
@@ -203,7 +203,7 @@ class PokemonBattleGUI:
             self.my_pokemon_info_bot[i].config(text=f"Lv. {pokemon_i.lvl} {pokemon_i.name}")
 
             # Pokemon image
-            pokemon_image = Image.open(f"animations/{pokemon_name}.gif")
+            pokemon_image = pokemon_i.get_gif()
             pokemon_image = pokemon_image.resize((100, 100))
             self.him_vs_my_pokemon_image_labels[i].image = ImageTk.PhotoImage(pokemon_image)
             self.him_vs_my_pokemon_image_labels[i].config(image=self.him_vs_my_pokemon_image_labels[i].image)
