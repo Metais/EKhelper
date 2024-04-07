@@ -32,20 +32,31 @@ class TrainerSelectionGUI:
         self.lb.bind('<<ListboxSelect>>', self.on_select)
 
         # Load the trainers from JSON file
-        with open(f'data/trainers.json', 'r') as f:
+        with open(f'data/trainers.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
             self.trainers = list(data.keys())
 
         # Add options to the Listbox
         for i, trainer in enumerate(self.trainers, start=1):
-            self.lb.insert(tk.END, f'{i}: {trainer.encode("latin1").decode("utf-8")}')
+            self.lb.insert(tk.END, f'{i}: {trainer}')
         
         # Highlight last-selected trainer if it exists
+        with open(f'data/save.txt', 'r') as f:
+            save_line = f.readline()
+
+            # If not a previously selected trainer, it's startup, attempt from save file
+            if not selected_trainer and save_line and save_line != "":
+                selected_trainer = save_line.strip()
+
         if selected_trainer:
             self.selected_trainer = selected_trainer
-            self.lb.selection_set(self.trainers.index(selected_trainer))
+            selected_trainer_index = self.trainers.index(selected_trainer)
+            self.lb.selection_set(selected_trainer_index)
             self.entry.insert(tk.END, selected_trainer)
 
+            # Scroll listbox down to last selected trainer
+            self.lb.yview_scroll(selected_trainer_index, 'units')
+                    
         # Create a button to switch to the battle window
         self.battle_button = ttk.Button(root, text="Go to Battle", command=self.switch_to_battle)
         self.battle_button.pack(side=tk.TOP, pady=0)

@@ -288,6 +288,9 @@ class PokemonBattleGUI:
     def back_to_trainer_select(self):
         # Lazy import
         from trainerselectionGUI import TrainerSelectionGUI
+        # Record last-watched trainer in save file
+        with open(f'data/save.txt', 'w') as f:
+            f.write(self.enemy_trainer)
         # Destroy the current window and switch to the battle window
         self.root.destroy()
         root = tk.Tk()

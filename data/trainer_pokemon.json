@@ -1714,14 +1714,14 @@
     },
     "Chinchou": {
         "Fisherman Ben": {
-            "Ability": "Volt Absorb",
+            "ability": "Volt Absorb",
             "item": "Lum Berry",
             "level": 27,
             "moves": ["Thunder Wave", "Ice Beam", "Thunderbolt", "Surf"],
             "nature": "Bashful"
         },
         "Team Aqua Grunt #2 @ Slateport City": {
-            "Ability": "Volt Absorb",
+            "ability": "Volt Absorb",
             "item": "King's Rock",
             "level": 19,
             "moves": ["Thunder Wave", "Water Pulse", "Shock Wave", "Headbutt"],
