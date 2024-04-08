@@ -1106,42 +1106,42 @@
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 52,
-            "moves": ["Thunder Wave", "Soft-Boiled", "Seismic Toss", "Ice Beam"],
+            "moves": ["Thunder Wave", "Softboiled", "Seismic Toss", "Ice Beam"],
             "nature": "Hardy"
         },
         "Pokéfan Alexia": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 42,
-            "moves": ["Toxic", "Protect", "Charm", "Soft-Boiled"],
+            "moves": ["Toxic", "Protect", "Charm", "Softboiled"],
             "nature": "Hardy"
         },
         "Pokémon Breeder Gabrielle": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 50,
-            "moves": ["Soft-Boiled", "Seismic Toss", "Charm", "Ice Beam"],
+            "moves": ["Softboiled", "Seismic Toss", "Charm", "Ice Beam"],
             "nature": "Relaxed"
         },
         "Pokémon Trainer Wally #2": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 85,
-            "moves": ["Counter", "Soft-Boiled", "Seismic Toss", "Psywave"],
+            "moves": ["Counter", "Softboiled", "Seismic Toss", "Psywave"],
             "nature": "Naughty"
         },
         "Team Aqua Grunt #5 @ Seafloor Cavern": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 69,
-            "moves": ["Thunder", "Soft-Boiled", "Ice Beam", "Counter"],
+            "moves": ["Thunder", "Softboiled", "Ice Beam", "Counter"],
             "nature": "Lax"
         },
         "Team Aqua Grunt #6 @ Aqua Hideout": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 62,
-            "moves": ["Counter", "Soft-Boiled", "Psywave", "Seismic Toss"],
+            "moves": ["Counter", "Softboiled", "Psywave", "Seismic Toss"],
             "nature": "Sassy"
         }
     },
@@ -1483,14 +1483,14 @@
             "ability": "Natural Cure",
             "item": "Lucky Punch",
             "level": 22,
-            "moves": ["Double-Edge", "Brick Break", "Soft-Boiled", "Water Pulse"],
+            "moves": ["Double-Edge", "Brick Break", "Softboiled", "Water Pulse"],
             "nature": "Naive"
         },
         "Team Magma Grunt #6 @ Route 114": {
             "ability": "Natural Cure",
             "item": "Leftovers",
             "level": 34,
-            "moves": ["Soft-Boiled", "Counter", "Toxic", "Seismic Toss"],
+            "moves": ["Softboiled", "Counter", "Toxic", "Seismic Toss"],
             "nature": "Calm"
         }
     },
@@ -1870,7 +1870,7 @@
             "ability": "Cute Charm",
             "item": "Lum Berry",
             "level": 99,
-            "moves": ["Follow Me", "Soft-Boiled"],
+            "moves": ["Follow Me", "Softboiled"],
             "nature": "Lax"
         },
         "Cooltrainer Virgil": {
@@ -7581,7 +7581,7 @@
             "ability": "Synchronize",
             "item": "Lum Berry",
             "level": 88,
-            "moves": ["Soft-Boiled", "Psychic", "Heat Wave", "Signal Beam"],
+            "moves": ["Softboiled", "Psychic", "Heat Wave", "Signal Beam"],
             "nature": "Lax"
         }
     },
@@ -11058,7 +11058,7 @@
         "Twins Gina & Mia (1)": {
             "ability": "Own Tempo",
             "level": 8,
-            "moves": ["Reflect", "Teeter Dance", "Soft-Boiled", "Focus Punch"],
+            "moves": ["Reflect", "Teeter Dance", "Softboiled", "Focus Punch"],
             "nature": "Quiet"
         },
         "Twins Gina & Mia (2)": {
@@ -12152,7 +12152,7 @@
                 "sp": 24
             },
             "level": 5,
-            "moves": ["Metronome", "Soft-Boiled"],
+            "moves": ["Metronome", "Softboiled"],
             "nature": "Hasty"
         }
     },
@@ -12161,42 +12161,42 @@
             "ability": "Serene Grace",
             "item": "Leftovers",
             "level": 44,
-            "moves": ["Follow Me", "Soft-Boiled"],
+            "moves": ["Follow Me", "Softboiled"],
             "nature": "Brave"
         },
         "Bird Keeper Perry": {
             "ability": "Serene Grace",
             "item": "Leftovers",
             "level": 43,
-            "moves": ["Fly", "Soft-Boiled", "Thunder Wave", "Seismic Toss"],
+            "moves": ["Fly", "Softboiled", "Thunder Wave", "Seismic Toss"],
             "nature": "Bold"
         },
         "Cooltrainer Debra": {
             "ability": "Serene Grace",
             "item": "Lum Berry",
             "level": 100,
-            "moves": ["Follow Me", "Soft-Boiled"],
+            "moves": ["Follow Me", "Softboiled"],
             "nature": "Bold"
         },
         "Lady Vivian": {
             "ability": "Serene Grace",
             "item": "Leftovers",
             "level": 25,
-            "moves": ["Thunder Wave", "Soft-Boiled", "Seismic Toss", "Water Pulse"],
+            "moves": ["Thunder Wave", "Softboiled", "Seismic Toss", "Water Pulse"],
             "nature": "Relaxed"
         },
         "Sr and Jr Kate & Joy": {
             "ability": "Serene Grace",
             "item": "Leftovers",
             "level": 54,
-            "moves": ["Follow Me", "Soft-Boiled"],
+            "moves": ["Follow Me", "Softboiled"],
             "nature": "Bashful"
         },
         "Sr and Jr Kim & Iris": {
             "ability": "Serene Grace",
             "item": "Shoal Shell",
             "level": 100,
-            "moves": ["Follow Me", "Soft-Boiled"],
+            "moves": ["Follow Me", "Softboiled"],
             "nature": "Quirky"
         }
     },

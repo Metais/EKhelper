@@ -108,9 +108,9 @@ class PokemonBattleGUI:
                 # Strongest move against him
                 strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
                 # Who goes first (0 = me, 1 = him, 2 = tie)
-                if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(31):
+                if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv):
                     goes_first = 0
-                elif my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) < enemy_pokemon.get_real_spe_stat(31):
+                elif my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) < enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv):
                     goes_first = 1
                 else:
                     goes_first = 2

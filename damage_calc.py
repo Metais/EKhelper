@@ -30,6 +30,8 @@ def find_highest_damaging_move(source_pkmn, target_pkmn):
             # For variable/unique power moves, do unique behavior
             if source_pokemon_move.name == "Sonicboom":
                 spm_power = 20 if move_effectiveness != 0 else 0
+            if source_pokemon_move.name == "Night Shade":
+                spm_power = source_pkmn.lvl if move_effectiveness != 0 else 0
             elif source_pokemon_move.name == "Dragon Rage":
                 spm_power = 40
             elif source_pokemon_move.name == "Seismic Toss":

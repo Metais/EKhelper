@@ -93,6 +93,10 @@ class TrainerSelectionGUI:
             self.entry.insert(tk.END, self.selected_trainer)
 
     def switch_to_battle(self):
+        # Don't switch if demarcated entry is selected that signifies location in map
+        if self.selected_trainer.startswith('* '):
+            return
+
         # Lazy import
         from pokemonbattleGUI import PokemonBattleGUI
         # Destroy the current window and switch to the battle window

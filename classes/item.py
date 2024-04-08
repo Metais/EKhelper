@@ -1,5 +1,5 @@
 import unicodedata
-from classes.type import Type
+from classes.type import Type, get_physical_types
 
 class Item:
     def __init__(self, name, description):
@@ -23,7 +23,7 @@ class Item:
             case "Charcoal":
                 return 1.1 if move.type == Type.Fire else 1
             case "Choice Band":
-                return 1.5 if move.category == "Physical" else 1
+                return 1.5 if move.type in get_physical_types() else 1
             case "DeepSeaTooth":
                 return 2 if pokemon.name == "Clamperl" and move.category == "Special" else 1
             case "Dragon Fang":
