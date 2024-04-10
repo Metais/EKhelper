@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from math import floor
 from read_files import read_trainer_pokemon_from_json
-from damage_calc import find_highest_damaging_move, get_move_details
+from damage_calc import get_move_details
 
 class ToolTip:
     def __init__(self, widget, text, offsetx, offsety):
