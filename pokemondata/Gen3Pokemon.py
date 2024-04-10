@@ -144,18 +144,7 @@ class Gen3Pokemon:
 		self.moves = moves
 		self.nature = self.__naturename(self.personality % 25)
 
-		# If a pokemon can have 2 abilities, it gets depending on even (first ability) or odd (second ability)
-		"""i_0_1 = struct.unpack('<I', pkm[0:4])[0]
-		i_0_1_rev = struct.unpack('<I', i_0_1[::-1])[0]
-		i_3_4 = struct.unpack('<I', pkm[3:4])[0]
-		i_3_4_rev = struct.unpack('<I', i_3_4[::-1])[0]"""
-
 		self.reverse_personality = struct.unpack('<I', pkm[::-1][0:4])[0]
-		personality_bit = self.personality
-		personality_bit &= 0xFFFFFFFF
-		self.ability = format(personality_bit, '032b')
-
-		section_m_4_8 = sections['M'][4:8]
 		self.ivs = self.__getivs(int(struct.unpack('<I', sections['M'][4:8])[0]))
 		self.evs = self.__getevs(sections['E'])
 
@@ -170,6 +159,9 @@ class Gen3Pokemon:
 		iv['speed'] = int(bitstring[15:20][::-1], 2)
 		iv['spatk'] = int(bitstring[20:25][::-1], 2)
 		iv['spdef'] = int(bitstring[25:30][::-1], 2)
+
+		self.real_ability = int(bitstring[31:32][::-1], 2)
+
 		return iv
 
 	def __getevs(self, section):

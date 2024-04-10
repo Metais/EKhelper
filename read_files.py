@@ -138,7 +138,7 @@ def read_my_pokemon(game_info):
 
         # Ability
         pokemon.ability = pokemon.abilities[0]
-        if len(pokemon.abilities) == 2 and gen3pokemon.ability[-1] == 1:
+        if len(pokemon.abilities) == 2 and gen3pokemon.real_ability == 1:
             pokemon.ability = pokemon.abilities[1]
 
         # IVs
