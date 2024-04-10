@@ -131,8 +131,13 @@ def read_my_pokemon(game_info):
         pokemon = copy.copy(game_info.pokemons[gen3pokemon.species['name']])
         pokemon.lvl = gen3pokemon.level
         pokemon.nature = Nature.get_nature(gen3pokemon.nature)
-        pokemon.ability = pokemon.abilities[0]
 
+        # Item
+        if gen3pokemon.item.lower() in game_info.items:
+            pokemon.held_item = game_info.items[gen3pokemon.item.lower()]
+
+        # Ability
+        pokemon.ability = pokemon.abilities[0]
         if len(pokemon.abilities) == 2 and gen3pokemon.ability[-1] == 1:
             pokemon.ability = pokemon.abilities[1]
 
