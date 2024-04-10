@@ -2,7 +2,7 @@ import tkinter as tk
 from PIL import Image, ImageTk
 from math import floor
 from read_files import read_trainer_pokemon_from_json
-from damage_calc import find_highest_damaging_move
+from damage_calc import find_highest_damaging_move, get_move_details
 
 class ToolTip:
     def __init__(self, widget, text, offsetx, offsety):
@@ -49,7 +49,7 @@ class PokemonBattleGUI:
         self.get_battle_info()
 
         self.current_index = 0
-        self.box_size = len(self.enemy_team_info[0][1].keys())
+        self.box_size = len(my_pokemons)
 
         # Enemy pokemon image
         self.enemy_pokemon_label = tk.Label(root)
@@ -78,16 +78,44 @@ class PokemonBattleGUI:
 
         # My pokemon Text labels
         self.my_pokemon_move_vs_him_labels = [tk.Label(root) for _ in range(self.box_size)]
+        self.my_pokemon_move_vs_him_texts = [[] for _ in range(self.box_size)]
+
         self.enemy_pokemon_move_vs_me_labels = [tk.Label(root) for _ in range(self.box_size)]
+        self.enemy_pokemon_move_vs_me_texts = [[] for _ in range(self.box_size)]
+        
         self.my_pokemon_info_top = [tk.Label(root) for _ in range(self.box_size)]
         self.my_pokemon_info_bot = [tk.Label(root) for _ in range(self.box_size)]
+
+        # Bind click events for my pokemon move vs him labels
+        for i in range(self.box_size):
+            self.my_pokemon_move_vs_him_labels[i].bind("<Button-1>", lambda event, 
+                                                       index=i: self.swap_text(self.my_pokemon_move_vs_him_labels[index], 
+                                                                               self.my_pokemon_move_vs_him_texts[index]))
+
+        # Bind click events for enemy pokemon move vs me labels
+        for i in range(self.box_size):
+            self.enemy_pokemon_move_vs_me_labels[i].bind("<Button-1>", lambda event, 
+                                                         index=i: self.swap_text(self.enemy_pokemon_move_vs_me_labels[index], 
+                                                                                 self.enemy_pokemon_move_vs_me_texts[index]))
 
         self.load_content()
         self.display_current_pokemon_info()
         self.create_navigation_buttons()
 
+    def swap_text(self, label, texts):
+        # Get the current text of the label
+        current_text = label.cget("text")
+        # Find the index of the current text in the list of texts
+        current_index = texts.index(current_text)
+        # Determine the next index (wrapping around if necessary)
+        next_index = (current_index + 1) % len(texts)
+        # Update the label's text to the next text in the list
+        label.config(text=texts[next_index])
+
     def get_battle_info(self):
         trainer_pokemon = read_trainer_pokemon_from_json(self.enemy_trainer, self.game_info)
+
+        # Index in following lists corresponds to trainer's pokemon in order
         his_moves = []
         his_variable_moves = []
         enemy_team_info = []
@@ -103,10 +131,9 @@ class PokemonBattleGUI:
 
             # For each of my pokemon...
             for my_pokemon in self.my_pokemons:
-                # Strongest move against me
-                strongest_move_vs_me, strongest_power_vs_me = find_highest_damaging_move(enemy_pokemon, my_pokemon)
-                # Strongest move against him
-                strongest_move_vs_him, strongest_power_vs_him = find_highest_damaging_move(my_pokemon, enemy_pokemon)
+                # Move infos
+                move_info_vs_me = get_move_details(enemy_pokemon, my_pokemon)
+                move_info_vs_him = get_move_details(my_pokemon, enemy_pokemon)
                 # Who goes first (0 = me, 1 = him, 2 = tie)
                 if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv):
                     goes_first = 0
@@ -115,10 +142,8 @@ class PokemonBattleGUI:
                 else:
                     goes_first = 2
                 
-                # Store above 5 values per box pokemon for each enemy pokemon
-                enemy_pokemon_analysis[my_pokemon.name] = (strongest_move_vs_me, strongest_power_vs_me, 
-                                                            strongest_move_vs_him, strongest_power_vs_him,
-                                                            goes_first)
+                # Store above 3 values per box pokemon for each enemy pokemon
+                enemy_pokemon_analysis[my_pokemon.name] = (move_info_vs_me, move_info_vs_him, goes_first)
                 
             enemy_team_info.append((enemy_pokemon, enemy_pokemon_analysis))
 
@@ -165,7 +190,10 @@ class PokemonBattleGUI:
         self.enemy_pokemon_variable_move_labels.config(text=variable_move_text)
 
         # Load my Pokemon images and move info (me vs him)
-        in_order = sorted(self.enemy_team_info[self.current_index][1].items(), key=lambda x: x[1][3], reverse=True)
+        # Start by creating a list [ ("my_mon1": [("move1", 49), ("move2", 38)]), ("my_mon2": [("move1", 54), ("move2", 25)]) ]
+        my_mons_move_vs_him = [(my_mon, move_info[1]) for my_mon, move_info in self.enemy_team_info[self.current_index][1].items()]
+        # Then order it desc by strongest move [ ("my_mon2": [("move1", 54), ("move2", 25)]), ("my_mon1": [("move1", 49), ("move2", 38)]) ]
+        in_order = sorted(my_mons_move_vs_him, key=lambda x: x[1][0][1], reverse=True)
         for i, (pokemon_name, move_info) in enumerate(in_order):
             # Pokemon level and name
             pokemon_i = [x for x in self.my_pokemons if x.name == pokemon_name][0]
@@ -178,15 +206,22 @@ class PokemonBattleGUI:
             self.my_pokemon_vs_him_image_labels[i].config(image=self.my_pokemon_vs_him_image_labels[i].image)
             create_tooltip(self.my_pokemon_vs_him_image_labels[i], pokemon_i.print_current_stats(with_ability=True), 100, 100)
 
-            # Move info
-            move_name, move_power = move_info[2], move_info[3]
-            move_text = f"{move_name}\nPower: {move_power}"
-            self.my_pokemon_move_vs_him_labels[i].config(text=move_text)
+            # Move info (reset texts from previous load_content call)
+            self.my_pokemon_move_vs_him_texts[i].clear()
+            for move, move_power in move_info:
+                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss"]:
+                    move_text = f"{move}\nPower: {int(move_power)}"
+                else:
+                    move_text = f"{move}\nPower: {int(0.85*move_power)}-{int(move_power)}"
+                self.my_pokemon_move_vs_him_texts[i].append(move_text)
+
+            self.my_pokemon_move_vs_him_labels[i].config(text=self.my_pokemon_move_vs_him_texts[i][0])
 
             # First or second info
-            if move_info[4] == 0:
+            speed_info = self.enemy_team_info[self.current_index][1][pokemon_name][2]
+            if speed_info == 0:
                 first_second_image = Image.open("images/1st.png")
-            elif move_info[4] == 1:
+            elif speed_info == 1:
                 first_second_image = Image.open("images/2nd.png")
             else:
                 first_second_image = Image.open("images/tie.png")
@@ -196,7 +231,10 @@ class PokemonBattleGUI:
 
         
         # Load my Pokemon images and move info (him vs me)
-        in_order = sorted(self.enemy_team_info[self.current_index][1].items(), key=lambda x: x[1][1])
+        # Start by creating a list [ ("his_mon1": [("move1", 49), ("move2", 38)]), ("his_mon2": [("move1", 54), ("move2", 25)]) ]
+        his_mons_move_vs_me = [(my_mon, move_info[0]) for my_mon, move_info in self.enemy_team_info[self.current_index][1].items()]
+        # Then order it asc by strongest move [ ("his_mon1": [("move1", 49), ("move2", 38)]), ("his_mon2": [("move1", 54), ("move2", 25)]) ]
+        in_order = sorted(his_mons_move_vs_me, key=lambda x: x[1][0][1])
         for i, (pokemon_name, move_info) in enumerate(in_order):
             # Pokemon level and name
             pokemon_i = [x for x in self.my_pokemons if x.name == pokemon_name][0]
@@ -209,15 +247,22 @@ class PokemonBattleGUI:
             self.him_vs_my_pokemon_image_labels[i].config(image=self.him_vs_my_pokemon_image_labels[i].image)
             create_tooltip(self.him_vs_my_pokemon_image_labels[i], pokemon_i.print_current_stats(with_ability=True), 100, 100)
 
-            # Move info
-            move_name, move_power = move_info[0], move_info[1]
-            move_text = f"{move_name}\nPower: {move_power}"
-            self.enemy_pokemon_move_vs_me_labels[i].config(text=move_text)
+            # Move info (reset texts from previous load_content call)
+            self.enemy_pokemon_move_vs_me_texts[i].clear()
+            for move, move_power in move_info:
+                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss"]:
+                    move_text = f"{move}\nPower: {int(move_power)}"
+                else:
+                    move_text = f"{move}\nPower: {int(0.85*move_power)}-{int(move_power)}"
+                self.enemy_pokemon_move_vs_me_texts[i].append(move_text)
+
+            self.enemy_pokemon_move_vs_me_labels[i].config(text=self.enemy_pokemon_move_vs_me_texts[i][0])
 
             # First or second info
-            if move_info[4] == 0:
+            speed_info = self.enemy_team_info[self.current_index][1][pokemon_name][2]
+            if speed_info == 0:
                 first_second_image = Image.open("images/1st.png")
-            elif move_info[4] == 1:
+            elif speed_info == 1:
                 first_second_image = Image.open("images/2nd.png")
             else:
                 first_second_image = Image.open("images/tie.png")
@@ -296,9 +341,3 @@ class PokemonBattleGUI:
         root = tk.Tk()
         app = TrainerSelectionGUI(root, self.game_info, self.my_pokemons, selected_trainer=self.enemy_trainer)
         root.mainloop()
-
-def pokemon_battle_gui(window_title, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves):
-    root = tk.Tk()
-    root.title(window_title)
-    app = PokemonBattleGUI(root, enemy_team_info, my_pokemons, his_moves, his_variable_moves, my_variable_moves)
-    root.mainloop()
