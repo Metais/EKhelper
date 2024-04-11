@@ -23,7 +23,7 @@ By clicking on the 'previous' and 'next' buttons in the corner of the window, yo
 What it does
 ---------------------------
 Analyzes the target trainer pokemon versus the pokemon in your party & box.
-Lists the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not always the true damage, as it considers the pokemon's stats, type effectivities, STAB and level while ignoring uncommmon or hyper-move-specific damage modifiers (such as suffering from burn, weather-effects, earthquake-vs-dig, etc.). Keep this in mind!
+Lists the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not always the true damage, as it considers the pokemon's stats, type effectivities, STAB and level while ignoring uncommon or hyper-move-specific damage modifiers (such as suffering from burn, weather-effects, earthquake-vs-dig, etc.). Keep this in mind!
 
 _Use EKhelper as an auxiliary tool -- not a be-all and end-all program!_
 
