@@ -115,6 +115,8 @@ def handle_move_name_exceptions(move):
             return "softboiled"
         case "icicle spear":
             return "ice shard"
+        case "sludge":
+            return "sludge bomb"
         case _:
             raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 

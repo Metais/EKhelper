@@ -2,17 +2,15 @@ from classes.type import Type, get_physical_types
 
 
 def get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, move_effectiveness):
-    # Check if BP is an standard value or not
+    # Check if BP is a standard value or not
     if not isinstance(spm_power, int):
         # For variable/unique power moves, do unique behavior
         if source_pokemon_move.name == "Sonicboom":
             return 20 if move_effectiveness != 0 else 0
-        if source_pokemon_move.name == "Night Shade":
+        if source_pokemon_move.name in ["Night Shade", "Psywave", "Seismic Toss"]:
             return source_pkmn.lvl if move_effectiveness != 0 else 0
         elif source_pokemon_move.name == "Dragon Rage":
             return 40
-        elif source_pokemon_move.name == "Seismic Toss":
-            return source_pkmn.lvl
         # For others (such as status moves) skip
         else:
             return 0
