@@ -11064,7 +11064,9 @@
         "Twins Gina & Mia (2)": {
             "ability": "Own Tempo",
             "level": 8,
-            "moves": ["Light Screen", "Follow Me", "Milk Drink"]
+            "moves": ["Light Screen", "Follow Me", "Milk Drink"],
+            "nature": "Quiet",
+            "NOTE": "NOT SURE!"
         },
         "Twins Tori & Tia (1)": {
             "ability": "Own Tempo",
@@ -11077,7 +11079,9 @@
             "ability": "Own Tempo",
             "item": "Lum Berry",
             "level": 35,
-            "moves": ["Spore", "Super Fang", "Dragon Rage", "Aeroblast"]
+            "moves": ["Spore", "Super Fang", "Dragon Rage", "Aeroblast"],
+            "nature": "Calm",
+            "NOTE": "NOT SURE!"
         }
     },
     "Smoochum": {

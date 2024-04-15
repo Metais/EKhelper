@@ -209,7 +209,7 @@ class PokemonBattleGUI:
             # Move info (reset texts from previous load_content call)
             self.my_pokemon_move_vs_him_texts[i].clear()
             for move, move_power in move_info:
-                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss"]:
+                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss", "Psywave"]:
                     move_text = f"{move}\nPower: {int(move_power)}"
                 elif move.name == "Magnitude":
                     move_text = f"{move}\nPower: {int(0.85*move_power/15)}-{int(move_power)}"
@@ -252,7 +252,7 @@ class PokemonBattleGUI:
             # Move info (reset texts from previous load_content call)
             self.enemy_pokemon_move_vs_me_texts[i].clear()
             for move, move_power in move_info:
-                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss"]:
+                if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss", "Psywave"]:
                     move_text = f"{move}\nPower: {int(move_power)}"
                 else:
                     move_text = f"{move}\nPower: {int(0.85*move_power)}-{int(move_power)}"

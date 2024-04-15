@@ -50,7 +50,7 @@ class Gen3Pokemon:
 		elif self.species['name'].lower() in ["dunsparce", "clamperl", "mankey", "primeape", "carvanha", "marill", "azumarill", "omanyte", 
 										"gloom", "donphan"]:
 			self.expgroup = "Medium Slow"
-		elif self.species['name'].lower() in ["slugma", "magcargo", "sunflora", "goldeen"]:
+		elif self.species['name'].lower() in ["slugma", "magcargo", "sunflora", "goldeen", "dustox"]:
 			self.expgroup = "Fast"
 
 	def __level(self, expgroup, exp):

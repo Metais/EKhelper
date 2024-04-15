@@ -4,7 +4,7 @@ A Python-based app that should make your Emerald Kaizo experience a (little) bit
 
 ![Trainer Select GUI](images/trainer_select.png)
 
-EKhelper contains 2 interfaces. The first is the trainer select interface where you can choose from all possible encounters. An option to reload your save also helps not having to restart the application whenever you update your team.
+EKhelper contains 2 interfaces. The first is the trainer select interface where you can choose from all possible encounters (see image above). An option to reload your save also helps not having to restart the application whenever you update your team. The second is the battle analysis interface (see image below).
 
 ![Battle GUI](images/battle.png)
 
@@ -22,8 +22,7 @@ By clicking on the 'previous' and 'next' buttons in the corner of the window, yo
 
 What it does
 ---------------------------
-Analyzes the target trainer pokemon versus the pokemon in your party & box.
-Lists the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not always the true damage, as it considers the pokemon's stats, type effectivities, STAB and level while ignoring uncommon or hyper-move-specific damage modifiers (such as suffering from burn, weather-effects, earthquake-vs-dig, etc.). Keep this in mind!
+EKHelper analyzes the target trainer pokemon versus the pokemon in your party & box. It does this by listing the best pokemon on your team against each target pokemon, both dealing damage against foe (top row) and taking damage from foe (bottom row). Power value is not always the true damage, as it considers the pokemon's stats, type effectivities, STAB and level while ignoring uncommon or hyper-move-specific damage modifiers (such as suffering from burn, weather-effects, earthquake-vs-dig, etc.). Keep this in mind!
 
 _Use EKhelper as an auxiliary tool -- not a be-all and end-all program!_
 

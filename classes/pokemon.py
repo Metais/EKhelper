@@ -81,7 +81,7 @@ class Pokemon:
         else:
             basics += ")"
 
-        return f"{basics}\nEstimated base stats:\nHp: {low_hp}-{high_hp}\nAttack: {low_atk}-{high_atk}\nDefense: {low_def}-{high_def}\n" + \
+        return f"{basics}\nEstimated stats:\nHp: {low_hp}-{high_hp}\nAttack: {low_atk}-{high_atk}\nDefense: {low_def}-{high_def}\n" + \
             f"Special Attack: {low_spa}-{high_spa}\nSpecial Defense: {low_spd}-{high_spd}\nSpeed: {low_spe}-{high_spe}"
     
     # For if IV is known
@@ -102,7 +102,7 @@ class Pokemon:
         if with_ability:
             basics += f"\nAbility: {self.ability.name} - {self.ability.description}"
 
-        return f"{basics}\nCurrent base stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
+        return f"{basics}\nCurrent stats:\nHp: {hp}\nAttack: {atk}\nDefense: {df}\nSpecial Attack: {spa}\nSpecial Defense: {spd}\nSpeed: {spe}"
 
     def add_level_move(self, level, move):
         self.lvl_moves.append((level, move))
