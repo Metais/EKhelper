@@ -254,6 +254,8 @@ class PokemonBattleGUI:
             for move, move_power in move_info:
                 if move.name in ["Sonicboom", "Night Shade", "Dragon Rage", "Seismic Toss", "Psywave"]:
                     move_text = f"{move}\nPower: {int(move_power)}"
+                elif move.name == "Magnitude":
+                    move_text = f"{move}\nPower: {int(0.85*move_power/15)}-{int(move_power)}"
                 else:
                     move_text = f"{move}\nPower: {int(0.85*move_power)}-{int(move_power)}"
                 self.enemy_pokemon_move_vs_me_texts[i].append(move_text)
