@@ -45,12 +45,12 @@ class Gen3Pokemon:
 		return groups[id - 1]
 	
 	def ek_specific_expgroup(self):
-		if self.species['name'].lower() in ["treecko", "grovyle", "sceptile", "voltorb", "wartortle", "flaaffy"]:
+		if self.species['name'].lower() in ["treecko", "grovyle", "sceptile", "voltorb", "wartortle", "flaaffy", "onix"]:
 			self.expgroup = "Slow"
 		elif self.species['name'].lower() in ["dunsparce", "clamperl", "mankey", "primeape", "carvanha", "marill", "azumarill", "omanyte", 
-										"gloom", "donphan"]:
+										"gloom", "donphan", "makuhita", "hariyama", "mantine"]:
 			self.expgroup = "Medium Slow"
-		elif self.species['name'].lower() in ["slugma", "magcargo", "sunflora", "goldeen", "dustox"]:
+		elif self.species['name'].lower() in ["slugma", "magcargo", "sunflora", "goldeen", "seaking", "dustox", "crawdaunt"]:
 			self.expgroup = "Fast"
 
 	def __level(self, expgroup, exp):
