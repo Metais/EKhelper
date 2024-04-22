@@ -34,6 +34,10 @@ def create_tooltip(widget, text, offsetx=25, offsety=25):
     widget.bind("<Enter>", tooltip.show_tooltip)
     widget.bind("<Leave>", tooltip.hide_tooltip)
 
+def remove_tooltip(widget):
+    widget.unbind("<Enter>")
+    widget.unbind("<Leave>")
+
 
 class PokemonBattleGUI:
     def __init__(self, root, enemy_trainer, game_info, my_pokemons):
@@ -98,9 +102,12 @@ class PokemonBattleGUI:
                                                          index=i: self.swap_text(self.enemy_pokemon_move_vs_me_labels[index], 
                                                                                  self.enemy_pokemon_move_vs_me_texts[index]))
 
+        self.top_row_page = 0
+        self.bot_row_page = 0
+        
+        self.create_navigation_buttons()
         self.load_content()
         self.display_current_pokemon_info()
-        self.create_navigation_buttons()
 
     def swap_text(self, label, texts):
         # Get the current text of the label
@@ -194,7 +201,16 @@ class PokemonBattleGUI:
         my_mons_move_vs_him = [(my_mon, move_info[1]) for my_mon, move_info in self.enemy_team_info[self.current_index][1].items()]
         # Then order it desc by strongest move [ ("my_mon2": [("move1", 54), ("move2", 25)]), ("my_mon1": [("move1", 49), ("move2", 38)]) ]
         in_order = sorted(my_mons_move_vs_him, key=lambda x: x[1][0][1], reverse=True)
-        for i, (pokemon_name, move_info) in enumerate(in_order):
+
+        # Decide on how many pokemon to list in the row
+        if self.box_size <= 13:
+            start = 0
+            amount = self.box_size
+        else:
+            start = self.top_row_page * 11
+            amount = min(11, self.box_size - start)
+
+        for i, (pokemon_name, move_info) in enumerate(in_order[start:start+amount]):
             # Pokemon level and name
             pokemon_i = [x for x in self.my_pokemons if x.name == pokemon_name][0]
             self.my_pokemon_info_top[i].config(text=f"Lv. {pokemon_i.lvl} {pokemon_i.name}")
@@ -231,13 +247,30 @@ class PokemonBattleGUI:
             self.my_pokemon_vs_him_first_second_labels[i].image = ImageTk.PhotoImage(first_second_image)
             self.my_pokemon_vs_him_first_second_labels[i].config(image=self.my_pokemon_vs_him_first_second_labels[i].image)
 
-        
+        # Empty the squares if on the last page and row not fully filled
+        if start + amount == self.box_size > 13 and (start + amount) % 11 != 0:
+            for i in range(amount, 11):
+                self.my_pokemon_info_top[i].config(text="")
+                self.my_pokemon_vs_him_image_labels[i].image = None
+                self.my_pokemon_move_vs_him_labels[i].config(text="")
+                self.my_pokemon_vs_him_first_second_labels[i].image = None
+                remove_tooltip(self.my_pokemon_vs_him_image_labels[i])
+
         # Load my Pokemon images and move info (him vs me)
         # Start by creating a list [ ("his_mon1": [("move1", 49), ("move2", 38)]), ("his_mon2": [("move1", 54), ("move2", 25)]) ]
         his_mons_move_vs_me = [(my_mon, move_info[0]) for my_mon, move_info in self.enemy_team_info[self.current_index][1].items()]
         # Then order it asc by strongest move [ ("his_mon1": [("move1", 49), ("move2", 38)]), ("his_mon2": [("move1", 54), ("move2", 25)]) ]
         in_order = sorted(his_mons_move_vs_me, key=lambda x: x[1][0][1])
-        for i, (pokemon_name, move_info) in enumerate(in_order):
+
+        # Decide on how many pokemon to list in the row
+        if self.box_size <= 13:
+            start = 0
+            amount = self.box_size
+        else:
+            start = self.bot_row_page * 11
+            amount = min(11, self.box_size - start)
+
+        for i, (pokemon_name, move_info) in enumerate(in_order[start:start+amount]):
             # Pokemon level and name
             pokemon_i = [x for x in self.my_pokemons if x.name == pokemon_name][0]
             self.my_pokemon_info_bot[i].config(text=f"Lv. {pokemon_i.lvl} {pokemon_i.name}")
@@ -273,65 +306,125 @@ class PokemonBattleGUI:
             first_second_image = first_second_image.resize((20, 20))
             self.him_vs_my_pokemon_first_second_labels[i].image = ImageTk.PhotoImage(first_second_image)
             self.him_vs_my_pokemon_first_second_labels[i].config(image=self.him_vs_my_pokemon_first_second_labels[i].image)
+
+        # Empty the squares if on the last page and row not fully filled
+        if start + amount == self.box_size > 13 and (start + amount) % 11 != 0:
+            for i in range(amount, 11):
+                self.my_pokemon_info_bot[i].config(text="")
+                self.him_vs_my_pokemon_image_labels[i].image = None
+                self.enemy_pokemon_move_vs_me_labels[i].config(text="")
+                self.him_vs_my_pokemon_first_second_labels[i].image = None
+                remove_tooltip(self.him_vs_my_pokemon_image_labels[i])
            
     def display_current_pokemon_info(self):
-        label_column = floor(self.box_size / 2) - 1
-        label_column = label_column if label_column >= 3 else 3
-
         # Display enemy pokemon image
-        self.enemy_pokemon_label.grid(row=4, column=label_column, columnspan=2, rowspan=2)
+        self.enemy_pokemon_label.grid(row=4, column=5, columnspan=2, rowspan=2)
 
         # Display enemy pokemon info
-        self.enemy_pokemon_info_label.grid(row=4, column=label_column-3, columnspan=2, rowspan=2, sticky="ew")
+        self.enemy_pokemon_info_label.grid(row=4, column=2, columnspan=2, rowspan=2, sticky="ew")
 
         # Display enemy pokemon moves labels
-        left_move_column = label_column - 1
-        right_move_column = label_column + 2
-        self.enemy_pokemon_move_labels[0].grid(row=4, column=left_move_column)
-        self.enemy_pokemon_move_labels[1].grid(row=5, column=left_move_column)
-        self.enemy_pokemon_move_labels[2].grid(row=4, column=right_move_column)
-        self.enemy_pokemon_move_labels[3].grid(row=5, column=right_move_column)
+        self.enemy_pokemon_move_labels[0].grid(row=4, column=4)
+        self.enemy_pokemon_move_labels[1].grid(row=5, column=4)
+        self.enemy_pokemon_move_labels[2].grid(row=4, column=7)
+        self.enemy_pokemon_move_labels[3].grid(row=5, column=7)
 
         # Display enemy pokemon held item
-        self.enemy_pokemon_held_item_image_label.grid(row=4, column=label_column + 3, sticky='s')
-        self.enemy_pokemon_held_item_text_label.grid(row=5, column=label_column + 3, stick='n')
+        self.enemy_pokemon_held_item_image_label.grid(row=4, column=8, sticky='s')
+        self.enemy_pokemon_held_item_text_label.grid(row=5, column=8, stick='n')
 
         # Display enemy pokemon ability
-        self.enemy_pokemon_ability_label.grid(row=4, column=label_column + 4, rowspan=2, columnspan=2)
+        self.enemy_pokemon_ability_label.grid(row=4, column=9, rowspan=2, columnspan=2)
 
         # Display enemy pokemon variable moves label
-        self.enemy_pokemon_variable_move_labels.grid(row=0, rowspan=10, column=self.box_size + 1)
+        self.enemy_pokemon_variable_move_labels.grid(row=0, rowspan=10, column=13)
+
+        # If <= 13 usable pokemons, static display. If > 13 pokemon, use buttons to click right/left so the window stays fixed size
+        if self.box_size <= 13:
+            start_column = 6 - floor(self.box_size / 2)
+            box_range = self.box_size
+        else:
+            start_column = 1
+            box_range = 11
 
         # Display my Pokemon images and move info (top)
-        for i in range(self.box_size):
-            self.my_pokemon_info_top[i].grid(row=0, column=i)
-            self.my_pokemon_vs_him_image_labels[i].grid(row=1, column=i)
-            self.my_pokemon_move_vs_him_labels[i].grid(row=2, column=i)
-            self.my_pokemon_vs_him_first_second_labels[i].grid(row=3, column=i)
+        for i in range(box_range):
+            self.my_pokemon_info_top[i].grid(row=0, column=start_column + i)
+            self.my_pokemon_vs_him_image_labels[i].grid(row=1, column=start_column + i)
+            self.my_pokemon_move_vs_him_labels[i].grid(row=2, column=start_column + i)
+            self.my_pokemon_vs_him_first_second_labels[i].grid(row=3, column=start_column + i)
             
         # Display my Pokemon images and move info (bottom)
-        for i in range(self.box_size):
-            self.my_pokemon_info_bot[i].grid(row=6, column=i)
-            self.him_vs_my_pokemon_image_labels[i].grid(row=7, column=i)
-            self.enemy_pokemon_move_vs_me_labels[i].grid(row=8, column=i)
-            self.him_vs_my_pokemon_first_second_labels[i].grid(row=9, column=i)
+        for i in range(box_range):
+            self.my_pokemon_info_bot[i].grid(row=6, column=start_column + i)
+            self.him_vs_my_pokemon_image_labels[i].grid(row=7, column=start_column + i)
+            self.enemy_pokemon_move_vs_me_labels[i].grid(row=8, column=start_column + i)
+            self.him_vs_my_pokemon_first_second_labels[i].grid(row=9, column=start_column + i)
 
     def create_navigation_buttons(self):
         prev_button = tk.Button(self.root, text="Previous", command=self.show_previous_pokemon)
         prev_button.grid(row=10, column=0)
+
         next_button = tk.Button(self.root, text="Next", command=self.show_next_pokemon)
-        next_button.grid(row=10, column=self.box_size - 1)
+        next_button.grid(row=10, column=12)
+
         trainer_selection_button = tk.Button(self.root, text="Back to trainer select", command=self.back_to_trainer_select)
-        trainer_selection_button.grid(row=10, column=int(self.box_size / 2) - 1, columnspan=2)
+        trainer_selection_button.grid(row=10, column=5, columnspan=2)
+
+        if self.box_size > 13:
+            prev_top_row_button = tk.Button(self.root, text="Previous", command=self.show_previous_top_row)
+            prev_top_row_button.grid(row=1, column=0)
+
+            next_top_row_button = tk.Button(self.root, text="Next", command=self.show_next_top_row)
+            next_top_row_button.grid(row=1, column=12)
+
+            prev_bot_row_button = tk.Button(self.root, text="Previous", command=self.show_previous_bot_row)
+            prev_bot_row_button.grid(row=7, column=0)
+
+            next_bot_row_button = tk.Button(self.root, text="Next", command=self.show_next_bot_row)
+            next_bot_row_button.grid(row=7, column=12)
+
+
+    def show_previous_top_row(self):
+        if self.top_row_page > 0:
+            self.top_row_page -= 1
+            self.load_content()
+
+    def show_next_top_row(self):
+        # 11 pokemon per page
+        if self.top_row_page < floor((self.box_size - 1) / 11):
+            self.top_row_page += 1
+            self.load_content()
+
+    def show_previous_bot_row(self):
+        if self.bot_row_page > 0:
+            self.bot_row_page -= 1
+            self.load_content()
+
+    def show_next_bot_row(self):
+        # 11 pokemon per page
+        if self.bot_row_page < floor((self.box_size - 1) / 11):
+            self.bot_row_page += 1
+            self.load_content()
 
     def show_next_pokemon(self):
         if self.current_index < len(self.enemy_team_info) - 1:
             self.current_index += 1
+            
+            # Reset top/bot row pages
+            self.top_row_page = 0
+            self.bot_row_page = 0
+
             self.load_content()
 
     def show_previous_pokemon(self):
         if self.current_index > 0:
             self.current_index -= 1
+
+            # Reset top/bot row pages
+            self.top_row_page = 0
+            self.bot_row_page = 0
+
             self.load_content()
 
     def back_to_trainer_select(self):
