@@ -117,6 +117,10 @@ def handle_move_name_exceptions(move):
             return "ice shard"
         case "sludge":
             return "sludge bomb"
+        case "horn drill":
+            return "drill run"
+        case "air cutter":
+            return "air slash"
         case _:
             raise Exception(f'Move name {move} has wrong syntax. Add to handle_move_name_exceptions()')
 
@@ -161,6 +165,11 @@ def read_my_pokemon(game_info):
         my_pokemon.append(pokemon)
         
     return my_pokemon
+
+
+def get_trainer_index(trainer_name):
+    with open('data/trainers.json', 'r', encoding='utf-8') as f:
+        return list(json.load(f).keys()).index(trainer_name)
 
 
 def read_trainer_pokemon_from_json(trainer_name, game_info):

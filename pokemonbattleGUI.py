@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 from math import floor
-from read_files import read_trainer_pokemon_from_json
+from read_files import read_trainer_pokemon_from_json, get_trainer_index
 from damage_calc import get_move_details
 
 class ToolTip:
@@ -122,6 +122,18 @@ class PokemonBattleGUI:
     def get_battle_info(self):
         trainer_pokemon = read_trainer_pokemon_from_json(self.enemy_trainer, self.game_info)
 
+        trainer_index = get_trainer_index(self.enemy_trainer)
+        if trainer_index > get_trainer_index("Leaders Tate&Liza"):
+            self.badge_boosts = { "Stone": True, "Dynamo": True, "Balance": True, "Mind": True}
+        elif trainer_index > get_trainer_index("Leader Norman"):
+            self.badge_boosts = { "Stone": True, "Dynamo": True, "Balance": True, "Mind": False}
+        elif trainer_index > get_trainer_index("Leader Wattson"):
+            self.badge_boosts = { "Stone": True, "Dynamo": True, "Balance": False, "Mind": False}
+        elif trainer_index > get_trainer_index("Leader Roxanne"):
+            self.badge_boosts = { "Stone": True, "Dynamo": False, "Balance": False, "Mind": False}
+        else:
+            self.badge_boosts = { "Stone": False, "Dynamo": False, "Balance": False, "Mind": False}
+
         # Index in following lists corresponds to trainer's pokemon in order
         his_moves = []
         his_variable_moves = []
@@ -139,12 +151,18 @@ class PokemonBattleGUI:
             # For each of my pokemon...
             for my_pokemon in self.my_pokemons:
                 # Move infos
-                move_info_vs_me = get_move_details(enemy_pokemon, my_pokemon)
-                move_info_vs_him = get_move_details(my_pokemon, enemy_pokemon)
+                move_info_vs_me = get_move_details(enemy_pokemon, my_pokemon, self.badge_boosts, attacking=False)
+                move_info_vs_him = get_move_details(my_pokemon, enemy_pokemon, self.badge_boosts, attacking=True)
+
                 # Who goes first (0 = me, 1 = him, 2 = tie)
-                if my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) > enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv):
+                my_spe = my_pokemon.get_real_spe_stat(my_pokemon.spe_iv)
+                his_spe = enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv)
+                if self.badge_boosts["Dynamo"]:
+                    my_spe = floor(my_spe*1.1)
+
+                if my_spe > his_spe:
                     goes_first = 0
-                elif my_pokemon.get_real_spe_stat(my_pokemon.spe_iv) < enemy_pokemon.get_real_spe_stat(enemy_pokemon.spe_iv):
+                elif my_spe < his_spe:
                     goes_first = 1
                 else:
                     goes_first = 2
@@ -363,10 +381,10 @@ class PokemonBattleGUI:
 
     def create_navigation_buttons(self):
         prev_button = tk.Button(self.root, text="Previous", command=self.show_previous_pokemon)
-        prev_button.grid(row=10, column=0)
+        prev_button.grid(row=4, rowspan=2, column=0)
 
         next_button = tk.Button(self.root, text="Next", command=self.show_next_pokemon)
-        next_button.grid(row=10, column=12)
+        next_button.grid(row=4, rowspan=2, column=12)
 
         trainer_selection_button = tk.Button(self.root, text="Back to trainer select", command=self.back_to_trainer_select)
         trainer_selection_button.grid(row=10, column=5, columnspan=2)

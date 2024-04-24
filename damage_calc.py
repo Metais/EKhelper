@@ -1,7 +1,7 @@
 from classes.type import Type, get_physical_types
 
 
-def get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, move_effectiveness):
+def get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, move_effectiveness, badge_boosts, attacking):
     # Check if BP is a standard value or not
     if not isinstance(spm_power, int):
         # For variable/unique power moves, do unique behavior
@@ -33,12 +33,15 @@ def get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, mov
         # Hustle ups atk by 50% but accuracy down 20%
         if source_pkmn.ability.name == "Hustle":
             atk_stat *= 1.5
-        # Thick fat ability halves fire and ice atk/spa stat
-        if target_pkmn.ability.name == "Thick Fat" and (source_pokemon_move.type == Type.Fire or source_pokemon_move.type == Type.Ice):
-            atk_stat /= 2
         # Selfdestruct/Explosion halves foe's defense stat
         if source_pokemon_move.name in ["Selfdestruct", "Explosion"]:
-            def_stat /= 2  
+            def_stat /= 2
+
+        # Apply badge boosts
+        if attacking and badge_boosts["Stone"]:
+            atk_stat *= 1.1
+        elif not attacking and badge_boosts["Balance"]:
+            def_stat *= 1.1
 
         spm_power *= atk_stat / def_stat
     else:
@@ -52,6 +55,12 @@ def get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, mov
         # Thick fat ability halves fire and ice atk/spa stat
         if target_pkmn.ability.name == "Thick Fat" and (source_pokemon_move.type == Type.Fire or source_pokemon_move.type == Type.Ice):
             spa_stat /= 2
+
+        # Apply badge boosts
+        if attacking and badge_boosts["Mind"]:
+            spa_stat *= 1.1
+        elif not attacking and badge_boosts["Mind"]:
+            spd_stat *= 1.1
 
         spm_power *= spa_stat / spd_stat
     # Divide by 50 for real damage value
@@ -91,7 +100,7 @@ def apply_ability_on_effectiveness(source_pokemon_move, target_pkmn, move_effect
     return move_effectiveness
 
 
-def get_move_details(source_pkmn, target_pkmn):
+def get_move_details(source_pkmn, target_pkmn, badge_boosts, attacking):
     # [(Move, 59), (Move2, 36), (Move3, 19)]  (Move4 is non-damaging)
     moves = []
 
@@ -104,7 +113,7 @@ def get_move_details(source_pkmn, target_pkmn):
         # Magnitude's power can range from 10 to 150. Take 150 and adjust in the GUI by dividing lower bound by 15
         if source_pokemon_move.name == "Magnitude":
             spm_power = 150
-        spm_power = get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, move_effectiveness)
+        spm_power = get_move_power(source_pkmn, target_pkmn, source_pokemon_move, spm_power, move_effectiveness, badge_boosts, attacking)
 
         moves.append((source_pokemon_move, spm_power))
 
